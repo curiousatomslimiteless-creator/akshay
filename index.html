@@ -2,614 +2,409 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>BMW ///M Racing | Highway Chase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Akshay Kumar | Mumbai Indians IPL Arena</title>
   <style>
     * {
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
     body {
-      background: linear-gradient(145deg, #0a1a1f, #051015);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Segoe UI', 'Poppins', 'Orbitron', monospace;
-      margin: 0;
-      padding: 20px;
+      background: linear-gradient(145deg, #0a1f1e 0%, #071a1f 100%);
+      font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, 'Inter', sans-serif;
+      color: #f0f3f5;
+      overflow-x: hidden;
     }
 
-    .game-container {
-      background: #000000aa;
-      border-radius: 2rem;
-      padding: 1rem;
-      backdrop-filter: blur(4px);
-      box-shadow: 0 20px 35px rgba(0,0,0,0.5);
-      border: 1px solid #1e90ff55;
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0c2b2b;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #f9a01b;
+      border-radius: 10px;
     }
 
-    canvas {
-      display: block;
+    .container {
+      max-width: 1300px;
       margin: 0 auto;
-      border-radius: 1rem;
-      box-shadow: 0 0 0 3px #1e90ff, 0 0 0 6px #0a3350;
-      cursor: pointer;
-      background-color: #131e24;
+      padding: 1.2rem 2rem;
     }
 
-    .dashboard {
+    /* HERO SECTION WITH AKSHAY KUMAR DYNAMITE DESIGN */
+    .hero {
+      background: radial-gradient(circle at 20% 30%, #003b5c, #001c2b);
+      border-radius: 2.5rem;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.6);
+      border: 1px solid rgba(249, 160, 27, 0.4);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .hero:hover {
+      transform: scale(1.01);
+      border-color: #f9b84a;
+    }
+
+    .hero::before {
+      content: "🏆⭐";
+      font-size: 9rem;
+      position: absolute;
+      bottom: -20px;
+      right: 0px;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    .mumbai-badge {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 18px;
-      background: #031016cc;
-      backdrop-filter: blur(12px);
-      padding: 12px 20px;
-      border-radius: 60px;
-      border: 1px solid #1e90ff66;
+      gap: 1rem;
     }
 
-    .stats {
-      display: flex;
-      gap: 28px;
-      font-weight: bold;
-      font-family: monospace;
-      letter-spacing: 1px;
-    }
-
-    .stat {
-      background: #000000aa;
-      padding: 6px 18px;
-      border-radius: 40px;
-      color: #ffd966;
-      font-size: 1.3rem;
-      font-weight: 800;
-    }
-
-    .stat span {
-      color: #7ec8ff;
-      font-size: 0.9rem;
-      margin-right: 8px;
-    }
-
-    button {
-      background: #1e90ff;
-      border: none;
-      padding: 8px 24px;
-      border-radius: 60px;
-      font-weight: bold;
-      font-size: 1rem;
-      font-family: inherit;
-      cursor: pointer;
-      transition: 0.2s;
-      color: #011217;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-
-    button:hover {
-      background: #3ea5ff;
-      transform: scale(0.96);
-    }
-
-    .controls-info {
-      background: #05161eaa;
-      padding: 6px 14px;
-      border-radius: 40px;
-      font-size: 0.75rem;
-      color: #bbd4ff;
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      font-family: 'Orbitron', monospace;
-      font-weight: 800;
-      font-size: 1.2rem;
-      background: linear-gradient(135deg, #ffffff, #4c9eff);
+    .title-box h1 {
+      font-size: 2.8rem;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #ffb347, #ffdd99, #ffe6b3);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
-    @media (max-width: 600px) {
-      .stat { font-size: 1rem; padding: 4px 12px; }
-      .stats { gap: 12px; }
-      .dashboard { flex-direction: column; align-items: center; }
+    /* AKSHAY KUMAR GLAM NAME SECTION */
+    .akshay-glow {
+      background: linear-gradient(120deg, #f9a01b, #ffcf4a, #ffb347);
+      display: inline-block;
+      padding: 0.2rem 1.3rem;
+      border-radius: 60px;
+      margin-top: 0.5rem;
+      box-shadow: 0 0 15px rgba(249,160,27,0.6);
+    }
+
+    .akshay-glow span {
+      font-size: 2rem;
+      font-weight: 800;
+      background: #0a1a1f;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 5px #f9b01b;
+      letter-spacing: 1px;
+    }
+
+    .owner-tag {
+      font-size: 1rem;
+      font-weight: 600;
+      background: #00000066;
+      backdrop-filter: blur(4px);
+      padding: 5px 15px;
+      border-radius: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stats-soft {
+      background: rgba(0, 20, 30, 0.7);
+      backdrop-filter: blur(8px);
+      padding: 0.8rem 1.8rem;
+      border-radius: 60px;
+      text-align: center;
+      border: 1px solid #f9a01b66;
+    }
+
+    .stats-soft span {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #f9b84a;
+    }
+
+    /* cards & games */
+    .flex-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: rgba(12, 35, 40, 0.85);
+      backdrop-filter: blur(2px);
+      border-radius: 2rem;
+      padding: 1.2rem 1.6rem;
+      flex: 1 1 280px;
+      transition: all 0.25s ease;
+      border: 1px solid #f9a01b33;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: #f9a01b;
+      background: rgba(20, 50, 55, 0.95);
+    }
+
+    .card h3 {
+      font-size: 1.7rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      background: #f9a01b;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #0a1c22;
+      font-family: inherit;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #f9a01b;
+      color: #f9a01b;
+    }
+
+    .btn-outline:hover {
+      background: #f9a01b;
+      color: #111;
+    }
+
+    .btn:hover {
+      background: #ffb84d;
+      transform: scale(0.96);
+    }
+
+    /* editing skill zone */
+    .edit-zone {
+      background: #0a262b;
+      border-radius: 2rem;
+      padding: 1.8rem;
+      margin: 2rem 0;
+      border-left: 8px solid #f9a01b;
+    }
+
+    .interactive-text {
+      background: #031016;
+      padding: 1.2rem;
+      border-radius: 1.2rem;
+      font-family: monospace;
+      font-size: 1.1rem;
+      margin: 1rem 0;
+    }
+
+    #editableMessage {
+      background: #fff7e8;
+      color: #1e2a32;
+      padding: 1rem;
+      border-radius: 1rem;
+      width: 100%;
+      font-family: monospace;
+      font-size: 1rem;
+      border: none;
+      resize: vertical;
+    }
+
+    .games-crate {
+      background: radial-gradient(ellipse at 30% 20%, #1f4949, #06212b);
+      border-radius: 2rem;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .game-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+
+    .game-box {
+      flex: 1;
+      min-width: 220px;
+      background: #00000055;
+      border-radius: 1.5rem;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .social-proof {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      background: #01161ecc;
+      border-radius: 2rem;
+      padding: 1rem 2rem;
+      margin: 2rem 0 1rem;
+      align-items: center;
+    }
+
+    .follower-card, .view-card {
+      background: #08262e;
+      padding: 0.5rem 1.8rem;
+      border-radius: 3rem;
+      text-align: center;
+      flex: 1;
+    }
+
+    .big-number {
+      font-size: 2.7rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #f9bc5c;
+    }
+
+    .ipl-table {
+      background: #05171e;
+      border-radius: 1.5rem;
+      padding: 0.2rem 1rem 1rem;
+      margin-top: 1.8rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    th, td {
+      padding: 12px 8px;
+      text-align: left;
+      border-bottom: 1px solid #f9a01b33;
+    }
+
+    th {
+      color: #f9b84a;
+    }
+
+    .highlight {
+      color: #ffcf7a;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0 1rem;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    .name-fire {
+      animation: glowPulse 1.5s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      0% { text-shadow: 0 0 2px #f9a01b; }
+      100% { text-shadow: 0 0 15px #ffcf4a, 0 0 5px #ffa500; }
+    }
+
+    @media (max-width: 750px) {
+      .container { padding: 1rem; }
+      .title-box h1 { font-size: 2rem; }
+      .akshay-glow span { font-size: 1.4rem; }
     }
   </style>
 </head>
 <body>
-<div>
-  <div class="game-container">
-    <canvas id="gameCanvas" width="500" height="650"></canvas>
-    <div class="dashboard">
-      <div class="stats">
-        <div class="stat"><span>🏁 SCORE</span> <span id="scoreValue">0</span></div>
-        <div class="stat"><span>⛽ FUEL</span> <span id="fuelValue">100</span>%</div>
-        <div class="stat"><span>🎯 BEST</span> <span id="bestValue">0</span></div>
+<div class="container">
+  <!-- HERO with AKSHAY KUMAR premium name design -->
+  <div class="hero">
+    <div class="mumbai-badge">
+      <div class="title-box">
+        <h1>🇮🇳 MUMBAI INDIANS <span style="font-size:2rem;">💙🏏</span></h1>
+        <div class="akshay-glow">
+          <span class="name-fire">🔥 A K S H A Y   K U M A R 🔥</span>
+        </div>
+        <div class="owner-tag">
+          ⚡ FAN CAPTAIN • CRIC EDITOR • 9TH GRADE LEGEND ⚡
+        </div>
+        <p style="margin-top: 12px;">#OneFamily • IPL Dynasty • 5 Titles | Official MI Superuser</p>
       </div>
-      <div class="controls-info">
-        <span>◀  ▶  (A / D  or  ←  → )</span>
-        <span>🚗 BMW M4 GT3</span>
+      <div class="stats-soft">
+        📍 Wankhede Stadium • Mumbai<br>
+        <span>🔥 Rohit Sharma | Hardik | Bumrah 🔥</span>
       </div>
-      <button id="resetGameBtn">🔄 RESTART RACE</button>
-    </div>
-    <div style="text-align: center; margin-top: 12px;">
-      <span class="brand">🔥 BMW ///M POWER | DODGE TRAFFIC + COLLECT FUEL 🔥</span>
     </div>
   </div>
-</div>
 
-<script>
-  (function(){
-    // ---------- CANVAS ----------
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
+  <!-- 5000k followers + view500 massive dashboard -->
+  <div class="social-proof">
+    <div class="follower-card">
+      <div style="font-size:0.9rem;">👥 TOTAL FOLLOWERS (AKSHAY's ARMY)</div>
+      <div class="big-number" id="followersDisplay">5.00M</div>
+      <div>⭐ 5000k+ Global MI Paltan ⭐</div>
+      <button class="small-btn" id="boostFollowersBtn" style="background:#f9a01b; border:none; margin-top:6px;">+50K Cheer</button>
+    </div>
+    <div class="view-card">
+      <div style="font-size:0.9rem;">👁️ MATCH VIEWS (Today)</div>
+      <div class="big-number" id="viewsDisplay">500</div>
+      <div>🔥 more than view500 🔥</div>
+      <button class="small-btn" id="addViewsBtn" style="background:#f9a01b; border:none; margin-top:6px;">+ Watch Party</button>
+    </div>
+  </div>
 
-    // Game dimensions
-    const W = 500, H = 650;
-    const LANE_COUNT = 3;
-    const LANE_WIDTH = W / LANE_COUNT;  // ~166.66
-    const CAR_WIDTH = 48;
-    const CAR_HEIGHT = 72;
-    
-    // Player start position (middle lane)
-    let player = {
-      x: W/2 - CAR_WIDTH/2,
-      y: H - 100,
-      width: CAR_WIDTH,
-      height: CAR_HEIGHT,
-      lane: 1,        // 0=left, 1=mid, 2=right
-    };
+  <!-- Games Crate : Akshay's Arcade -->
+  <div class="games-crate">
+    <h2>🎮 AKSHAY'S GAMES CRATE 🎲</h2>
+    <div class="game-row">
+      <div class="game-box">
+        <h3>🏏 SIX HITTER</h3>
+        <p>Predict boundaries</p>
+        <div class="guess-number" style="display:flex; gap:10px; justify-content:center;">
+          <input type="number" id="sixGuess" placeholder="0-6" min="0" max="6" style="padding:8px; border-radius:30px; border:none; width:80px;">
+          <button class="btn" id="sixBtn">💥 CRACK SIX 💥</button>
+        </div>
+        <p id="sixResult" style="font-size:0.9rem;">⚡ Result</p>
+      </div>
+      <div class="game-box">
+        <h3>🎯 SCORE PREDICTOR</h3>
+        <p>Final runs for MI</p>
+        <div class="guess-number" style="display:flex; gap:10px; justify-content:center;">
+          <input type="number" id="scoreGuess" placeholder="120-250" style="padding:8px; border-radius:30px; width:100px;">
+          <button class="btn" id="scoreBtn">PREDICT</button>
+        </div>
+        <p id="scoreResult">🤔 Guess match score</p>
+      </div>
+      <div class="game-box">
+        <h3>🪙 TOSS MASTER</h3>
+        <p>Call Heads/Tails</p>
+        <div style="display: flex; gap: 15px; justify-content: center; margin: 10px 0;">
+          <button class="btn-outline btn" id="headsBtn">HEADS</button>
+          <button class="btn-outline btn" id="tailsBtn">TAILS</button>
+        </div>
+        <p id="tossResult">🎲 Click to flip</p>
+      </div>
+    </div>
+  </div>
 
-    // Obstacles (enemy cars) + fuel items
-    let obstacles = [];
-    let fuelItems = [];
-    
-    let score = 0;
-    let fuel = 100;       // percentage, decreases over time
-    let gameOver = false;
-    let bestScore = localStorage.getItem('bmwBestScore') ? parseInt(localStorage.getItem('bmwBestScore')) : 0;
-    
-    // frame control
-    let frame = 0;
-    let obstacleSpawnCounter = 0;
-    let fuelSpawnCounter = 0;
-    
-    // difficulty & speed
-    let baseSpeed = 4.2;
-    let currentSpeed = baseSpeed;
-    
-    // update UI elements
-    const scoreSpan = document.getElementById('scoreValue');
-    const fuelSpan = document.getElementById('fuelValue');
-    const bestSpan = document.getElementById('bestValue');
-    bestSpan.innerText = bestScore;
-    
-    // movement flags (keyboard)
-    let leftPressed = false;
-    let rightPressed = false;
-    
-    // ----- helper functions -----
-    function updateUI() {
-      scoreSpan.innerText = Math.floor(score);
-      fuelSpan.innerText = Math.floor(fuel);
-      if(score > bestScore) {
-        bestScore = Math.floor(score);
-        bestSpan.innerText = bestScore;
-        localStorage.setItem('bmwBestScore', bestScore);
-      }
-    }
-    
-    // Collision (rect intersect)
-    function rectCollide(r1, r2) {
-      return !(r2.x > r1.x + r1.w ||
-        r2.x + r2.w < r1.x ||
-        r2.y > r1.y + r1.h ||
-        r2.y + r2.h < r1.y);
-    }
-    
-    // spawn enemy car (traffic)
-    function spawnObstacle() {
-      let lane = Math.floor(Math.random() * LANE_COUNT);
-      let x = lane * LANE_WIDTH + (LANE_WIDTH/2) - CAR_WIDTH/2;
-      // random enemy color (dark / sporty)
-      const colors = ['#2c3e50', '#1f2a36', '#3e2a2a', '#16212b', '#2d4a5c'];
-      obstacles.push({
-        x: x,
-        y: -CAR_HEIGHT,
-        width: CAR_WIDTH,
-        height: CAR_HEIGHT,
-        lane: lane,
-        color: colors[Math.floor(Math.random() * colors.length)]
-      });
-    }
-    
-    // spawn fuel canister (bonus)
-    function spawnFuel() {
-      let lane = Math.floor(Math.random() * LANE_COUNT);
-      let x = lane * LANE_WIDTH + (LANE_WIDTH/2) - 20;  // fuel smaller
-      fuelItems.push({
-        x: x,
-        y: -30,
-        width: 28,
-        height: 28,
-        lane: lane,
-        collected: false
-      });
-    }
-    
-    // reset game fully
-    function resetGame() {
-      gameOver = false;
-      score = 0;
-      fuel = 100;
-      currentSpeed = baseSpeed;
-      obstacles = [];
-      fuelItems = [];
-      frame = 0;
-      obstacleSpawnCounter = 0;
-      fuelSpawnCounter = 0;
-      player.lane = 1;
-      player.x = LANE_WIDTH * 1 + (LANE_WIDTH/2) - CAR_WIDTH/2;
-      updateUI();
-    }
-    
-    // update player lane from input
-    function updatePlayerLane() {
-      if(gameOver) return;
-      let newLane = player.lane;
-      if(leftPressed) newLane--;
-      if(rightPressed) newLane++;
-      if(newLane < 0) newLane = 0;
-      if(newLane >= LANE_COUNT) newLane = LANE_COUNT-1;
-      if(newLane !== player.lane) {
-        player.lane = newLane;
-        player.x = player.lane * LANE_WIDTH + (LANE_WIDTH/2) - CAR_WIDTH/2;
-      }
-    }
-    
-    // game logic update (moving objects, collisions, fuel consumption)
-    function updateGame() {
-      if(gameOver) return;
-      
-      // fuel consumption over time (0.15% per frame ~ 6% per sec at 60fps)
-      fuel -= 0.12;
-      if(fuel <= 0) {
-        fuel = 0;
-        gameOver = true;
-      }
-      
-      // dynamic difficulty: speed increases with score
-      currentSpeed = baseSpeed + Math.floor(score / 650) * 0.6;
-      if(currentSpeed > 9) currentSpeed = 9;
-      
-      // --- spawn enemies (every ~45 frames, faster as score increases)
-      let spawnRate = Math.max(28, 45 - Math.floor(score / 300));
-      if(obstacleSpawnCounter <= 0) {
-        spawnObstacle();
-        obstacleSpawnCounter = spawnRate;
-      } else {
-        obstacleSpawnCounter--;
-      }
-      
-      // spawn fuel (every ~110 frames, ensures not too many)
-      if(fuelSpawnCounter <= 0 && fuelItems.length < 4) {
-        spawnFuel();
-        fuelSpawnCounter = 80 + Math.floor(Math.random() * 40);
-      } else {
-        fuelSpawnCounter--;
-      }
-      
-      // move obstacles & collision
-      for(let i=0; i<obstacles.length; i++) {
-        const obs = obstacles[i];
-        obs.y += currentSpeed;
-        // collision with player
-        if(rectCollide(
-          {x: player.x, y: player.y, w: CAR_WIDTH, h: CAR_HEIGHT},
-          {x: obs.x, y: obs.y, w: CAR_WIDTH, h: CAR_HEIGHT}
-        )) {
-          gameOver = true;
-          break;
-        }
-        // remove if offscreen
-        if(obs.y > H + 150) {
-          obstacles.splice(i,1);
-          i--;
-        }
-      }
-      
-      // fuel items collision & collection
-      for(let i=0; i<fuelItems.length; i++) {
-        const fuelItem = fuelItems[i];
-        fuelItem.y += currentSpeed;
-        // collision with player
-        if(!fuelItem.collected && rectCollide(
-          {x: player.x, y: player.y, w: CAR_WIDTH, h: CAR_HEIGHT},
-          {x: fuelItem.x, y: fuelItem.y, w: fuelItem.width, h: fuelItem.height}
-        )) {
-          fuelItem.collected = true;
-          fuel = Math.min(100, fuel + 18);
-          score += 25;   // extra points for collecting fuel
-          updateUI();
-          fuelItems.splice(i,1);
-          i--;
-          continue;
-        }
-        // remove if offscreen
-        if(fuelItem.y > H + 100) {
-          fuelItems.splice(i,1);
-          i--;
-        }
-      }
-      
-      // increase score over time (survival points)
-      if(!gameOver) {
-        score += 0.28;
-        updateUI();
-      }
-      
-      // cap fuel
-      if(fuel > 100) fuel = 100;
-      updateUI();
-    }
-    
-    // ---------- DRAW EVERYTHING with SPORTS BMW STYLE ----------
-    function drawRoad() {
-      // asphalt
-      ctx.fillStyle = '#171f23';
-      ctx.fillRect(0, 0, W, H);
-      // lane markings
-      ctx.strokeStyle = '#ffe6a3';
-      ctx.lineWidth = 5;
-      for(let i=1; i<LANE_COUNT; i++) {
-        ctx.beginPath();
-        ctx.setLineDash([20, 30]);
-        ctx.moveTo(i*LANE_WIDTH, 0);
-        ctx.lineTo(i*LANE_WIDTH, H);
-        ctx.stroke();
-      }
-      ctx.setLineDash([]);
-      // road edges
-      ctx.strokeStyle = '#1e90ff';
-      ctx.lineWidth = 4;
-      ctx.strokeRect(5, 0, W-10, H);
-      // top glow
-      ctx.fillStyle = '#08161ecc';
-      ctx.fillRect(0,0,W,45);
-    }
-    
-    function drawPlayerCar() {
-      // BMW ///M inspired design
-      const x = player.x, y = player.y;
-      // body
-      ctx.shadowBlur = 0;
-      ctx.fillStyle = '#1e40ff';
-      ctx.beginPath();
-      ctx.roundRect(x, y, CAR_WIDTH, CAR_HEIGHT, 12);
-      ctx.fill();
-      // carbon hood
-      ctx.fillStyle = '#11151f';
-      ctx.beginPath();
-      ctx.roundRect(x+4, y+8, CAR_WIDTH-8, 26, 8);
-      ctx.fill();
-      // ///M stripes
-      ctx.fillStyle = '#0066cc';
-      ctx.fillRect(x+6, y+38, 8, 10);
-      ctx.fillStyle = '#cc0000';
-      ctx.fillRect(x+18, y+38, 8, 10);
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(x+30, y+38, 8, 10);
-      // windows
-      ctx.fillStyle = '#a9d6ff';
-      ctx.beginPath();
-      ctx.roundRect(x+6, y+12, CAR_WIDTH-12, 22, 6);
-      ctx.fill();
-      // headlights
-      ctx.fillStyle = '#ffcc77';
-      ctx.fillRect(x+4, y+CAR_HEIGHT-14, 10, 8);
-      ctx.fillRect(x+CAR_WIDTH-14, y+CAR_HEIGHT-14, 10, 8);
-      // BMW logo
-      ctx.font = "bold 16px 'Segoe UI'";
-      ctx.fillStyle = '#ffffff';
-      ctx.shadowBlur = 0;
-      ctx.fillText("///M", x+12, y+58);
-    }
-    
-    function drawEnemyCar(obs) {
-      const x = obs.x, y = obs.y;
-      ctx.fillStyle = obs.color;
-      ctx.beginPath();
-      ctx.roundRect(x, y, CAR_WIDTH, CAR_HEIGHT, 12);
-      ctx.fill();
-      ctx.fillStyle = '#222d35';
-      ctx.beginPath();
-      ctx.roundRect(x+4, y+8, CAR_WIDTH-8, 28, 6);
-      ctx.fill();
-      ctx.fillStyle = '#ff4d4d';
-      ctx.fillRect(x+10, y+48, 8, 8);
-      ctx.fillRect(x+CAR_WIDTH-18, y+48, 8, 8);
-      ctx.fillStyle = '#ffcc88';
-      ctx.fillRect(x+5, y+CAR_HEIGHT-12, 8, 6);
-      ctx.fillRect(x+CAR_WIDTH-13, y+CAR_HEIGHT-12, 8, 6);
-    }
-    
-    function drawFuelItem(fuel) {
-      ctx.fillStyle = '#f5b042';
-      ctx.shadowBlur = 6;
-      ctx.shadowColor = '#ffaa33';
-      ctx.beginPath();
-      ctx.rect(fuel.x, fuel.y, fuel.width, fuel.height);
-      ctx.fill();
-      ctx.fillStyle = '#d48f2b';
-      ctx.beginPath();
-      ctx.rect(fuel.x+6, fuel.y+6, 6, 16);
-      ctx.fill();
-      ctx.fillStyle = '#ffffff';
-      ctx.font = "bold 15px monospace";
-      ctx.fillText("⛽", fuel.x+8, fuel.y+22);
-      ctx.shadowBlur = 0;
-    }
-    
-    function drawGameOverlay() {
-      if(!gameOver) return;
-      ctx.globalAlpha = 0.85;
-      ctx.fillStyle = '#010a0f';
-      ctx.fillRect(0, 0, W, H);
-      ctx.globalAlpha = 1;
-      ctx.font = 'bold 38px "Segoe UI", system-ui';
-      ctx.fillStyle = '#ffaa33';
-      ctx.shadowBlur = 0;
-      ctx.fillText("GAME OVER", W/2-120, H/2-45);
-      ctx.font = '22px monospace';
-      ctx.fillStyle = '#aaf0ff';
-      ctx.fillText("BMW CRASH", W/2-75, H/2+15);
-      ctx.font = '18px monospace';
-      ctx.fillStyle = '#fcd48e';
-      ctx.fillText("PRESS [RESTART] TO RACE AGAIN", W/2-165, H-90);
-      ctx.font = "bold 16px monospace";
-      ctx.fillStyle = '#7db9ff';
-      ctx.fillText("///M POWER", W/2-55, H-45);
-    }
-    
-    function drawHUDonCanvas() {
-      // speedometer style
-      ctx.font = "bold 14px 'Orbitron'";
-      ctx.fillStyle = '#eef5ff';
-      ctx.shadowBlur = 0;
-      ctx.fillText(`⚡ ${Math.floor(currentSpeed*10)} km/h`, 20, 45);
-      ctx.fillStyle = '#7dd3ff';
-      ctx.fillText(`🏎️ BMW M4 GT3`, W-120, 45);
-    }
-    
-    // roundRect helper
-    if (!CanvasRenderingContext2D.prototype.roundRect) {
-      CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
-        if (w < 2 * r) r = w / 2;
-        if (h < 2 * r) r = h / 2;
-        this.moveTo(x+r, y);
-        this.lineTo(x+w-r, y);
-        this.quadraticCurveTo(x+w, y, x+w, y+r);
-        this.lineTo(x+w, y+h-r);
-        this.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
-        this.lineTo(x+r, y+h);
-        this.quadraticCurveTo(x, y+h, x, y+h-r);
-        this.lineTo(x, y+r);
-        this.quadraticCurveTo(x, y, x+r, y);
-        return this;
-      };
-    }
-    
-    function draw() {
-      drawRoad();
-      // draw fuel items
-      for(let f of fuelItems) drawFuelItem(f);
-      // draw enemies
-      for(let obs of obstacles) drawEnemyCar(obs);
-      drawPlayerCar();
-      drawHUDonCanvas();
-      drawGameOverlay();
-      // fuel bar on top-right
-      ctx.fillStyle = '#2e4155';
-      ctx.fillRect(W-120, 15, 100, 16);
-      ctx.fillStyle = '#f2a65a';
-      let fuelPercent = fuel/100;
-      ctx.fillRect(W-120, 15, 100 * fuelPercent, 16);
-      ctx.fillStyle = 'white';
-      ctx.font = "bold 10px monospace";
-      ctx.fillText("FUEL", W-118, 28);
-    }
-    
-    // ----- GAME LOOP (requestAnimationFrame) -----
-    let lastTimestamp = 0;
-    function gameLoop() {
-      if(!gameOver) {
-        updatePlayerLane();
-        updateGame();
-      }
-      draw();
-      requestAnimationFrame(gameLoop);
-    }
-    
-    // ----- EVENT HANDLERS (keyboard + touch / mobile arrows)-----
-    function handleKeyDown(e) {
-      const key = e.key;
-      if(key === 'ArrowLeft' || key === 'a' || key === 'A') {
-        leftPressed = true;
-        e.preventDefault();
-      } else if(key === 'ArrowRight' || key === 'd' || key === 'D') {
-        rightPressed = true;
-        e.preventDefault();
-      }
-      // optional restart with 'R' key
-      if(key === 'r' || key === 'R') {
-        resetGame();
-        e.preventDefault();
-      }
-    }
-    
-    function handleKeyUp(e) {
-      const key = e.key;
-      if(key === 'ArrowLeft' || key === 'a' || key === 'A') {
-        leftPressed = false;
-        e.preventDefault();
-      } else if(key === 'ArrowRight' || key === 'd' || key === 'D') {
-        rightPressed = false;
-        e.preventDefault();
-      }
-    }
-    
-    // mobile / touch support: simple touch buttons (create virtual)
-    function setupMobileControls() {
-      const container = document.querySelector('.dashboard');
-      const touchDiv = document.createElement('div');
-      touchDiv.style.display = 'flex';
-      touchDiv.style.gap = '15px';
-      touchDiv.style.marginTop = '8px';
-      const leftBtn = document.createElement('button');
-      leftBtn.innerText = '◀ LEFT';
-      leftBtn.style.background = '#2c5670';
-      const rightBtn = document.createElement('button');
-      rightBtn.innerText = 'RIGHT ▶';
-      rightBtn.style.background = '#2c5670';
-      touchDiv.appendChild(leftBtn);
-      touchDiv.appendChild(rightBtn);
-      container.appendChild(touchDiv);
-      
-      leftBtn.addEventListener('mousedown', (e) => { leftPressed = true; e.preventDefault(); });
-      leftBtn.addEventListener('mouseup', () => { leftPressed = false; });
-      leftBtn.addEventListener('touchstart', (e) => { leftPressed = true; e.preventDefault(); });
-      leftBtn.addEventListener('touchend', () => { leftPressed = false; });
-      
-      rightBtn.addEventListener('mousedown', (e) => { rightPressed = true; e.preventDefault(); });
-      rightBtn.addEventListener('mouseup', () => { rightPressed = false; });
-      rightBtn.addEventListener('touchstart', (e) => { rightPressed = true; e.preventDefault(); });
-      rightBtn.addEventListener('touchend', () => { rightPressed = false; });
-    }
-    
-    // initialize everything
-    function init() {
-      resetGame();
-      window.addEventListener('keydown', handleKeyDown);
-      window.addEventListener('keyup', handleKeyUp);
-      document.getElementById('resetGameBtn').addEventListener('click', () => {
-        resetGame();
-      });
-      setupMobileControls();
-      // initial spawn of some objects to not feel empty
-      for(let i=0;i<2;i++) spawnObstacle();
-      for(let i=0;i<1;i++) spawnFuel();
-      gameLoop();
-    }
-    
-    init();
-  })();
-</script>
-</body>
-</html>
+  <!-- EDITING SKILL ZONE : Akshay's creative studio -->
+  <div class="edit-zone">
+    <h2>✍️ AKSHAY KUMAR — EDITING SKILL CENTRAL</h2>
+    <p>✨ Live editor + HTML/CSS mastery | Create match reports like a pro ✨</p>
+    <div class="interactive-text">
+      <textarea id="editableMessage" rows="3" placeholder="Write your own match analysis...">💙 MUMBAI INDIANS: Rohit's storm at Wankhede! Target 210. Bumrah 3/25. #MIvsCSK 🔥</textarea>
+    </div>
+    <div class="interactive-text" style="background:#154e42;">
+      <strong>🎬 LIVE PREVIEW (Your edit appears here):</strong>
+      <div id="livePreview"
