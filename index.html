@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Mumbai Indians IPL Arena | 9th Grade Fan Hub</title>
+  <title>MI vs CSK | IPL Arena 2025 | 10 Teams Points Table</title>
   <style>
     * {
       margin: 0;
@@ -13,13 +13,18 @@
     }
 
     body {
-      background: linear-gradient(145deg, #0a1f1e 0%, #071a1f 100%);
-      font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, 'Inter', sans-serif;
+      background: radial-gradient(circle at 10% 20%, #0b2b2b, #041a1f);
+      font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
       color: #f0f3f5;
       overflow-x: hidden;
+      transition: background 0.3s ease;
     }
 
-    /* custom scroll */
+    /* dynamic colour accents */
+    .bg-accent {
+      transition: all 0.2s;
+    }
+
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -32,120 +37,100 @@
       border-radius: 10px;
     }
 
-    /* container */
     .container {
-      max-width: 1300px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 1.2rem 2rem;
     }
 
-    /* header with mumbai vibe */
-    .hero {
-      background: radial-gradient(circle at 20% 30%, #003b5c, #001c2b);
+    /* Hero with MI vs CSK special badges */
+    .hero-rival {
+      background: linear-gradient(130deg, #002b44, #00161f, #0a2a2a);
       border-radius: 2.5rem;
       padding: 1.8rem 2rem;
-      margin-bottom: 2.5rem;
-      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.5);
-      border: 1px solid rgba(249, 160, 27, 0.3);
+      margin-bottom: 2rem;
+      box-shadow: 0 20px 35px -10px black;
+      border: 1px solid rgba(249, 160, 27, 0.5);
       position: relative;
       overflow: hidden;
-    }
-
-    .hero::before {
-      content: "🏆";
-      font-size: 10rem;
-      position: absolute;
-      bottom: -20px;
-      right: -10px;
-      opacity: 0.1;
-      pointer-events: none;
-    }
-
-    .mumbai-badge {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
+    }
+
+    .mi-csk-badge {
+      display: flex;
+      gap: 20px;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 1rem;
     }
 
-    .title-box h1 {
-      font-size: 2.8rem;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #ffb347, #ffdd99);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    .title-box p {
-      font-size: 1rem;
-      color: #b9e2ff;
-      margin-top: 8px;
-      font-weight: 500;
-    }
-
-    .stats-soft {
-      background: rgba(0, 20, 30, 0.7);
-      backdrop-filter: blur(8px);
-      padding: 0.8rem 1.8rem;
+    .team-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 8px 20px;
       border-radius: 60px;
-      text-align: center;
-      border: 1px solid #f9a01b66;
+      backdrop-filter: blur(4px);
     }
 
-    .stats-soft span {
-      font-weight: 700;
-      font-size: 1.4rem;
-      color: #f9b84a;
+    .mi-logo {
+      background: #004d7c;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-weight: 800;
+      color: #ffcc44;
     }
 
-    /* card grid & games */
+    .csk-logo {
+      background: #ffd966;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-weight: 800;
+      color: #1a2f3f;
+    }
+
+    .squad-pics {
+      display: flex;
+      gap: 12px;
+    }
+    .square-img {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(145deg, #ffb347, #f57c00);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 0 0 2px gold;
+      transition: transform 0.2s;
+    }
+    .square-img:hover { transform: scale(1.05); }
+
+    /* cards & games */
     .flex-cards {
       display: flex;
       flex-wrap: wrap;
       gap: 1.8rem;
       justify-content: center;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
 
     .card {
-      background: rgba(12, 35, 40, 0.85);
+      background: rgba(12, 40, 45, 0.9);
       backdrop-filter: blur(2px);
       border-radius: 2rem;
-      padding: 1.2rem 1.6rem;
-      flex: 1 1 280px;
-      transition: all 0.25s ease;
-      border: 1px solid #f9a01b33;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      padding: 1.2rem;
+      flex: 1 1 260px;
+      border: 1px solid #f9a01b66;
+      transition: 0.25s;
     }
-
     .card:hover {
-      transform: translateY(-6px);
       border-color: #f9a01b;
-      background: rgba(20, 50, 55, 0.95);
-    }
-
-    .card h3 {
-      font-size: 1.7rem;
-      margin-bottom: 0.5rem;
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .count {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #f9b84a;
-    }
-
-    .btn-group {
-      display: flex;
-      gap: 12px;
-      margin: 20px 0 12px;
-      flex-wrap: wrap;
+      background: #1b4e4ecc;
     }
 
     .btn {
@@ -154,85 +139,59 @@
       padding: 8px 18px;
       border-radius: 40px;
       font-weight: bold;
-      font-size: 0.9rem;
       cursor: pointer;
       transition: 0.2s;
       color: #0a1c22;
-      font-family: inherit;
     }
-
     .btn-outline {
       background: transparent;
       border: 1.5px solid #f9a01b;
       color: #f9a01b;
     }
-
     .btn-outline:hover {
       background: #f9a01b;
       color: #111;
     }
 
-    .btn:hover {
-      background: #ffb84d;
-      transform: scale(0.96);
-    }
-
-    /* editing skill zone */
-    .edit-zone {
-      background: #0a262b;
+    /* points table premium */
+    .points-table-arena {
+      background: #06222b;
       border-radius: 2rem;
-      padding: 1.8rem;
+      padding: 1rem 1.2rem;
       margin: 2rem 0;
-      border-left: 8px solid #f9a01b;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     }
-
-    .edit-header {
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-
-    .edit-header h2 {
-      font-size: 1.8rem;
-    }
-
-    .interactive-text {
-      background: #031016;
-      padding: 1.2rem;
-      border-radius: 1.2rem;
-      font-family: monospace;
-      font-size: 1.1rem;
-      margin: 1rem 0;
-      border: 1px solid #2a6b6b;
-    }
-
-    #editableMessage {
-      background: #fff7e8;
-      color: #1e2a32;
-      padding: 1rem;
-      border-radius: 1rem;
+    table {
       width: 100%;
-      font-family: monospace;
-      font-size: 1rem;
-      border: none;
-      resize: vertical;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    th, td {
+      padding: 12px 6px;
+      text-align: left;
+      border-bottom: 1px solid #f9a01b44;
+    }
+    th {
+      color: #ffcd7e;
+    }
+    .win-highlight {
+      color: #6fef6f;
+      font-weight: bold;
+    }
+    .loss-highlight {
+      color: #ff8a7a;
     }
 
-    .skill-badge {
-      background: #f9a01b20;
-      border-radius: 60px;
-      padding: 6px 18px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
+    .edit-zone {
+      background: #0b302f;
+      border-radius: 1.8rem;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-left: 7px solid #f9a01b;
     }
 
-    /* games crate */
-    .games-crate {
-      background: radial-gradient(ellipse at 30% 20%, #1f4949, #06212b);
+    .game-crate {
+      background: radial-gradient(ellipse at left, #1b5e5e, #02212b);
       border-radius: 2rem;
       padding: 1.5rem;
       margin: 2rem 0;
@@ -241,463 +200,289 @@
     .game-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: space-between;
+      gap: 1.5rem;
       margin-top: 1rem;
     }
-
-    .game-box {
+    .game-card {
+      background: #00000066;
       flex: 1;
-      min-width: 220px;
-      background: #00000055;
       border-radius: 1.5rem;
       padding: 1rem;
       text-align: center;
     }
 
-    .guess-number {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin: 12px 0;
-    }
-
-    .guess-number input {
-      width: 80px;
-      padding: 10px;
-      border-radius: 30px;
-      border: none;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    .flip-card-mini {
-      background: #005c6e33;
-      padding: 12px;
-      border-radius: 20px;
-    }
-
-    /* follower + view counter 5000k style */
     .social-proof {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 1.5rem;
-      background: #01161ecc;
+      gap: 1rem;
+      background: #011f26cc;
       border-radius: 2rem;
       padding: 1rem 2rem;
-      margin: 2rem 0 1rem;
-      align-items: center;
+      margin: 1.5rem 0;
     }
-
-    .follower-card, .view-card {
-      background: #08262e;
-      padding: 0.5rem 1.8rem;
-      border-radius: 3rem;
-      text-align: center;
-      flex: 1;
-    }
-
     .big-number {
-      font-size: 2.7rem;
+      font-size: 2.5rem;
       font-weight: 800;
-      letter-spacing: 2px;
       color: #f9bc5c;
     }
-
-    button.small-btn {
-      background: none;
-      border: 1px solid #f9a01b;
-      padding: 5px 12px;
-      border-radius: 2rem;
-      color: white;
-      cursor: pointer;
-      margin-left: 8px;
-      transition: 0.2s;
-    }
-
-    button.small-btn:hover {
-      background: #f9a01b;
-      color: black;
-    }
-
-    /* ipl table */
-    .ipl-table {
-      background: #05171e;
-      border-radius: 1.5rem;
-      padding: 0.2rem 1rem 1rem;
-      margin-top: 1.8rem;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-    }
-
-    th, td {
-      padding: 12px 8px;
-      text-align: left;
-      border-bottom: 1px solid #f9a01b33;
-    }
-
-    th {
-      color: #f9b84a;
-      font-weight: 600;
-    }
-
-    .highlight {
-      color: #ffcf7a;
-      font-weight: bold;
-    }
-
     footer {
       text-align: center;
-      padding: 2rem 0 1rem;
+      padding: 1.5rem;
       font-size: 0.8rem;
       opacity: 0.7;
     }
-
-    @media (max-width: 750px) {
-      .container {
-        padding: 1rem;
-      }
-      .title-box h1 {
-        font-size: 2rem;
-      }
+    @media (max-width: 800px) {
+      .container { padding: 1rem; }
+      .hero-rival { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
 <div class="container">
-  <!-- Hero Section : Mumbai Indians -->
-  <div class="hero">
-    <div class="mumbai-badge">
-      <div class="title-box">
-        <h1>🇮🇳 MUMBAI INDIANS <span style="font-size:2rem;">💙🏏</span></h1>
-        <p>#OneFamily • IPL Dynasty • 5 Titles | 9th Grade Fan Command</p>
+  <!-- MI vs CSK special section + square images -->
+  <div class="hero-rival">
+    <div class="mi-csk-badge">
+      <div class="team-logo"><span class="mi-logo">💙 MUMBAI INDIANS 💙</span> <span style="font-size:1.8rem;">⚡</span></div>
+      <div class="team-logo"><span class="csk-logo">💛 CSK 💛</span> <span style="font-size:1.8rem;">🦁</span></div>
+      <div class="squad-pics">
+        <div class="square-img" title="MI Squad Icon">🏏🇮🇳</div>
+        <div class="square-img" title="CSK Icon">🦁💛</div>
+        <div class="square-img" title="Wankhede Heat">🔥🏟️</div>
       </div>
-      <div class="stats-soft">
-        📍 Wankhede Stadium • Mumbai<br>
-        <span>🔥 Rohit Sharma | Hardik | Bumrah 🔥</span>
-      </div>
+    </div>
+    <div style="background:#00000066; padding: 6px 18px; border-radius: 60px;">
+      <span>🏆 EL CLASICO 🏆 | MI vs CSK: 37 clashes | 2025 Rivalry 🔥</span>
     </div>
   </div>
 
-  <!-- 5000k followers + view500 (More than view500 interactive) -->
+  <!-- fan proof 5000k + interactive counters -->
   <div class="social-proof">
-    <div class="follower-card">
-      <div style="font-size:0.9rem;">👥 TOTAL FOLLOWERS</div>
+    <div class="card" style="background: #001e26; text-align: center;">
+      <div>💙 GLOBAL FAN ARMY 💛</div>
       <div class="big-number" id="followersDisplay">5.00M</div>
-      <div>⭐ 5000k+ Global Army ⭐</div>
-      <button class="small-btn" id="boostFollowersBtn">+50K Cheer</button>
+      <button class="btn" id="boostFollowersBtn" style="margin-top:8px;">+100K Cheer</button>
     </div>
-    <div class="view-card">
-      <div style="font-size:0.9rem;">👁️ MATCH VIEWS (Today)</div>
+    <div class="card" style="background: #001e26; text-align: center;">
+      <div>👁️ LIVE VIEWS (MI vs CSK)</div>
       <div class="big-number" id="viewsDisplay">500</div>
-      <div>🔥 more than view500 🔥</div>
-      <button class="small-btn" id="addViewsBtn">+ Watch Party</button>
+      <button class="btn" id="addViewsBtn" style="margin-top:8px;">➕ Watch Party</button>
     </div>
   </div>
 
-  <!-- Games Crate: multiple mini games -->
-  <div class="games-crate">
-    <h2>🎮 GAMES CRATE 🎲</h2>
+  <!-- GAMES ZONE: six hit, toss, score predictor -->
+  <div class="game-crate">
+    <h2>🎮 IPL GAMES CRATE | PREDICT & WIN 🎮</h2>
     <div class="game-row">
-      <!-- Game 1: Six Hitter Prediction -->
-      <div class="game-box">
-        <h3>🏏 SIX HITTER</h3>
-        <p>Predict boundaries in next over!</p>
-        <div class="guess-number">
-          <input type="number" id="sixGuess" placeholder="0-6" min="0" max="6">
-          <button class="btn" id="sixBtn">💥 CRACK SIX 💥</button>
-        </div>
-        <p id="sixResult" style="font-size:0.9rem;">⚡ Result will appear</p>
-      </div>
-      <!-- Game 2: Score guess (classic crate) -->
-      <div class="game-box">
-        <h3>🎯 SCORE PREDICTOR</h3>
-        <p>Final runs for MI today?</p>
-        <div class="guess-number">
-          <input type="number" id="scoreGuess" placeholder="120-250">
-          <button class="btn" id="scoreBtn">PREDICT & WIN</button>
-        </div>
-        <p id="scoreResult">🤔 Guess match score</p>
-      </div>
-      <!-- Game 3: Toss / luck game -->
-      <div class="game-box">
-        <h3>🪙 TOSS MASTER</h3>
-        <p>Call Heads or Tails</p>
-        <div style="display: flex; gap: 15px; justify-content: center; margin: 10px 0;">
-          <button class="btn-outline btn" id="headsBtn">HEADS</button>
-          <button class="btn-outline btn" id="tailsBtn">TAILS</button>
-        </div>
-        <p id="tossResult">🎲 Click to flip</p>
-      </div>
+      <div class="game-card"><h3>🏏 SIX HITTER</h3><input type="number" id="sixGuess" placeholder="0-6" min="0" max="6"><button class="btn" id="sixBtn" style="margin-top:8px;">CRACK SIX</button><p id="sixResult"></p></div>
+      <div class="game-card"><h3>🎯 SCORE PREDICTOR</h3><input type="number" id="scoreGuess" placeholder="120-250"><button class="btn" id="scoreBtn" style="margin-top:8px;">PREDICT</button><p id="scoreResult"></p></div>
+      <div class="game-card"><h3>🪙 TOSS KING</h3><div style="display:flex; gap:12px; justify-content:center;"><button class="btn-outline btn" id="headsBtn">HEADS</button><button class="btn-outline btn" id="tailsBtn">TAILS</button></div><p id="tossResult"></p></div>
     </div>
   </div>
 
-  <!-- EDITING SKILL ZONE : more than editing skill (live text editor + style) -->
+  <!-- EDITING SKILL ZONE + live preview -->
   <div class="edit-zone">
-    <div class="edit-header">
-      <h2>✍️ YOUR EDITING SKILL CENTRAL</h2>
-      <div class="skill-badge">⚡ live editor + html/css skill ⚡</div>
-    </div>
-    <p>✏️ Edit the match summary below — customize like a true content creator! (real-time update)</p>
-    <div class="interactive-text">
-      <textarea id="editableMessage" rows="3" placeholder="Write your own match analysis, Mumbai Indians strategy...">💙 MUMBAI INDIANS: Rohit's storm at Wankhede! Target 210. Bumrah 3/25. #MIvsCSK 🔥</textarea>
-    </div>
-    <div class="interactive-text" style="background:#154e42;">
-      <strong>✨ PREVIEW PANEL (your edit goes live):</strong>
-      <div id="livePreview" style="margin-top: 10px; padding: 8px; background:#0c302c; border-radius: 1rem;">💙 MUMBAI INDIANS: Rohit's storm at Wankhede! Target 210. Bumrah 3/25. #MIvsCSK 🔥</div>
-    </div>
-    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
-      <button class="btn" id="resetEditBtn">Reset Editing</button>
-      <button class="btn btn-outline" id="copySkillBtn">📋 Copy Skill Text</button>
-    </div>
-    <p class="skill-badge" style="margin-top: 12px;">🎨 Your editing skill = PRO content creator | dynamic styling ready</p>
+    <h2>✍️ LIVE EDITING SKILL | MI VS CSK STORYMAKER</h2>
+    <textarea id="editableMessage" rows="3" style="width:100%; border-radius:1rem; padding:12px; background:#fffae9; color:#1e2a32; font-family:monospace;">💙 MI vs CSK : Rohit hits 78(42) | Dhoni's cheeky stumping | Wankhede roars #ElClasico 🔥</textarea>
+    <div style="margin-top:12px; background:#0f3d3a; border-radius:1rem; padding:12px;"><strong>✨ PREVIEW PANEL (your edit live):</strong><div id="livePreview" style="margin-top:8px; background:#1d544e; border-radius:1rem; padding:12px;">💙 MI vs CSK : Rohit hits 78(42) | Dhoni's cheeky stumping | Wankhede roars #ElClasico 🔥</div></div>
+    <div style="margin-top: 12px; display:flex; gap:12px;"><button class="btn" id="resetEditBtn">Reset Edit</button><button class="btn-outline btn" id="copySkillBtn">📋 Copy Text</button><button class="btn" id="themeFlashBtn">🌈 Change BG Magic</button></div>
   </div>
 
-  <!-- IPL table: Mumbai Indians player stats + more then view 500/ follw 5000k showcase -->
-  <div class="ipl-table">
-    <h3>🏆 MI CORE SQUAD 2025 (Stats | Fan following 5000k+ vibes)</h3>
-    <table>
-      <thead>
-        <tr><th>Player</th><th>Role</th><th>IPL Runs/Wkts</th><th>Fan Boost ⚡</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Rohit Sharma</td><td>Hitman</td><td>⭐ 6211 runs</td><td class="highlight">5.2M followers</td></tr>
-        <tr><td>Hardik Pandya</td><td>All-Rounder</td><td>🔥 2300+ runs & 53 wkts</td><td>4.8M</td></tr>
-        <tr><td>Jasprit Bumrah</td><td>Yorker King</td><td>⭐ 165 wkts</td><td class="highlight">5.0M</td></tr>
-        <tr><td>Suryakumar Yadav</td><td>360°</td><td>🔥 3500+ runs</td><td>4.9M</td></tr>
-        <tr><td>Tilak Varma</td><td>Rising Star</td><td>💥 987 runs (last season)</td><td>1.2M</td></tr>
-      </tbody>
-    </table>
-    <div style="font-size:0.85rem; padding-bottom: 12px;">🌟 Total Fanbase crossing 5000k+ worldwide 🌟 #MI Paltan</div>
+  <!-- FULL IPL POINTS TABLE 2025 (10 teams) with Wins/Losses + latest performance -->
+  <div class="points-table-arena">
+    <h2>🏆 IPL POINTS TABLE 2025 (ALL 10 TEAMS) 🏆</h2>
+    <p style="margin-bottom:12px;">⚡ Updated standings | Most wins & losses this season ⚡</p>
+    <div style="overflow-x: auto;">
+      <table id="pointsTable">
+        <thead>
+          <tr><th>Team</th><th>Matches</th><th>Won</th><th>Lost</th><th>NR</th><th>Points</th><th>NRR</th><th>🔥 Form</th></tr>
+        </thead>
+        <tbody id="tableBody">
+          <!-- filled with JS data for 10 teams -->
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top: 15px; display: flex; gap: 12px; flex-wrap: wrap;">
+      <button class="btn" id="simulateMatchBtn">🎲 Simulate Random Match (update W/L)</button>
+      <button class="btn-outline btn" id="resetStandingsBtn">Reset Original Standings</button>
+    </div>
+    <p id="topTeamMsg" style="margin-top:12px; font-weight:bold; background:#001e26; padding:6px; border-radius:40px; text-align:center;"></p>
   </div>
 
-  <!-- More interactive: follw 5000k booster / view 500 additional crate -->
-  <div class="flex-cards" style="margin-top: 10px;">
-    <div class="card">
-      <h3>📈 CRATE: VIEW BOOST</h3>
-      <p>Current match live views: <strong id="liveViewCounter">500</strong> (more than view500 already!)</p>
-      <div class="btn-group">
-        <button class="btn" id="view500PlusBtn">➕ View +100</button>
-        <button class="btn-outline btn" id="resetViewsBtn">Reset Views (500)</button>
-      </div>
-    </div>
-    <div class="card">
-      <h3>👑 FOLLOWER DYNASTY</h3>
-      <p>Mumbai Indians Universe: <strong id="followerCountSpan">5000</strong> K (5000k = 5M)</p>
-      <div class="btn-group">
-        <button class="btn" id="followBoostBtn">🎉 Add 100K followers</button>
-        <button class="btn-outline btn" id="resetFollowBtn">Reset 5000k</button>
-      </div>
-      <small>*crossed 5000k milestone, #MostFollwedIPLteam</small>
-    </div>
-    <div class="card">
-      <h3>🎬 EDITING MASTERY</h3>
-      <p>++ HTML/CSS live editing skill more then games crate ✨</p>
-      <button class="btn" id="themeFlashBtn">🌈 Flash MI Theme</button>
-      <div id="flashMsg" style="margin-top: 12px; font-size:0.8rem;"></div>
-    </div>
+  <!-- MI SQUARE ICON + CSK square gallery -->
+  <div class="flex-cards">
+    <div class="card" style="text-align:center;"><h3>🔷 MI SQUAD 2025 🔷</h3><div class="square-img" style="margin:0 auto; width:90px; height:90px; font-size:3rem;">💙🏏</div><p>Rohit, Bumrah, Hardik, SKY, Tilak</p></div>
+    <div class="card" style="text-align:center;"><h3>💛 CSK SQUAD 💛</h3><div class="square-img" style="margin:0 auto; width:90px; height:90px; font-size:3rem; background:#f5b042;">🦁🔥</div><p>Dhoni, Jadeja, Conway, Pathirana, Dube</p></div>
+    <div class="card" style="text-align:center;"><h3>🏆 TOP PERFORMER</h3><p id="topPerformerMsg">MI - Most wins in history<br>CSK - 5 titles</p><button class="btn" id="refreshStatsBtn">Show 2025 Leaders</button></div>
   </div>
-
-  <footer>
-    <p>🏏 Mumbhai Indians | 9th Grade Project | IPL Mania | Games, Editing Skills, 5000k Fandom, Views 500+ | #OneFamily 🏆</p>
-  </footer>
+  <footer>🏏 9th Grade IPL Fan Hub | MI vs CSK rivalry | All 10 Teams Updated | 5000k+ followers & view500+ dynasties</footer>
 </div>
 
 <script>
-  // ---------- FOLLOWER & VIEW LOGIC (5000k / view500) ----------
-  let followersInK = 5000;   // represents 5000k followers => 5,000,000
-  let currentViews = 500;
+  // ------------------- TEAM DATA (10 TEAMS) -------------------
+  let teamsData = [
+    { name: "Mumbai Indians (MI)", matches: 12, won: 8, lost: 3, nr: 1, points: 17, nrr: "+1.240" },
+    { name: "Chennai Super Kings (CSK)", matches: 12, won: 7, lost: 4, nr: 1, points: 15, nrr: "+0.872" },
+    { name: "Royal Challengers Bengaluru (RCB)", matches: 12, won: 7, lost: 5, nr: 0, points: 14, nrr: "+0.521" },
+    { name: "Kolkata Knight Riders (KKR)", matches: 12, won: 6, lost: 5, nr: 1, points: 13, nrr: "+0.321" },
+    { name: "Delhi Capitals (DC)", matches: 12, won: 6, lost: 6, nr: 0, points: 12, nrr: "-0.042" },
+    { name: "Rajasthan Royals (RR)", matches: 12, won: 5, lost: 6, nr: 1, points: 11, nrr: "+0.120" },
+    { name: "Sunrisers Hyderabad (SRH)", matches: 12, won: 5, lost: 7, nr: 0, points: 10, nrr: "-0.230" },
+    { name: "Lucknow Super Giants (LSG)", matches: 12, won: 4, lost: 7, nr: 1, points: 9, nrr: "-0.410" },
+    { name: "Punjab Kings (PBKS)", matches: 12, won: 4, lost: 8, nr: 0, points: 8, nrr: "-0.700" },
+    { name: "Gujarat Titans (GT)", matches: 12, won: 3, lost: 8, nr: 1, points: 7, nrr: "-0.950" }
+  ];
 
-  const followersDisplayEl = document.getElementById('followersDisplay');
+  // backup original data
+  let originalTeams = JSON.parse(JSON.stringify(teamsData));
+
+  function renderPointsTable() {
+    const tbody = document.getElementById('tableBody');
+    tbody.innerHTML = '';
+    teamsData.forEach(team => {
+      const row = tbody.insertRow();
+      row.insertCell(0).innerText = team.name;
+      row.insertCell(1).innerText = team.matches;
+      row.insertCell(2).innerHTML = `<span class="win-highlight">${team.won}</span>`;
+      row.insertCell(3).innerHTML = `<span class="loss-highlight">${team.lost}</span>`;
+      row.insertCell(4).innerText = team.nr;
+      row.insertCell(5).innerHTML = `<strong>${team.points}</strong>`;
+      row.insertCell(6).innerText = team.nrr;
+      let form = (team.won > team.lost) ? "🔥 W-W" : (team.won < team.lost) ? "❌ L-L" : "⚖️ Mixed";
+      row.insertCell(7).innerText = form;
+    });
+    // find most wins & most losses
+    let mostWins = teamsData.reduce((max, t) => t.won > max.won ? t : max, teamsData[0]);
+    let mostLosses = teamsData.reduce((max, t) => t.lost > max.lost ? t : max, teamsData[0]);
+    document.getElementById('topTeamMsg').innerHTML = `🏅 MOST WINS: ${mostWins.name} (${mostWins.won} wins) &nbsp;&nbsp;📉 MOST LOSSES: ${mostLosses.name} (${mostLosses.lost} losses) &nbsp;| 👑 Points leader: ${teamsData.reduce((a,b)=>a.points>b.points?a:b).name}`;
+    document.getElementById('topPerformerMsg').innerHTML = `🏆 2025 trend: ${mostWins.name} leads wins, ${mostLosses.name} struggling. MI vs CSK classic!`;
+  }
+
+  // simulate random match between two random teams
+  function simulateMatch() {
+    if (teamsData.length < 2) return;
+    let idx1 = Math.floor(Math.random() * teamsData.length);
+    let idx2 = Math.floor(Math.random() * teamsData.length);
+    while (idx1 === idx2) idx2 = Math.floor(Math.random() * teamsData.length);
+    const teamA = teamsData[idx1];
+    const teamB = teamsData[idx2];
+    const winnerIsA = Math.random() > 0.5;
+    if (winnerIsA) {
+      teamA.won += 1; teamA.points += 2; teamA.matches += 1;
+      teamB.lost += 1; teamB.matches += 1; teamB.points += 0;
+    } else {
+      teamB.won += 1; teamB.points += 2; teamB.matches += 1;
+      teamA.lost += 1; teamA.matches += 1; teamA.points += 0;
+    }
+    // random NRR minor adjust (cosmetic)
+    teamA.nrr = (parseFloat(teamA.nrr) + (Math.random() * 0.3 - 0.1)).toFixed(3);
+    teamB.nrr = (parseFloat(teamB.nrr) + (Math.random() * 0.3 - 0.1)).toFixed(3);
+    if (teamA.nrr[0] !== '-') teamA.nrr = '+' + teamA.nrr;
+    if (teamB.nrr[0] !== '-') teamB.nrr = '+' + teamB.nrr;
+    renderPointsTable();
+  }
+
+  function resetStandings() {
+    teamsData = JSON.parse(JSON.stringify(originalTeams));
+    renderPointsTable();
+  }
+
+  // ---------- FOLLOWER & VIEW LOGIC (5000k, view500) ----------
+  let followersInK = 5000;   // 5000k = 5M
+  let currentViews = 500;
+  const followersDisplay = document.getElementById('followersDisplay');
   const viewsDisplayEl = document.getElementById('viewsDisplay');
-  const liveViewCounter = document.getElementById('liveViewCounter');
-  const followerCountSpan = document.getElementById('followerCountSpan');
 
   function updateSocialUI() {
-    let millionValue = (followersInK / 1000).toFixed(2);
-    if(followersInK >= 1000) {
-      followersDisplayEl.innerText = millionValue + "M";
-    } else {
-      followersDisplayEl.innerText = followersInK + "K";
-    }
-    followerCountSpan.innerText = followersInK;
+    let millionVal = (followersInK / 1000).toFixed(2);
+    followersDisplay.innerText = (followersInK >= 1000) ? millionVal + "M" : followersInK + "K";
     viewsDisplayEl.innerText = currentViews;
-    liveViewCounter.innerText = currentViews;
   }
 
-  document.getElementById('boostFollowersBtn').addEventListener('click', () => {
-    followersInK += 50;
-    if(followersInK > 9999) followersInK = 9999;
-    updateSocialUI();
-  });
-  document.getElementById('addViewsBtn').addEventListener('click', () => {
-    currentViews += 75;
-    updateSocialUI();
-  });
-  document.getElementById('view500PlusBtn').addEventListener('click', () => {
-    currentViews += 100;
-    updateSocialUI();
-  });
-  document.getElementById('resetViewsBtn').addEventListener('click', () => {
-    currentViews = 500;
-    updateSocialUI();
-  });
-  document.getElementById('followBoostBtn').addEventListener('click', () => {
-    followersInK += 100;
-    if(followersInK > 9999) followersInK = 9999;
-    updateSocialUI();
-  });
-  document.getElementById('resetFollowBtn').addEventListener('click', () => {
-    followersInK = 5000;
-    updateSocialUI();
-  });
-
-  updateSocialUI();
-
-  // ---------- GAME 1: SIX PREDICTION ----------
+  document.getElementById('boostFollowersBtn')?.addEventListener('click', () => { followersInK += 100; if(followersInK>9999) followersInK=9999; updateSocialUI(); });
+  document.getElementById('addViewsBtn')?.addEventListener('click', () => { currentViews += 85; updateSocialUI(); });
+  
+  // games logic
   const sixBtn = document.getElementById('sixBtn');
-  const sixGuessInput = document.getElementById('sixGuess');
+  const sixGuess = document.getElementById('sixGuess');
   const sixResult = document.getElementById('sixResult');
   sixBtn.addEventListener('click', () => {
-    let guess = parseInt(sixGuessInput.value);
-    if(isNaN(guess) || guess < 0 || guess > 6) {
-      sixResult.innerText = "❌ Enter number between 0-6!";
-      return;
-    }
-    const actualSixes = Math.floor(Math.random() * 7); // 0-6
-    if(guess === actualSixes) {
-      sixResult.innerHTML = `🎉 PERFECT HIT! Sixes: ${actualSixes}. You guessed it right! +100 Fan energy 🎉`;
-    } else {
-      sixResult.innerHTML = `😲 Actual sixes: ${actualSixes}. Your guess: ${guess}. Better luck in next over! 🏏`;
-    }
+    let guess = parseInt(sixGuess.value);
+    if(isNaN(guess) || guess<0 || guess>6) { sixResult.innerText = "Enter 0-6!"; return; }
+    let actual = Math.floor(Math.random()*7);
+    if(guess===actual) sixResult.innerHTML = `🎉 PERFECT! ${actual} sixes! + 100 fan energy 🎉`;
+    else sixResult.innerHTML = `😲 Actual sixes: ${actual}. You guessed ${guess}. Next over!`;
   });
-
-  // GAME 2: Score predictor
   const scoreBtn = document.getElementById('scoreBtn');
-  const scoreGuessInput = document.getElementById('scoreGuess');
+  const scoreGuess = document.getElementById('scoreGuess');
   const scoreResult = document.getElementById('scoreResult');
   scoreBtn.addEventListener('click', () => {
-    let guessScore = parseInt(scoreGuessInput.value);
-    if(isNaN(guessScore) || guessScore < 50 || guessScore > 300) {
-      scoreResult.innerText = "📊 Please enter realistic score 50-300";
-      return;
-    }
-    const actualScore = Math.floor(Math.random() * (260 - 120 + 1) + 120);
-    const diff = Math.abs(guessScore - actualScore);
-    if(diff <= 10) {
-      scoreResult.innerHTML = `🏆 SPOT ON! MI scored ${actualScore}. You're a true predictor! 🏆`;
-    } else if(diff <= 25) {
-      scoreResult.innerHTML = `👍 Close! Actual: ${actualScore}, You guessed ${guessScore}. Good effort!`;
-    } else {
-      scoreResult.innerHTML = `💔 Missed. MI made ${actualScore} runs. Your guess ${guessScore}. Next time!`;
-    }
+    let guess = parseInt(scoreGuess.value);
+    if(isNaN(guess) || guess<50 || guess>300) { scoreResult.innerText = "Enter 50-300"; return; }
+    let actualScore = Math.floor(Math.random() * (260 - 130 + 1) + 130);
+    let diff = Math.abs(guess-actualScore);
+    if(diff<=10) scoreResult.innerHTML = `🏆 NAILED! MI made ${actualScore} runs. You're a legend! 🏆`;
+    else if(diff<=25) scoreResult.innerHTML = `👍 Close! Actual: ${actualScore}, guess: ${guess}. Good cricket brain!`;
+    else scoreResult.innerHTML = `💔 Missed! Score: ${actualScore}. Your guess ${guess}. Next time!`;
   });
-
-  // GAME 3: TOSS
   const headsBtn = document.getElementById('headsBtn');
   const tailsBtn = document.getElementById('tailsBtn');
-  const tossResultSpan = document.getElementById('tossResult');
+  const tossResult = document.getElementById('tossResult');
   function tossGame(call) {
-    const outcome = Math.random() < 0.5 ? 'HEADS' : 'TAILS';
-    if(call === outcome) {
-      tossResultSpan.innerHTML = `🎉 TOSS WIN! You called ${call} and it's ${outcome}. Captain chose to bat first! 🎉`;
-    } else {
-      tossResultSpan.innerHTML = `😓 Toss lost! You called ${call}, result is ${outcome}. Better luck next flip!`;
-    }
+    let outcome = Math.random()<0.5 ? "HEADS" : "TAILS";
+    if(call===outcome) tossResult.innerHTML = `🎉 TOSS WON! You called ${call}, it's ${outcome}. Captain opted to bat! 🎉`;
+    else tossResult.innerHTML = `😓 Toss lost! Called ${call}, result ${outcome}. Better luck!`;
   }
-  headsBtn.addEventListener('click', () => tossGame('HEADS'));
-  tailsBtn.addEventListener('click', () => tossGame('TAILS'));
+  headsBtn.onclick = () => tossGame("HEADS");
+  tailsBtn.onclick = () => tossGame("TAILS");
 
-  // ---------- EDITING SKILL : live text editor ----------
-  const textareaEdit = document.getElementById('editableMessage');
-  const livePreviewDiv = document.getElementById('livePreview');
-  function updatePreview() {
-    let rawText = textareaEdit.value;
-    livePreviewDiv.innerText = rawText;
-  }
-  textareaEdit.addEventListener('input', updatePreview);
+  // editing zone
+  const textarea = document.getElementById('editableMessage');
+  const previewDiv = document.getElementById('livePreview');
+  function updatePreview() { previewDiv.innerText = textarea.value; }
+  textarea.addEventListener('input', updatePreview);
   document.getElementById('resetEditBtn').addEventListener('click', () => {
-    textareaEdit.value = "💙 MUMBAI INDIANS: Rohit's storm at Wankhede! Target 210. Bumrah 3/25. #MIvsCSK 🔥";
+    textarea.value = "💙 MI vs CSK : Rohit hits 78(42) | Dhoni's cheeky stumping | Wankhede roars #ElClasico 🔥";
     updatePreview();
   });
   document.getElementById('copySkillBtn').addEventListener('click', () => {
-    navigator.clipboard.writeText(textareaEdit.value);
-    alert("✅ Your edited match summary copied! Show your editing skills 🔥");
+    navigator.clipboard.writeText(textarea.value);
+    alert("✅ Match summary copied! Share your editing skill!");
   });
   updatePreview();
 
-  // Theme flash effect (editing skill + games crate)
+  // Theme flash + background color changer (diff colours for fun)
   const themeBtn = document.getElementById('themeFlashBtn');
-  const flashMsgSpan = document.getElementById('flashMsg');
   themeBtn.addEventListener('click', () => {
-    document.body.style.transition = "background 0.2s";
-    document.body.style.background = "linear-gradient(145deg, #2a4b3a, #0d2a2f)";
-    flashMsgSpan.innerText = "✨ Mumbai Indians Gold Rush! Styling edited ✨";
+    const colors = ["linear-gradient(145deg, #0a2f2c, #042a33)", "linear-gradient(145deg, #2c1a2f, #140b2b)", "linear-gradient(145deg, #3a2a1a, #1a2b1a)", "radial-gradient(circle at top, #004d7c, #001c2b)"];
+    let randomColor = colors[Math.floor(Math.random() * colors.length)];
+    document.body.style.background = randomColor;
     setTimeout(() => {
-      document.body.style.background = "linear-gradient(145deg, #0a1f1e 0%, #071a1f 100%)";
-      flashMsgSpan.innerText = "🏏 Back to MI vibe! Your editing skill is powerful!";
-    }, 600);
+      document.body.style.background = "radial-gradient(circle at 10% 20%, #0b2b2b, #041a1f)";
+    }, 800);
+    const flashDiv = document.getElementById('flashMsg') || (()=>{let d=document.createElement('div'); d.id='flashMsg'; document.querySelector('.edit-zone').appendChild(d); return d;})();
+    flashDiv.innerText = "🌈 Background changed! MI energy refreshed!";
+    setTimeout(()=>{ if(flashDiv) flashDiv.innerText = ""; }, 1500);
   });
 
-  // Additional follower-view consistency with the cards : ensure dynamic numbers across elements
-  function syncExtraElements() {
-    const folDisplayLarge = document.getElementById('followersDisplay');
-    if(folDisplayLarge) folDisplayLarge.innerText = (followersInK >= 1000) ? (followersInK/1000).toFixed(2)+"M" : followersInK+"K";
-    const viewSpan = document.getElementById('viewsDisplay');
-    if(viewSpan) viewSpan.innerText = currentViews;
-    const liveC = document.getElementById('liveViewCounter');
-    if(liveC) liveC.innerText = currentViews;
-    const followerKspan = document.getElementById('followerCountSpan');
-    if(followerKspan) followerKspan.innerText = followersInK;
-  }
+  // IPL table controls
+  document.getElementById('simulateMatchBtn').addEventListener('click', simulateMatch);
+  document.getElementById('resetStandingsBtn').addEventListener('click', resetStandings);
+  document.getElementById('refreshStatsBtn')?.addEventListener('click', () => {
+    let mostWins = teamsData.reduce((a,b)=>a.won>b.won?a:b);
+    alert(`🔥 2025 Most Wins: ${mostWins.name} (${mostWins.won} wins) \n💪 MI vs CSK legacy unmatched!`);
+  });
 
-  // Override any update eventlistener to also sync
-  const origUpdate = updateSocialUI;
-  window.updateSocialUI = function() {
-    origUpdate();
-    syncExtraElements();
-  };
+  // fill extra mi-csk squares hover effect
+  renderPointsTable();
   updateSocialUI();
 
-  // extra manual rebind for buttons that modify followers or views
-  const allButtons = document.querySelectorAll('button');
-  function patchButtons() {
-    let btnsList = [document.getElementById('boostFollowersBtn'), document.getElementById('addViewsBtn'), document.getElementById('view500PlusBtn'), document.getElementById('resetViewsBtn'), document.getElementById('followBoostBtn'), document.getElementById('resetFollowBtn')];
-    btnsList.forEach(btn => {
-      if(btn) {
-        let oldClick = btn.onclick;
-        btn.addEventListener('click', () => {
-          setTimeout(() => {
-            syncExtraElements();
-          }, 10);
-        });
-      }
-    });
+  // also display MI/CSK special message regarding wins
+  const miTeam = teamsData.find(t=>t.name.includes("Mumbai"));
+  const cskTeam = teamsData.find(t=>t.name.includes("Chennai"));
+  if(miTeam && cskTeam) {
+    console.log(`MI wins: ${miTeam.won} | CSK wins: ${cskTeam.won}`);
   }
-  patchButtons();
-  syncExtraElements();
-
-  // extra dynamic text to show "more then view500" note
-  const viewDisplayDiv = document.querySelector('.view-card .big-number');
-  if(viewDisplayDiv && currentViews >= 500) {
-    // just for fun visual
-  }
-
-  // final feature: show "9th grade student ipl mumbhai" pride message in console
-  console.log("🏏 Mumbhai Indians | 9th Grade | Games Crate + Editing Skill + 5000k followers & view500+ 🔥");
-
-  // add dynamic total followers hint = 5000k exclamation
-  const followerStatement = document.createElement('div');
-  followerStatement.style.textAlign = 'center';
-  followerStatement.style.marginTop = '10px';
-  followerStatement.style.fontSize = '0.75rem';
-  followerStatement.innerHTML = '💎 5000k+ followers = 5 Million+ MI Family | View500+ is just start 🔥';
-  document.querySelector('.social-proof')?.after(followerStatement);
 </script>
 </body>
 </html>
