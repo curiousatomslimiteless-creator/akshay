@@ -2,1179 +2,614 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>IPL MASTER ARENA | Akshay Kumar Editor | All Teams Win/Loss</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>BMW ///M Racing | Highway Chase</title>
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
-      background: linear-gradient(145deg, #0a1f1e 0%, #071a1f 100%);
-      font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
-      color: #f0f3f5;
-      overflow-x: auto;
+      background: linear-gradient(145deg, #0a1a1f, #051015);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', 'Poppins', 'Orbitron', monospace;
+      margin: 0;
+      padding: 20px;
     }
 
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    ::-webkit-scrollbar-track { background: #0c2b2b; border-radius: 10px; }
-    ::-webkit-scrollbar-thumb { background: #f9a01b; border-radius: 10px; }
-
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 1.2rem 1.5rem;
-    }
-
-    /* hero */
-    .hero {
-      background: radial-gradient(circle at 20% 30%, #003b5c, #001c2b);
-      border-radius: 2rem;
-      padding: 1.5rem 2rem;
-      margin-bottom: 2rem;
-      border: 1px solid #f9a01b66;
-    }
-
-    .title-box h1 {
-      font-size: 2.5rem;
-      background: linear-gradient(135deg, #ffb347, #ffdd99);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    /* AKSHAY KUMAR EDITOR premium badge */
-    .akshay-badge {
-      background: linear-gradient(120deg, #f9a01b, #ffcf4a, #ffb347);
-      display: inline-block;
-      padding: 0.3rem 1.8rem;
-      border-radius: 60px;
-      margin: 10px 0;
-      box-shadow: 0 0 15px #f9a01b, 0 0 5px #ffb347;
-      animation: glowPulse 1.8s infinite alternate;
-    }
-    @keyframes glowPulse {
-      0% { box-shadow: 0 0 5px #f9a01b; }
-      100% { box-shadow: 0 0 20px #ffcf4a, 0 0 8px #ffa500; }
-    }
-    .akshay-badge span {
-      font-size: 1.8rem;
-      font-weight: 800;
-      background: #0a1a1f;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: 2px;
-    }
-    .editor-tag {
-      font-size: 0.85rem;
+    .game-container {
       background: #000000aa;
-      display: inline-block;
-      padding: 4px 15px;
-      border-radius: 40px;
-      margin-left: 10px;
-      border-left: 3px solid #f9a01b;
-    }
-
-    /* team grid */
-    .teams-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      margin: 2rem 0;
-    }
-    .team-card {
-      background: #0a2329cc;
-      backdrop-filter: blur(4px);
-      border-radius: 1.5rem;
-      padding: 0.8rem 1rem;
-      min-width: 110px;
-      text-align: center;
-      border: 1px solid #f9a01b55;
-      transition: 0.2s;
-    }
-    .team-card h4 {
-      font-size: 1.2rem;
-      font-weight: 800;
-    }
-    .team-stats {
-      font-size: 0.8rem;
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      margin-top: 8px;
-    }
-    .win { color: #6fcf97; }
-    .loss { color: #e67e7e; }
-    .points { color: #f9b84a; font-weight: bold; }
-
-    /* match simulator */
-    .match-simulator {
-      background: #0e2a30dd;
       border-radius: 2rem;
-      padding: 1.5rem;
-      margin: 2rem 0;
-      border: 1px solid #f9a01b;
-    }
-    .selector-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      align-items: flex-end;
-      margin: 1rem 0;
-    }
-    .select-box {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .select-box select {
-      background: #031016;
-      color: #ffd966;
-      padding: 10px 15px;
-      border-radius: 40px;
-      border: 1px solid #f9a01b;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .btn {
-      background: #f9a01b;
-      border: none;
-      padding: 10px 22px;
-      border-radius: 40px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .btn:hover { background: #ffb84d; transform: scale(0.97);}
-    .match-result {
-      background: #03161c;
       padding: 1rem;
-      border-radius: 1.5rem;
-      margin-top: 1.5rem;
-      font-weight: bold;
-      text-align: center;
+      backdrop-filter: blur(4px);
+      box-shadow: 0 20px 35px rgba(0,0,0,0.5);
+      border: 1px solid #1e90ff55;
     }
 
-    /* points table */
-    .points-table-wrapper {
-      overflow-x: auto;
-      background: #05171e;
-      border-radius: 1.5rem;
-      padding: 1rem;
-      margin: 2rem 0;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 600px;
-    }
-    th, td {
-      padding: 12px 8px;
-      text-align: center;
-      border-bottom: 1px solid #f9a01b33;
-    }
-    th { color: #f9b84a; }
-    .team-name { font-weight: bold; text-align: left; }
-
-    .live-score {
-      background: #01161e;
-      border-radius: 1.2rem;
-      padding: 0.8rem;
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      opacity: 0.7;
-    }
-    @media (max-width: 700px) {
-      .container { padding: 0.8rem; }
-      .team-card { min-width: 85px; }
-      .akshay-badge span { font-size: 1.2rem; }
-    }
-  </style>
-</head>
-<body>
-<div class="container">
-  <!-- Hero Section with Akshay Kumar Editor -->
-  <div class="hero">
-    <div class="title-box">
-      <h1>🇮🇳 IPL MEGA ARENA 🇮🇳</h1>
-      <div class="akshay-badge"><span>🔥 AKSHAY KUMAR — EDITOR 🔥</span></div>
-      <p>#OneFamily • ALL 10 TEAMS • WIN/LOSS TRACKER • TOSS + MATCH SIMULATOR</p>
-      <p style="font-size:0.85rem;">🏆 MI | CSK | RCB | SRH | GT | RR | LSG | PBKS | KKR | DC 🏆</p>
-      <div class="editor-tag">✍️ LIVE EDITING SKILL • MATCH PREDICTOR • CREATOR MODE ✍️</div>
-    </div>
-  </div>
-
-  <!-- ALL IPL TEAMS with realtime stats -->
-  <div class="teams-grid" id="teamsContainer"></div>
-
-  <!-- MATCH SIMULATOR: WHO WIN / LOSS / TOSS -->
-  <div class="match-simulator">
-    <h2>🎲 AKSHAY'S ULTIMATE MATCH CRATE 🎲</h2>
-    <p>Select two teams & simulate REALISTIC TOSS + MATCH RESULT (Win/Loss)</p>
-    <div class="selector-group">
-      <div class="select-box">
-        <label>🏏 TEAM A</label>
-        <select id="teamASelect"></select>
-      </div>
-      <div class="select-box">
-        <label>⚡ TEAM B</label>
-        <select id="teamBSelect"></select>
-      </div>
-      <button class="btn" id="simulateMatchBtn">🔥 SIMULATE MATCH 🔥</button>
-      <button class="btn" id="resetTourneyBtn" style="background:#2c5a6e;">🔄 RESET ALL STATS</button>
-    </div>
-    <div id="matchResultArea" class="match-result">
-      💥 Click "SIMULATE MATCH" to get TOSS winner, MATCH winner & margin 💥
-    </div>
-  </div>
-
-  <!-- POINTS TABLE (WIN/LOSS/NRR style) -->
-  <div class="points-table-wrapper">
-    <h3>📊 IPL POINTS TABLE (2025 EDITION) — EDITED BY AKSHAY KUMAR</h3>
-    <table id="pointsTable">
-      <thead>
-        <tr><th>#</th><th class="team-name">TEAM</th><th>PLAYED</th><th>WON</th><th>LOST</th><th>POINTS</th><th>NRR (SIM)</th></tr>
-      </thead>
-      <tbody id="pointsTableBody"></tbody>
-    </table>
-    <div class="live-score">🏆 *Every match updates Wins/Losses & Points live — Real IPL vibe* 🏆</div>
-  </div>
-
-  <!-- Extra feature: recent match feed + Live editing zone -->
-  <div style="background:#03212b; border-radius: 1.5rem; padding: 1rem; margin-top: 1rem;">
-    <h3>📺 RECENT MATCH FEED | AKSHAY EDITOR LIVE</h3>
-    <div id="matchFeed" style="max-height: 150px; overflow-y: auto; font-size:0.85rem;"></div>
-  </div>
-
-  <!-- EDITING SKILL ZONE - Akshay Kumar's signature editor -->
-  <div style="background: #0a262b; border-radius: 2rem; padding: 1.5rem; margin: 1.5rem 0; border-left: 8px solid #f9a01b;">
-    <h2>✍️ AKSHAY KUMAR — EDITOR'S STUDIO ✍️</h2>
-    <p>🎬 Live HTML/CSS editing skill | Create match reports, tweak messages, show your editing power!</p>
-    <div style="background: #031016; padding: 1rem; border-radius: 1rem; margin: 1rem 0;">
-      <textarea id="editableMessage" rows="3" style="width:100%; background:#fff7e8; color:#1e2a32; padding:1rem; border-radius:1rem; font-family:monospace; border:none;" placeholder="Write your own match analysis...">💥 AKSHAY KUMAR EDITOR: MI vs CSK blockbuster! Rohit's century leads Mumbai to victory. #IPL2025 🔥</textarea>
-    </div>
-    <div style="background: #154e42; padding: 1rem; border-radius: 1rem;">
-      <strong>✨ LIVE PREVIEW (your edit appears here):</strong>
-      <div id="livePreview" style="margin-top: 10px; padding: 10px; background:#0c302c; border-radius: 1rem;">💥 AKSHAY KUMAR EDITOR: MI vs CSK blockbuster! Rohit's century leads Mumbai to victory. #IPL2025 🔥</div>
-    </div>
-    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 15px;">
-      <button class="btn" id="resetEditBtn">Reset Editor</button>
-      <button class="btn btn-outline" id="copySkillBtn" style="background:transparent; border:1.5px solid #f9a01b; color:#f9a01b;">📋 Copy Skill Text</button>
-      <button class="btn" id="themeFlashBtn">🌈 Flash Editor Theme</button>
-    </div>
-    <p style="margin-top:12px; background:#f9a01b20; display:inline-block; padding:5px 18px; border-radius:30px;">🎨 Akshay Kumar • Pro Editing Skill • Content Creator Mode 🎨</p>
-  </div>
-
-  <footer>🏏 Akshay Kumar — EDITOR | All 10 Teams | Win/Loss Tracker | Toss + Match Simulator | MI,CSK,RCB,SRH,GT,RR,LSG,PBKS,KKR,DC</footer>
-</div>
-
-<script>
-  // ---------- ALL 10 IPL TEAMS ----------
-  const teamsList = [
-    { code: "MI", name: "Mumbai Indians", short: "MI", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
-    { code: "CSK", name: "Chennai Super Kings", short: "CSK", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
-    { code: "RCB", name: "Royal Challengers", short: "RCB", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
-    { code: "SRH", name: "Sunrisers Hyd", short: "SRH", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
-    { code: "GT", name: "Gujarat Titans", short: "GT", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
-    { code: "RR", name: "Rajasthan Royals", short: "RR", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
-    { code: "LSG", name: "Lucknow SG", short: "LSG", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
-    { code: "PBKS", name: "Punjab Kings", short: "PBKS", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
-    { code: "KKR", name: "Kolkata KNR", short: "KKR", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
-    { code: "DC", name: "Delhi Capitals", short: "DC", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 }
-  ];
-
-  function loadStats() {
-    const saved = localStorage.getItem("iplAllTeamsStats");
-    if(saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        if(parsed.length === teamsList.length) {
-          for(let i=0; i<teamsList.length; i++) {
-            teamsList[i].played = parsed[i].played;
-            teamsList[i].wins = parsed[i].wins;
-            teamsList[i].losses = parsed[i].losses;
-            teamsList[i].points = parsed[i].points;
-            teamsList[i].nrr = parsed[i].nrr || 0;
-          }
-        }
-      } catch(e) {}
-    }
-  }
-  function saveStats() {
-    localStorage.setItem("iplAllTeamsStats", JSON.stringify(teamsList.map(t => ({ played:t.played, wins:t.wins, losses:t.losses, points:t.points, nrr:t.nrr }))));
-  }
-
-  function renderTeamsGrid() {
-    const container = document.getElementById("teamsContainer");
-    container.innerHTML = "";
-    teamsList.forEach(team => {
-      const card = document.createElement("div");
-      card.className = "team-card";
-      card.innerHTML = `
-        <h4>${team.short}</h4>
-        <div class="team-stats">
-          <span class="win">W:${team.wins}</span>
-          <span class="loss">L:${team.losses}</span>
-          <span class="points">Pts:${team.points}</span>
-        </div>
-        <div style="font-size:0.7rem;">NRR: ${team.nrr.toFixed(2)}</div>
-      `;
-      container.appendChild(card);
-    });
-  }
-
-  function renderPointsTable() {
-    const sorted = [...teamsList].sort((a,b) => {
-      if(a.points !== b.points) return b.points - a.points;
-      return b.nrr - a.nrr;
-    });
-    const tbody = document.getElementById("pointsTableBody");
-    tbody.innerHTML = "";
-    sorted.forEach((team, idx) => {
-      const row = tbody.insertRow();
-      row.insertCell(0).innerText = idx+1;
-      row.insertCell(1).innerHTML = `<strong>${team.short}</strong> (${team.name})`;
-      row.insertCell(2).innerText = team.played;
-      row.insertCell(3).innerText = team.wins;
-      row.insertCell(4).innerText = team.losses;
-      row.insertCell(5).innerText = team.points;
-      row.insertCell(6).innerText = team.nrr.toFixed(3);
-    });
-  }
-
-  function addFeedMessage(winnerShort, loserShort, margin, tossInfo = "") {
-    const feedDiv = document.getElementById("matchFeed");
-    const newMsg = document.createElement("div");
-    newMsg.style.padding = "5px";
-    newMsg.style.borderBottom = "1px solid #f9a01b55";
-    newMsg.innerHTML = `🏏 ${winnerShort} defeated ${loserShort} by ${margin} runs | ${tossInfo} | Akshay Editor Live`;
-    feedDiv.prepend(newMsg);
-    if(feedDiv.children.length > 12) feedDiv.removeChild(feedDiv.lastChild);
-  }
-
-  function populateSelectors() {
-    const teamASelect = document.getElementById("teamASelect");
-    const teamBSelect = document.getElementById("teamBSelect");
-    teamASelect.innerHTML = "";
-    teamBSelect.innerHTML = "";
-    teamsList.forEach((team, idx) => {
-      let optA = document.createElement("option");
-      optA.value = idx;
-      optA.text = `${team.short} - ${team.name}`;
-      let optB = document.createElement("option");
-      optB.value = idx;
-      optB.text = `${team.short} - ${team.name}`;
-      teamASelect.appendChild(optA);
-      teamBSelect.appendChild(optB);
-    });
-    if(teamASelect.options.length>1 && teamBSelect.options.length>1) {
-      teamASelect.selectedIndex = 0;
-      teamBSelect.selectedIndex = 1;
-    }
-  }
-
-  // MAIN SIMULATE MATCH FUNCTION (realistic toss + win/loss)
-  window.simulateMatch = function() {
-    const teamAIdx = parseInt(document.getElementById("teamASelect").value);
-    const teamBIdx = parseInt(document.getElementById("teamBSelect").value);
-    if(teamAIdx === teamBIdx) {
-      document.getElementById("matchResultArea").innerHTML = "⚠️ Please choose two different IPL teams ⚠️";
-      return;
-    }
-    const teamA = teamsList[teamAIdx];
-    const teamB = teamsList[teamBIdx];
-    const tossWinner = Math.random() < 0.5 ? teamA : teamB;
-    const tossDecision = Math.random() < 0.6 ? "bat first" : "bowl first";
-    const strengthMap = { MI: 90, CSK: 89, RCB: 86, SRH: 83, GT: 87, RR: 84, LSG: 81, PBKS: 79, KKR: 81, DC: 80 };
-    let strA = strengthMap[teamA.short] || 80, strB = strengthMap[teamB.short] || 80;
-    let totalA = strA + Math.random() * 15 + (teamA.wins * 0.7);
-    let totalB = strB + Math.random() * 15 + (teamB.wins * 0.7);
-    let winner = totalA > totalB ? teamA : teamB;
-    let loser = winner === teamA ? teamB : teamA;
-    let margin = Math.floor(Math.random() * 45) + 8;
-    if(Math.random() < 0.1) { winner = loser; loser = (winner === teamA ? teamB : teamA); margin = Math.floor(Math.random() * 30)+5; }
-    
-    // Update stats
-    winner.played++; loser.played++; winner.wins++; loser.losses++; winner.points += 2;
-    let winNrrDelta = (Math.random() * 0.7 + 0.2).toFixed(3);
-    let lossNrrDelta = -(Math.random() * 0.6 + 0.2).toFixed(3);
-    winner.nrr = +(winner.nrr + parseFloat(winNrrDelta)).toFixed(3);
-    loser.nrr = +(loser.nrr + parseFloat(lossNrrDelta)).toFixed(3);
-    if(winner.nrr > 2.5) winner.nrr = 2.5;
-    if(loser.nrr < -2.5) loser.nrr = -2.5;
-    saveStats();
-    renderTeamsGrid();
-    renderPointsTable();
-    addFeedMessage(winner.short, loser.short, margin, `Toss: ${tossWinner.short} ${tossDecision}`);
-    
-    document.getElementById("matchResultArea").innerHTML = `
-      🎲 TOSS: ${tossWinner.short} won the toss and chose to ${tossDecision}. <br>
-      🏆 MATCH RESULT: ${winner.short} beat ${loser.short} by ${margin} runs! 🏆<br>
-      ⚡ Points updated: ${winner.short} +2 pts | Edited by Akshay Kumar.
-    `;
-  };
-
-  function resetAllStats() {
-    for(let t of teamsList) {
-      t.played = 0; t.wins = 0; t.losses = 0; t.points = 0; t.nrr = 0;
-    }
-    saveStats();
-    renderTeamsGrid();
-    renderPointsTable();
-    document.getElementById("matchResultArea").innerHTML = "🔄 All IPL stats reset by Akshay Editor! New simulation season started 🔄";
-    const feedDiv = document.getElementById("matchFeed");
-    feedDiv.innerHTML = "<div>✨ Season Reset — All teams back to 0 points | Akshay Kumar Editor ✨</div>";
-  }
-
-  // ---------- EDITING SKILL ZONE SCRIPT ----------
-  const textareaEdit = document.getElementById('editableMessage');
-  const livePreviewDiv = document.getElementById('livePreview');
-  function updatePreview() { livePreviewDiv.innerText = textareaEdit.value; }
-  if(textareaEdit) textareaEdit.addEventListener('input', updatePreview);
-  const resetEditBtn = document.getElementById('resetEditBtn');
-  if(resetEditBtn) {
-    resetEditBtn.addEventListener('click', () => {
-      textareaEdit.value = "💥 AKSHAY KUMAR EDITOR: MI vs CSK blockbuster! Rohit's century leads Mumbai to victory. #IPL2025 🔥";
-      updatePreview();
-    });
-  }
-  const copyBtn = document.getElementById('copySkillBtn');
-  if(copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      navigator.clipboard.writeText(textareaEdit.value);
-      alert("✅ Akshay's match summary copied! Editing skills on fire 🔥");
-    });
-  }
-  const themeBtn = document.getElementById('themeFlashBtn');
-  if(themeBtn) {
-    themeBtn.addEventListener('click', () => {
-      document.body.style.transition = "background 0.3s";
-      document.body.style.background = "linear-gradient(145deg, #2a4b3a, #f9a01b30)";
-      setTimeout(() => {
-        document.body.style.background = "linear-gradient(145deg, #0a1f1e 0%, #071a1f 100%)";
-      }, 700);
-    });
-  }
-  updatePreview();
-
-  // INIT
-  function finalInit() {
-    loadStats();
-    populateSelectors();
-    renderTeamsGrid();
-    renderPointsTable();
-    const simBtn = document.getElementById("simulateMatchBtn");
-    const resetBtn = document.getElementById("resetTourneyBtn");
-    const newSimBtn = simBtn.cloneNode(true);
-    simBtn.parentNode.replaceChild(newSimBtn, simBtn);
-    const newResetBtn = resetBtn.cloneNode(true);
-    resetBtn.parentNode.replaceChild(newResetBtn, resetBtn);
-    newSimBtn.addEventListener("click", () => { window.simulateMatch(); });
-    newResetBtn.addEventListener("click", () => { resetAllStats(); populateSelectors(); });
-  }
-  finalInit();
-  setTimeout(() => {
-    renderTeamsGrid();
-    renderPointsTable();
-  }, 20);
-</script>
-</body>
-</html>
-      color: #f0f3f5;
-      overflow-x: hidden;
-    }
-
-    /* custom scroll */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0c2b2b;
-      border-radius: 10px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #f9a01b;
-      border-radius: 10px;
-    }
-
-    /* container */
-    .container {
-      max-width: 1300px;
+    canvas {
+      display: block;
       margin: 0 auto;
-      padding: 1.2rem 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 0 3px #1e90ff, 0 0 0 6px #0a3350;
+      cursor: pointer;
+      background-color: #131e24;
     }
 
-    /* header with mumbai vibe */
-    .hero {
-      background: radial-gradient(circle at 20% 30%, #003b5c, #001c2b);
-      border-radius: 2.5rem;
-      padding: 1.8rem 2rem;
-      margin-bottom: 2.5rem;
-      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.5);
-      border: 1px solid rgba(249, 160, 27, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "🏆";
-      font-size: 10rem;
-      position: absolute;
-      bottom: -20px;
-      right: -10px;
-      opacity: 0.1;
-      pointer-events: none;
-    }
-
-    .mumbai-badge {
+    .dashboard {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: baseline;
       flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .title-box h1 {
-      font-size: 2.8rem;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #ffb347, #ffdd99);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-
-    .title-box p {
-      font-size: 1rem;
-      color: #b9e2ff;
-      margin-top: 8px;
-      font-weight: 500;
-    }
-
-    .stats-soft {
-      background: rgba(0, 20, 30, 0.7);
-      backdrop-filter: blur(8px);
-      padding: 0.8rem 1.8rem;
+      gap: 15px;
+      margin-top: 18px;
+      background: #031016cc;
+      backdrop-filter: blur(12px);
+      padding: 12px 20px;
       border-radius: 60px;
-      text-align: center;
-      border: 1px solid #f9a01b66;
+      border: 1px solid #1e90ff66;
     }
 
-    .stats-soft span {
-      font-weight: 700;
-      font-size: 1.4rem;
-      color: #f9b84a;
-    }
-
-    /* card grid & games */
-    .flex-cards {
+    .stats {
       display: flex;
-      flex-wrap: wrap;
-      gap: 1.8rem;
-      justify-content: center;
-      margin-bottom: 3rem;
-    }
-
-    .card {
-      background: rgba(12, 35, 40, 0.85);
-      backdrop-filter: blur(2px);
-      border-radius: 2rem;
-      padding: 1.2rem 1.6rem;
-      flex: 1 1 280px;
-      transition: all 0.25s ease;
-      border: 1px solid #f9a01b33;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: #f9a01b;
-      background: rgba(20, 50, 55, 0.95);
-    }
-
-    .card h3 {
-      font-size: 1.7rem;
-      margin-bottom: 0.5rem;
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .count {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #f9b84a;
-    }
-
-    .btn-group {
-      display: flex;
-      gap: 12px;
-      margin: 20px 0 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      background: #f9a01b;
-      border: none;
-      padding: 8px 18px;
-      border-radius: 40px;
+      gap: 28px;
       font-weight: bold;
+      font-family: monospace;
+      letter-spacing: 1px;
+    }
+
+    .stat {
+      background: #000000aa;
+      padding: 6px 18px;
+      border-radius: 40px;
+      color: #ffd966;
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+
+    .stat span {
+      color: #7ec8ff;
       font-size: 0.9rem;
+      margin-right: 8px;
+    }
+
+    button {
+      background: #1e90ff;
+      border: none;
+      padding: 8px 24px;
+      border-radius: 60px;
+      font-weight: bold;
+      font-size: 1rem;
+      font-family: inherit;
       cursor: pointer;
       transition: 0.2s;
-      color: #0a1c22;
-      font-family: inherit;
+      color: #011217;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid #f9a01b;
-      color: #f9a01b;
-    }
-
-    .btn-outline:hover {
-      background: #f9a01b;
-      color: #111;
-    }
-
-    .btn:hover {
-      background: #ffb84d;
+    button:hover {
+      background: #3ea5ff;
       transform: scale(0.96);
     }
 
-    /* editing skill zone */
-    .edit-zone {
-      background: #0a262b;
-      border-radius: 2rem;
-      padding: 1.8rem;
-      margin: 2rem 0;
-      border-left: 8px solid #f9a01b;
-    }
-
-    .edit-header {
+    .controls-info {
+      background: #05161eaa;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      color: #bbd4ff;
       display: flex;
-      align-items: baseline;
-      gap: 1rem;
+      gap: 15px;
       flex-wrap: wrap;
-      margin-bottom: 1rem;
     }
 
-    .edit-header h2 {
-      font-size: 1.8rem;
-    }
-
-    .interactive-text {
-      background: #031016;
-      padding: 1.2rem;
-      border-radius: 1.2rem;
-      font-family: monospace;
-      font-size: 1.1rem;
-      margin: 1rem 0;
-      border: 1px solid #2a6b6b;
-    }
-
-    #editableMessage {
-      background: #fff7e8;
-      color: #1e2a32;
-      padding: 1rem;
-      border-radius: 1rem;
-      width: 100%;
-      font-family: monospace;
-      font-size: 1rem;
-      border: none;
-      resize: vertical;
-    }
-
-    .skill-badge {
-      background: #f9a01b20;
-      border-radius: 60px;
-      padding: 6px 18px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-    }
-
-    /* games crate */
-    .games-crate {
-      background: radial-gradient(ellipse at 30% 20%, #1f4949, #06212b);
-      border-radius: 2rem;
-      padding: 1.5rem;
-      margin: 2rem 0;
-    }
-
-    .game-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: space-between;
-      margin-top: 1rem;
-    }
-
-    .game-box {
-      flex: 1;
-      min-width: 220px;
-      background: #00000055;
-      border-radius: 1.5rem;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    .guess-number {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin: 12px 0;
-    }
-
-    .guess-number input {
-      width: 80px;
-      padding: 10px;
-      border-radius: 30px;
-      border: none;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    .flip-card-mini {
-      background: #005c6e33;
-      padding: 12px;
-      border-radius: 20px;
-    }
-
-    /* follower + view counter 5000k style */
-    .social-proof {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      background: #01161ecc;
-      border-radius: 2rem;
-      padding: 1rem 2rem;
-      margin: 2rem 0 1rem;
-      align-items: center;
-    }
-
-    .follower-card, .view-card {
-      background: #08262e;
-      padding: 0.5rem 1.8rem;
-      border-radius: 3rem;
-      text-align: center;
-      flex: 1;
-    }
-
-    .big-number {
-      font-size: 2.7rem;
+    .brand {
+      font-family: 'Orbitron', monospace;
       font-weight: 800;
-      letter-spacing: 2px;
-      color: #f9bc5c;
+      font-size: 1.2rem;
+      background: linear-gradient(135deg, #ffffff, #4c9eff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    button.small-btn {
-      background: none;
-      border: 1px solid #f9a01b;
-      padding: 5px 12px;
-      border-radius: 2rem;
-      color: white;
-      cursor: pointer;
-      margin-left: 8px;
-      transition: 0.2s;
-    }
-
-    button.small-btn:hover {
-      background: #f9a01b;
-      color: black;
-    }
-
-    /* ipl table */
-    .ipl-table {
-      background: #05171e;
-      border-radius: 1.5rem;
-      padding: 0.2rem 1rem 1rem;
-      margin-top: 1.8rem;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-    }
-
-    th, td {
-      padding: 12px 8px;
-      text-align: left;
-      border-bottom: 1px solid #f9a01b33;
-    }
-
-    th {
-      color: #f9b84a;
-      font-weight: 600;
-    }
-
-    .highlight {
-      color: #ffcf7a;
-      font-weight: bold;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 0 1rem;
-      font-size: 0.8rem;
-      opacity: 0.7;
-    }
-
-    @media (max-width: 750px) {
-      .container {
-        padding: 1rem;
-      }
-      .title-box h1 {
-        font-size: 2rem;
-      }
+    @media (max-width: 600px) {
+      .stat { font-size: 1rem; padding: 4px 12px; }
+      .stats { gap: 12px; }
+      .dashboard { flex-direction: column; align-items: center; }
     }
   </style>
 </head>
 <body>
-<div class="container">
-  <!-- Hero Section : Mumbai Indians -->
-  <div class="hero">
-    <div class="mumbai-badge">
-      <div class="title-box">
-        <h1>🇮🇳 MUMBAI INDIANS <span style="font-size:2rem;">💙🏏</span></h1>
-        <p>#OneFamily • IPL Dynasty • 5 Titles | Akshay Kumar</p>
+<div>
+  <div class="game-container">
+    <canvas id="gameCanvas" width="500" height="650"></canvas>
+    <div class="dashboard">
+      <div class="stats">
+        <div class="stat"><span>🏁 SCORE</span> <span id="scoreValue">0</span></div>
+        <div class="stat"><span>⛽ FUEL</span> <span id="fuelValue">100</span>%</div>
+        <div class="stat"><span>🎯 BEST</span> <span id="bestValue">0</span></div>
       </div>
-      <div class="stats-soft">
-        📍 Wankhede Stadium • Mumbai<br>
-        <span>🔥 Rohit Sharma | Hardik | Bumrah 🔥</span>
+      <div class="controls-info">
+        <span>◀  ▶  (A / D  or  ←  → )</span>
+        <span>🚗 BMW M4 GT3</span>
       </div>
+      <button id="resetGameBtn">🔄 RESTART RACE</button>
+    </div>
+    <div style="text-align: center; margin-top: 12px;">
+      <span class="brand">🔥 BMW ///M POWER | DODGE TRAFFIC + COLLECT FUEL 🔥</span>
     </div>
   </div>
-
-  <!-- 5000k followers + view500 (More than view500 interactive) -->
-  <div class="social-proof">
-    <div class="follower-card">
-      <div style="font-size:0.9rem;">👥 TOTAL FOLLOWERS</div>
-      <div class="big-number" id="followersDisplay">5.00M</div>
-      <div>⭐ 5000k+ Global Army ⭐</div>
-      <button class="small-btn" id="boostFollowersBtn">+50K Cheer</button>
-    </div>
-    <div class="view-card">
-      <div style="font-size:0.9rem;">👁️ MATCH VIEWS (Today)</div>
-      <div class="big-number" id="viewsDisplay">500</div>
-      <div>🔥 more than view500 🔥</div>
-      <button class="small-btn" id="addViewsBtn">+ Watch Party</button>
-    </div>
-  </div>
-
-  <!-- Games Crate: multiple mini games -->
-  <div class="games-crate">
-    <h2>🎮 GAMES CRATE 🎲</h2>
-    <div class="game-row">
-      <!-- Game 1: Six Hitter Prediction -->
-      <div class="game-box">
-        <h3>🏏 SIX HITTER</h3>
-        <p>Predict boundaries in next over!</p>
-        <div class="guess-number">
-          <input type="number" id="sixGuess" placeholder="0-6" min="0" max="6">
-          <button class="btn" id="sixBtn">💥 CRACK SIX 💥</button>
-        </div>
-        <p id="sixResult" style="font-size:0.9rem;">⚡ Result will appear</p>
-      </div>
-      <!-- Game 2: Score guess (classic crate) -->
-      <div class="game-box">
-        <h3>🎯 SCORE PREDICTOR</h3>
-        <p>Final runs for MI today?</p>
-        <div class="guess-number">
-          <input type="number" id="scoreGuess" placeholder="120-250">
-          <button class="btn" id="scoreBtn">PREDICT & WIN</button>
-        </div>
-        <p id="scoreResult">🤔 Guess match score</p>
-      </div>
-      <!-- Game 3: Toss / luck game -->
-      <div class="game-box">
-        <h3>🪙 TOSS MASTER</h3>
-        <p>Call Heads or Tails</p>
-        <div style="display: flex; gap: 15px; justify-content: center; margin: 10px 0;">
-          <button class="btn-outline btn" id="headsBtn">HEADS</button>
-          <button class="btn-outline btn" id="tailsBtn">TAILS</button>
-        </div>
-        <p id="tossResult">🎲 Click to flip</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- EDITING SKILL ZONE : more than editing skill (live text editor + style) -->
-  <div class="edit-zone">
-    <div class="edit-header">
-      <h2>✍️ YOUR EDITING SKILL CENTRAL</h2>
-      <div class="skill-badge">⚡ live editor + html/css skill ⚡</div>
-    </div>
-    <p>✏️ Edit the match summary below — customize like a true content creator! (real-time update)</p>
-    <div class="interactive-text">
-      <textarea id="editableMessage" rows="3" placeholder="Write your own match analysis, Mumbai Indians strategy...">💙 MUMBAI INDIANS: Rohit's storm at Wankhede! Target 210. Bumrah 3/25. #MIvsCSK 🔥</textarea>
-    </div>
-    <div class="interactive-text" style="background:#154e42;">
-      <strong>✨ PREVIEW PANEL (your edit goes live):</strong>
-      <div id="livePreview" style="margin-top: 10px; padding: 8px; background:#0c302c; border-radius: 1rem;">💙 MUMBAI INDIANS: Rohit's storm at Wankhede! Target 210. Bumrah 3/25. #MIvsCSK 🔥</div>
-    </div>
-    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
-      <button class="btn" id="resetEditBtn">Reset Editing</button>
-      <button class="btn btn-outline" id="copySkillBtn">📋 Copy Skill Text</button>
-    </div>
-    <p class="skill-badge" style="margin-top: 12px;">🎨 Your editing skill = PRO content creator | dynamic styling ready</p>
-  </div>
-
-  <!-- IPL table: Mumbai Indians player stats + more then view 500/ follw 5000k showcase -->
-  <div class="ipl-table">
-    <h3>🏆 MI CORE SQUAD 2025 (Stats | Fan following 5000k+ vibes)</h3>
-    <table>
-      <thead>
-        <tr><th>Player</th><th>Role</th><th>IPL Runs/Wkts</th><th>Fan Boost ⚡</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Rohit Sharma</td><td>Hitman</td><td>⭐ 6211 runs</td><td class="highlight">5.2M followers</td></tr>
-        <tr><td>Hardik Pandya</td><td>All-Rounder</td><td>🔥 2300+ runs & 53 wkts</td><td>4.8M</td></tr>
-        <tr><td>Jasprit Bumrah</td><td>Yorker King</td><td>⭐ 165 wkts</td><td class="highlight">5.0M</td></tr>
-        <tr><td>Suryakumar Yadav</td><td>360°</td><td>🔥 3500+ runs</td><td>4.9M</td></tr>
-        <tr><td>Tilak Varma</td><td>Rising Star</td><td>💥 987 runs (last season)</td><td>1.2M</td></tr>
-      </tbody>
-    </table>
-    <div style="font-size:0.85rem; padding-bottom: 12px;">🌟 Total Fanbase crossing 5000k+ worldwide 🌟 #MI Paltan</div>
-  </div>
-
-  <!-- More interactive: follw 5000k booster / view 500 additional crate -->
-  <div class="flex-cards" style="margin-top: 10px;">
-    <div class="card">
-      <h3>📈 CRATE: VIEW BOOST</h3>
-      <p>Current match live views: <strong id="liveViewCounter">500</strong> (more than view500 already!)</p>
-      <div class="btn-group">
-        <button class="btn" id="view500PlusBtn">➕ View +100</button>
-        <button class="btn-outline btn" id="resetViewsBtn">Reset Views (500)</button>
-      </div>
-    </div>
-    <div class="card">
-      <h3>👑 FOLLOWER DYNASTY</h3>
-      <p>Mumbai Indians Universe: <strong id="followerCountSpan">5000</strong> K (5000k = 5M)</p>
-      <div class="btn-group">
-        <button class="btn" id="followBoostBtn">🎉 Add 100K followers</button>
-        <button class="btn-outline btn" id="resetFollowBtn">Reset 5000k</button>
-      </div>
-      <small>*crossed 5000k milestone, #MostFollwedIPLteam</small>
-    </div>
-    <div class="card">
-      <h3>🎬 EDITING MASTERY</h3>
-      <p>++ HTML/CSS live editing skill more then games crate ✨</p>
-      <button class="btn" id="themeFlashBtn">🌈 Flash MI Theme</button>
-      <div id="flashMsg" style="margin-top: 12px; font-size:0.8rem;"></div>
-    </div>
-  </div>
-
-  <footer>
-    <p>🏏 Mumbhai Indians | 9th Grade Project | IPL Mania | Games, Editing Skills, 5000k Fandom, Views 500+ | #OneFamily 🏆</p>
-  </footer>
 </div>
 
 <script>
-  // ---------- FOLLOWER & VIEW LOGIC (5000k / view500) ----------
-  let followersInK = 5000;   // represents 5000k followers => 5,000,000
-  let currentViews = 500;
+  (function(){
+    // ---------- CANVAS ----------
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
 
-  const followersDisplayEl = document.getElementById('followersDisplay');
-  const viewsDisplayEl = document.getElementById('viewsDisplay');
-  const liveViewCounter = document.getElementById('liveViewCounter');
-  const followerCountSpan = document.getElementById('followerCountSpan');
+    // Game dimensions
+    const W = 500, H = 650;
+    const LANE_COUNT = 3;
+    const LANE_WIDTH = W / LANE_COUNT;  // ~166.66
+    const CAR_WIDTH = 48;
+    const CAR_HEIGHT = 72;
+    
+    // Player start position (middle lane)
+    let player = {
+      x: W/2 - CAR_WIDTH/2,
+      y: H - 100,
+      width: CAR_WIDTH,
+      height: CAR_HEIGHT,
+      lane: 1,        // 0=left, 1=mid, 2=right
+    };
 
-  function updateSocialUI() {
-    let millionValue = (followersInK / 1000).toFixed(2);
-    if(followersInK >= 1000) {
-      followersDisplayEl.innerText = millionValue + "M";
-    } else {
-      followersDisplayEl.innerText = followersInK + "K";
-    }
-    followerCountSpan.innerText = followersInK;
-    viewsDisplayEl.innerText = currentViews;
-    liveViewCounter.innerText = currentViews;
-  }
-
-  document.getElementById('boostFollowersBtn').addEventListener('click', () => {
-    followersInK += 50;
-    if(followersInK > 9999) followersInK = 9999;
-    updateSocialUI();
-  });
-  document.getElementById('addViewsBtn').addEventListener('click', () => {
-    currentViews += 75;
-    updateSocialUI();
-  });
-  document.getElementById('view500PlusBtn').addEventListener('click', () => {
-    currentViews += 100;
-    updateSocialUI();
-  });
-  document.getElementById('resetViewsBtn').addEventListener('click', () => {
-    currentViews = 500;
-    updateSocialUI();
-  });
-  document.getElementById('followBoostBtn').addEventListener('click', () => {
-    followersInK += 100;
-    if(followersInK > 9999) followersInK = 9999;
-    updateSocialUI();
-  });
-  document.getElementById('resetFollowBtn').addEventListener('click', () => {
-    followersInK = 5000;
-    updateSocialUI();
-  });
-
-  updateSocialUI();
-
-  // ---------- GAME 1: SIX PREDICTION ----------
-  const sixBtn = document.getElementById('sixBtn');
-  const sixGuessInput = document.getElementById('sixGuess');
-  const sixResult = document.getElementById('sixResult');
-  sixBtn.addEventListener('click', () => {
-    let guess = parseInt(sixGuessInput.value);
-    if(isNaN(guess) || guess < 0 || guess > 6) {
-      sixResult.innerText = "❌ Enter number between 0-6!";
-      return;
-    }
-    const actualSixes = Math.floor(Math.random() * 7); // 0-6
-    if(guess === actualSixes) {
-      sixResult.innerHTML = `🎉 PERFECT HIT! Sixes: ${actualSixes}. You guessed it right! +100 Fan energy 🎉`;
-    } else {
-      sixResult.innerHTML = `😲 Actual sixes: ${actualSixes}. Your guess: ${guess}. Better luck in next over! 🏏`;
-    }
-  });
-
-  // GAME 2: Score predictor
-  const scoreBtn = document.getElementById('scoreBtn');
-  const scoreGuessInput = document.getElementById('scoreGuess');
-  const scoreResult = document.getElementById('scoreResult');
-  scoreBtn.addEventListener('click', () => {
-    let guessScore = parseInt(scoreGuessInput.value);
-    if(isNaN(guessScore) || guessScore < 50 || guessScore > 300) {
-      scoreResult.innerText = "📊 Please enter realistic score 50-300";
-      return;
-    }
-    const actualScore = Math.floor(Math.random() * (260 - 120 + 1) + 120);
-    const diff = Math.abs(guessScore - actualScore);
-    if(diff <= 10) {
-      scoreResult.innerHTML = `🏆 SPOT ON! MI scored ${actualScore}. You're a true predictor! 🏆`;
-    } else if(diff <= 25) {
-      scoreResult.innerHTML = `👍 Close! Actual: ${actualScore}, You guessed ${guessScore}. Good effort!`;
-    } else {
-      scoreResult.innerHTML = `💔 Missed. MI made ${actualScore} runs. Your guess ${guessScore}. Next time!`;
-    }
-  });
-
-  // GAME 3: TOSS
-  const headsBtn = document.getElementById('headsBtn');
-  const tailsBtn = document.getElementById('tailsBtn');
-  const tossResultSpan = document.getElementById('tossResult');
-  function tossGame(call) {
-    const outcome = Math.random() < 0.5 ? 'HEADS' : 'TAILS';
-    if(call === outcome) {
-      tossResultSpan.innerHTML = `🎉 TOSS WIN! You called ${call} and it's ${outcome}. Captain chose to bat first! 🎉`;
-    } else {
-      tossResultSpan.innerHTML = `😓 Toss lost! You called ${call}, result is ${outcome}. Better luck next flip!`;
-    }
-  }
-  headsBtn.addEventListener('click', () => tossGame('HEADS'));
-  tailsBtn.addEventListener('click', () => tossGame('TAILS'));
-
-  // ---------- EDITING SKILL : live text editor ----------
-  const textareaEdit = document.getElementById('editableMessage');
-  const livePreviewDiv = document.getElementById('livePreview');
-  function updatePreview() {
-    let rawText = textareaEdit.value;
-    livePreviewDiv.innerText = rawText;
-  }
-  textareaEdit.addEventListener('input', updatePreview);
-  document.getElementById('resetEditBtn').addEventListener('click', () => {
-    textareaEdit.value = "💙 MUMBAI INDIANS: Rohit's storm at Wankhede! Target 210. Bumrah 3/25. #MIvsCSK 🔥";
-    updatePreview();
-  });
-  document.getElementById('copySkillBtn').addEventListener('click', () => {
-    navigator.clipboard.writeText(textareaEdit.value);
-    alert("✅ Your edited match summary copied! Show your editing skills 🔥");
-  });
-  updatePreview();
-
-  // Theme flash effect (editing skill + games crate)
-  const themeBtn = document.getElementById('themeFlashBtn');
-  const flashMsgSpan = document.getElementById('flashMsg');
-  themeBtn.addEventListener('click', () => {
-    document.body.style.transition = "background 0.2s";
-    document.body.style.background = "linear-gradient(145deg, #2a4b3a, #0d2a2f)";
-    flashMsgSpan.innerText = "✨ Mumbai Indians Gold Rush! Styling edited ✨";
-    setTimeout(() => {
-      document.body.style.background = "linear-gradient(145deg, #0a1f1e 0%, #071a1f 100%)";
-      flashMsgSpan.innerText = "🏏 Back to MI vibe! Your editing skill is powerful!";
-    }, 600);
-  });
-
-  // Additional follower-view consistency with the cards : ensure dynamic numbers across elements
-  function syncExtraElements() {
-    const folDisplayLarge = document.getElementById('followersDisplay');
-    if(folDisplayLarge) folDisplayLarge.innerText = (followersInK >= 1000) ? (followersInK/1000).toFixed(2)+"M" : followersInK+"K";
-    const viewSpan = document.getElementById('viewsDisplay');
-    if(viewSpan) viewSpan.innerText = currentViews;
-    const liveC = document.getElementById('liveViewCounter');
-    if(liveC) liveC.innerText = currentViews;
-    const followerKspan = document.getElementById('followerCountSpan');
-    if(followerKspan) followerKspan.innerText = followersInK;
-  }
-
-  // Override any update eventlistener to also sync
-  const origUpdate = updateSocialUI;
-  window.updateSocialUI = function() {
-    origUpdate();
-    syncExtraElements();
-  };
-  updateSocialUI();
-
-  // extra manual rebind for buttons that modify followers or views
-  const allButtons = document.querySelectorAll('button');
-  function patchButtons() {
-    let btnsList = [document.getElementById('boostFollowersBtn'), document.getElementById('addViewsBtn'), document.getElementById('view500PlusBtn'), document.getElementById('resetViewsBtn'), document.getElementById('followBoostBtn'), document.getElementById('resetFollowBtn')];
-    btnsList.forEach(btn => {
-      if(btn) {
-        let oldClick = btn.onclick;
-        btn.addEventListener('click', () => {
-          setTimeout(() => {
-            syncExtraElements();
-          }, 10);
-        });
+    // Obstacles (enemy cars) + fuel items
+    let obstacles = [];
+    let fuelItems = [];
+    
+    let score = 0;
+    let fuel = 100;       // percentage, decreases over time
+    let gameOver = false;
+    let bestScore = localStorage.getItem('bmwBestScore') ? parseInt(localStorage.getItem('bmwBestScore')) : 0;
+    
+    // frame control
+    let frame = 0;
+    let obstacleSpawnCounter = 0;
+    let fuelSpawnCounter = 0;
+    
+    // difficulty & speed
+    let baseSpeed = 4.2;
+    let currentSpeed = baseSpeed;
+    
+    // update UI elements
+    const scoreSpan = document.getElementById('scoreValue');
+    const fuelSpan = document.getElementById('fuelValue');
+    const bestSpan = document.getElementById('bestValue');
+    bestSpan.innerText = bestScore;
+    
+    // movement flags (keyboard)
+    let leftPressed = false;
+    let rightPressed = false;
+    
+    // ----- helper functions -----
+    function updateUI() {
+      scoreSpan.innerText = Math.floor(score);
+      fuelSpan.innerText = Math.floor(fuel);
+      if(score > bestScore) {
+        bestScore = Math.floor(score);
+        bestSpan.innerText = bestScore;
+        localStorage.setItem('bmwBestScore', bestScore);
       }
-    });
-  }
-  patchButtons();
-  syncExtraElements();
-
-  // extra dynamic text to show "more then view500" note
-  const viewDisplayDiv = document.querySelector('.view-card .big-number');
-  if(viewDisplayDiv && currentViews >= 500) {
-    // just for fun visual
-  }
-
-  // final feature: show "9th grade student ipl mumbhai" pride message in console
-  console.log("🏏 Mumbhai Indians | 9th Grade | Games Crate + Editing Skill + 5000k followers & view500+ 🔥");
-
-  // add dynamic total followers hint = 5000k exclamation
-  const followerStatement = document.createElement('div');
-  followerStatement.style.textAlign = 'center';
-  followerStatement.style.marginTop = '10px';
-  followerStatement.style.fontSize = '0.75rem';
-  followerStatement.innerHTML = '💎 5000k+ followers = 5 Million+ MI Family | View500+ is just start 🔥';
-  document.querySelector('.social-proof')?.after(followerStatement);
+    }
+    
+    // Collision (rect intersect)
+    function rectCollide(r1, r2) {
+      return !(r2.x > r1.x + r1.w ||
+        r2.x + r2.w < r1.x ||
+        r2.y > r1.y + r1.h ||
+        r2.y + r2.h < r1.y);
+    }
+    
+    // spawn enemy car (traffic)
+    function spawnObstacle() {
+      let lane = Math.floor(Math.random() * LANE_COUNT);
+      let x = lane * LANE_WIDTH + (LANE_WIDTH/2) - CAR_WIDTH/2;
+      // random enemy color (dark / sporty)
+      const colors = ['#2c3e50', '#1f2a36', '#3e2a2a', '#16212b', '#2d4a5c'];
+      obstacles.push({
+        x: x,
+        y: -CAR_HEIGHT,
+        width: CAR_WIDTH,
+        height: CAR_HEIGHT,
+        lane: lane,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      });
+    }
+    
+    // spawn fuel canister (bonus)
+    function spawnFuel() {
+      let lane = Math.floor(Math.random() * LANE_COUNT);
+      let x = lane * LANE_WIDTH + (LANE_WIDTH/2) - 20;  // fuel smaller
+      fuelItems.push({
+        x: x,
+        y: -30,
+        width: 28,
+        height: 28,
+        lane: lane,
+        collected: false
+      });
+    }
+    
+    // reset game fully
+    function resetGame() {
+      gameOver = false;
+      score = 0;
+      fuel = 100;
+      currentSpeed = baseSpeed;
+      obstacles = [];
+      fuelItems = [];
+      frame = 0;
+      obstacleSpawnCounter = 0;
+      fuelSpawnCounter = 0;
+      player.lane = 1;
+      player.x = LANE_WIDTH * 1 + (LANE_WIDTH/2) - CAR_WIDTH/2;
+      updateUI();
+    }
+    
+    // update player lane from input
+    function updatePlayerLane() {
+      if(gameOver) return;
+      let newLane = player.lane;
+      if(leftPressed) newLane--;
+      if(rightPressed) newLane++;
+      if(newLane < 0) newLane = 0;
+      if(newLane >= LANE_COUNT) newLane = LANE_COUNT-1;
+      if(newLane !== player.lane) {
+        player.lane = newLane;
+        player.x = player.lane * LANE_WIDTH + (LANE_WIDTH/2) - CAR_WIDTH/2;
+      }
+    }
+    
+    // game logic update (moving objects, collisions, fuel consumption)
+    function updateGame() {
+      if(gameOver) return;
+      
+      // fuel consumption over time (0.15% per frame ~ 6% per sec at 60fps)
+      fuel -= 0.12;
+      if(fuel <= 0) {
+        fuel = 0;
+        gameOver = true;
+      }
+      
+      // dynamic difficulty: speed increases with score
+      currentSpeed = baseSpeed + Math.floor(score / 650) * 0.6;
+      if(currentSpeed > 9) currentSpeed = 9;
+      
+      // --- spawn enemies (every ~45 frames, faster as score increases)
+      let spawnRate = Math.max(28, 45 - Math.floor(score / 300));
+      if(obstacleSpawnCounter <= 0) {
+        spawnObstacle();
+        obstacleSpawnCounter = spawnRate;
+      } else {
+        obstacleSpawnCounter--;
+      }
+      
+      // spawn fuel (every ~110 frames, ensures not too many)
+      if(fuelSpawnCounter <= 0 && fuelItems.length < 4) {
+        spawnFuel();
+        fuelSpawnCounter = 80 + Math.floor(Math.random() * 40);
+      } else {
+        fuelSpawnCounter--;
+      }
+      
+      // move obstacles & collision
+      for(let i=0; i<obstacles.length; i++) {
+        const obs = obstacles[i];
+        obs.y += currentSpeed;
+        // collision with player
+        if(rectCollide(
+          {x: player.x, y: player.y, w: CAR_WIDTH, h: CAR_HEIGHT},
+          {x: obs.x, y: obs.y, w: CAR_WIDTH, h: CAR_HEIGHT}
+        )) {
+          gameOver = true;
+          break;
+        }
+        // remove if offscreen
+        if(obs.y > H + 150) {
+          obstacles.splice(i,1);
+          i--;
+        }
+      }
+      
+      // fuel items collision & collection
+      for(let i=0; i<fuelItems.length; i++) {
+        const fuelItem = fuelItems[i];
+        fuelItem.y += currentSpeed;
+        // collision with player
+        if(!fuelItem.collected && rectCollide(
+          {x: player.x, y: player.y, w: CAR_WIDTH, h: CAR_HEIGHT},
+          {x: fuelItem.x, y: fuelItem.y, w: fuelItem.width, h: fuelItem.height}
+        )) {
+          fuelItem.collected = true;
+          fuel = Math.min(100, fuel + 18);
+          score += 25;   // extra points for collecting fuel
+          updateUI();
+          fuelItems.splice(i,1);
+          i--;
+          continue;
+        }
+        // remove if offscreen
+        if(fuelItem.y > H + 100) {
+          fuelItems.splice(i,1);
+          i--;
+        }
+      }
+      
+      // increase score over time (survival points)
+      if(!gameOver) {
+        score += 0.28;
+        updateUI();
+      }
+      
+      // cap fuel
+      if(fuel > 100) fuel = 100;
+      updateUI();
+    }
+    
+    // ---------- DRAW EVERYTHING with SPORTS BMW STYLE ----------
+    function drawRoad() {
+      // asphalt
+      ctx.fillStyle = '#171f23';
+      ctx.fillRect(0, 0, W, H);
+      // lane markings
+      ctx.strokeStyle = '#ffe6a3';
+      ctx.lineWidth = 5;
+      for(let i=1; i<LANE_COUNT; i++) {
+        ctx.beginPath();
+        ctx.setLineDash([20, 30]);
+        ctx.moveTo(i*LANE_WIDTH, 0);
+        ctx.lineTo(i*LANE_WIDTH, H);
+        ctx.stroke();
+      }
+      ctx.setLineDash([]);
+      // road edges
+      ctx.strokeStyle = '#1e90ff';
+      ctx.lineWidth = 4;
+      ctx.strokeRect(5, 0, W-10, H);
+      // top glow
+      ctx.fillStyle = '#08161ecc';
+      ctx.fillRect(0,0,W,45);
+    }
+    
+    function drawPlayerCar() {
+      // BMW ///M inspired design
+      const x = player.x, y = player.y;
+      // body
+      ctx.shadowBlur = 0;
+      ctx.fillStyle = '#1e40ff';
+      ctx.beginPath();
+      ctx.roundRect(x, y, CAR_WIDTH, CAR_HEIGHT, 12);
+      ctx.fill();
+      // carbon hood
+      ctx.fillStyle = '#11151f';
+      ctx.beginPath();
+      ctx.roundRect(x+4, y+8, CAR_WIDTH-8, 26, 8);
+      ctx.fill();
+      // ///M stripes
+      ctx.fillStyle = '#0066cc';
+      ctx.fillRect(x+6, y+38, 8, 10);
+      ctx.fillStyle = '#cc0000';
+      ctx.fillRect(x+18, y+38, 8, 10);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(x+30, y+38, 8, 10);
+      // windows
+      ctx.fillStyle = '#a9d6ff';
+      ctx.beginPath();
+      ctx.roundRect(x+6, y+12, CAR_WIDTH-12, 22, 6);
+      ctx.fill();
+      // headlights
+      ctx.fillStyle = '#ffcc77';
+      ctx.fillRect(x+4, y+CAR_HEIGHT-14, 10, 8);
+      ctx.fillRect(x+CAR_WIDTH-14, y+CAR_HEIGHT-14, 10, 8);
+      // BMW logo
+      ctx.font = "bold 16px 'Segoe UI'";
+      ctx.fillStyle = '#ffffff';
+      ctx.shadowBlur = 0;
+      ctx.fillText("///M", x+12, y+58);
+    }
+    
+    function drawEnemyCar(obs) {
+      const x = obs.x, y = obs.y;
+      ctx.fillStyle = obs.color;
+      ctx.beginPath();
+      ctx.roundRect(x, y, CAR_WIDTH, CAR_HEIGHT, 12);
+      ctx.fill();
+      ctx.fillStyle = '#222d35';
+      ctx.beginPath();
+      ctx.roundRect(x+4, y+8, CAR_WIDTH-8, 28, 6);
+      ctx.fill();
+      ctx.fillStyle = '#ff4d4d';
+      ctx.fillRect(x+10, y+48, 8, 8);
+      ctx.fillRect(x+CAR_WIDTH-18, y+48, 8, 8);
+      ctx.fillStyle = '#ffcc88';
+      ctx.fillRect(x+5, y+CAR_HEIGHT-12, 8, 6);
+      ctx.fillRect(x+CAR_WIDTH-13, y+CAR_HEIGHT-12, 8, 6);
+    }
+    
+    function drawFuelItem(fuel) {
+      ctx.fillStyle = '#f5b042';
+      ctx.shadowBlur = 6;
+      ctx.shadowColor = '#ffaa33';
+      ctx.beginPath();
+      ctx.rect(fuel.x, fuel.y, fuel.width, fuel.height);
+      ctx.fill();
+      ctx.fillStyle = '#d48f2b';
+      ctx.beginPath();
+      ctx.rect(fuel.x+6, fuel.y+6, 6, 16);
+      ctx.fill();
+      ctx.fillStyle = '#ffffff';
+      ctx.font = "bold 15px monospace";
+      ctx.fillText("⛽", fuel.x+8, fuel.y+22);
+      ctx.shadowBlur = 0;
+    }
+    
+    function drawGameOverlay() {
+      if(!gameOver) return;
+      ctx.globalAlpha = 0.85;
+      ctx.fillStyle = '#010a0f';
+      ctx.fillRect(0, 0, W, H);
+      ctx.globalAlpha = 1;
+      ctx.font = 'bold 38px "Segoe UI", system-ui';
+      ctx.fillStyle = '#ffaa33';
+      ctx.shadowBlur = 0;
+      ctx.fillText("GAME OVER", W/2-120, H/2-45);
+      ctx.font = '22px monospace';
+      ctx.fillStyle = '#aaf0ff';
+      ctx.fillText("BMW CRASH", W/2-75, H/2+15);
+      ctx.font = '18px monospace';
+      ctx.fillStyle = '#fcd48e';
+      ctx.fillText("PRESS [RESTART] TO RACE AGAIN", W/2-165, H-90);
+      ctx.font = "bold 16px monospace";
+      ctx.fillStyle = '#7db9ff';
+      ctx.fillText("///M POWER", W/2-55, H-45);
+    }
+    
+    function drawHUDonCanvas() {
+      // speedometer style
+      ctx.font = "bold 14px 'Orbitron'";
+      ctx.fillStyle = '#eef5ff';
+      ctx.shadowBlur = 0;
+      ctx.fillText(`⚡ ${Math.floor(currentSpeed*10)} km/h`, 20, 45);
+      ctx.fillStyle = '#7dd3ff';
+      ctx.fillText(`🏎️ BMW M4 GT3`, W-120, 45);
+    }
+    
+    // roundRect helper
+    if (!CanvasRenderingContext2D.prototype.roundRect) {
+      CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
+        if (w < 2 * r) r = w / 2;
+        if (h < 2 * r) r = h / 2;
+        this.moveTo(x+r, y);
+        this.lineTo(x+w-r, y);
+        this.quadraticCurveTo(x+w, y, x+w, y+r);
+        this.lineTo(x+w, y+h-r);
+        this.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
+        this.lineTo(x+r, y+h);
+        this.quadraticCurveTo(x, y+h, x, y+h-r);
+        this.lineTo(x, y+r);
+        this.quadraticCurveTo(x, y, x+r, y);
+        return this;
+      };
+    }
+    
+    function draw() {
+      drawRoad();
+      // draw fuel items
+      for(let f of fuelItems) drawFuelItem(f);
+      // draw enemies
+      for(let obs of obstacles) drawEnemyCar(obs);
+      drawPlayerCar();
+      drawHUDonCanvas();
+      drawGameOverlay();
+      // fuel bar on top-right
+      ctx.fillStyle = '#2e4155';
+      ctx.fillRect(W-120, 15, 100, 16);
+      ctx.fillStyle = '#f2a65a';
+      let fuelPercent = fuel/100;
+      ctx.fillRect(W-120, 15, 100 * fuelPercent, 16);
+      ctx.fillStyle = 'white';
+      ctx.font = "bold 10px monospace";
+      ctx.fillText("FUEL", W-118, 28);
+    }
+    
+    // ----- GAME LOOP (requestAnimationFrame) -----
+    let lastTimestamp = 0;
+    function gameLoop() {
+      if(!gameOver) {
+        updatePlayerLane();
+        updateGame();
+      }
+      draw();
+      requestAnimationFrame(gameLoop);
+    }
+    
+    // ----- EVENT HANDLERS (keyboard + touch / mobile arrows)-----
+    function handleKeyDown(e) {
+      const key = e.key;
+      if(key === 'ArrowLeft' || key === 'a' || key === 'A') {
+        leftPressed = true;
+        e.preventDefault();
+      } else if(key === 'ArrowRight' || key === 'd' || key === 'D') {
+        rightPressed = true;
+        e.preventDefault();
+      }
+      // optional restart with 'R' key
+      if(key === 'r' || key === 'R') {
+        resetGame();
+        e.preventDefault();
+      }
+    }
+    
+    function handleKeyUp(e) {
+      const key = e.key;
+      if(key === 'ArrowLeft' || key === 'a' || key === 'A') {
+        leftPressed = false;
+        e.preventDefault();
+      } else if(key === 'ArrowRight' || key === 'd' || key === 'D') {
+        rightPressed = false;
+        e.preventDefault();
+      }
+    }
+    
+    // mobile / touch support: simple touch buttons (create virtual)
+    function setupMobileControls() {
+      const container = document.querySelector('.dashboard');
+      const touchDiv = document.createElement('div');
+      touchDiv.style.display = 'flex';
+      touchDiv.style.gap = '15px';
+      touchDiv.style.marginTop = '8px';
+      const leftBtn = document.createElement('button');
+      leftBtn.innerText = '◀ LEFT';
+      leftBtn.style.background = '#2c5670';
+      const rightBtn = document.createElement('button');
+      rightBtn.innerText = 'RIGHT ▶';
+      rightBtn.style.background = '#2c5670';
+      touchDiv.appendChild(leftBtn);
+      touchDiv.appendChild(rightBtn);
+      container.appendChild(touchDiv);
+      
+      leftBtn.addEventListener('mousedown', (e) => { leftPressed = true; e.preventDefault(); });
+      leftBtn.addEventListener('mouseup', () => { leftPressed = false; });
+      leftBtn.addEventListener('touchstart', (e) => { leftPressed = true; e.preventDefault(); });
+      leftBtn.addEventListener('touchend', () => { leftPressed = false; });
+      
+      rightBtn.addEventListener('mousedown', (e) => { rightPressed = true; e.preventDefault(); });
+      rightBtn.addEventListener('mouseup', () => { rightPressed = false; });
+      rightBtn.addEventListener('touchstart', (e) => { rightPressed = true; e.preventDefault(); });
+      rightBtn.addEventListener('touchend', () => { rightPressed = false; });
+    }
+    
+    // initialize everything
+    function init() {
+      resetGame();
+      window.addEventListener('keydown', handleKeyDown);
+      window.addEventListener('keyup', handleKeyUp);
+      document.getElementById('resetGameBtn').addEventListener('click', () => {
+        resetGame();
+      });
+      setupMobileControls();
+      // initial spawn of some objects to not feel empty
+      for(let i=0;i<2;i++) spawnObstacle();
+      for(let i=0;i<1;i++) spawnFuel();
+      gameLoop();
+    }
+    
+    init();
+  })();
 </script>
 </body>
 </html>
