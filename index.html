@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Akshay Kumar | Mumbai Indians IPL Arena</title>
+  <title>Mumbai Indians IPL Arena | 9th Grade Fan Hub</title>
   <style>
     * {
       margin: 0;
@@ -19,6 +19,7 @@
       overflow-x: hidden;
     }
 
+    /* custom scroll */
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -31,36 +32,31 @@
       border-radius: 10px;
     }
 
+    /* container */
     .container {
       max-width: 1300px;
       margin: 0 auto;
       padding: 1.2rem 2rem;
     }
 
-    /* HERO SECTION WITH AKSHAY KUMAR DYNAMITE DESIGN */
+    /* header with mumbai vibe */
     .hero {
       background: radial-gradient(circle at 20% 30%, #003b5c, #001c2b);
       border-radius: 2.5rem;
       padding: 1.8rem 2rem;
       margin-bottom: 2.5rem;
-      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.6);
-      border: 1px solid rgba(249, 160, 27, 0.4);
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.5);
+      border: 1px solid rgba(249, 160, 27, 0.3);
       position: relative;
       overflow: hidden;
-      transition: transform 0.2s;
-    }
-
-    .hero:hover {
-      transform: scale(1.01);
-      border-color: #f9b84a;
     }
 
     .hero::before {
-      content: "🏆⭐";
-      font-size: 9rem;
+      content: "🏆";
+      font-size: 10rem;
       position: absolute;
       bottom: -20px;
-      right: 0px;
+      right: -10px;
       opacity: 0.1;
       pointer-events: none;
     }
@@ -76,44 +72,18 @@
     .title-box h1 {
       font-size: 2.8rem;
       letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #ffb347, #ffdd99, #ffe6b3);
+      background: linear-gradient(135deg, #ffb347, #ffdd99);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       text-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
-    /* AKSHAY KUMAR GLAM NAME SECTION */
-    .akshay-glow {
-      background: linear-gradient(120deg, #f9a01b, #ffcf4a, #ffb347);
-      display: inline-block;
-      padding: 0.2rem 1.3rem;
-      border-radius: 60px;
-      margin-top: 0.5rem;
-      box-shadow: 0 0 15px rgba(249,160,27,0.6);
-    }
-
-    .akshay-glow span {
-      font-size: 2rem;
-      font-weight: 800;
-      background: #0a1a1f;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 0 5px #f9b01b;
-      letter-spacing: 1px;
-    }
-
-    .owner-tag {
+    .title-box p {
       font-size: 1rem;
-      font-weight: 600;
-      background: #00000066;
-      backdrop-filter: blur(4px);
-      padding: 5px 15px;
-      border-radius: 40px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      color: #b9e2ff;
+      margin-top: 8px;
+      font-weight: 500;
     }
 
     .stats-soft {
@@ -131,7 +101,7 @@
       color: #f9b84a;
     }
 
-    /* cards & games */
+    /* card grid & games */
     .flex-cards {
       display: flex;
       flex-wrap: wrap;
@@ -163,6 +133,19 @@
       display: flex;
       gap: 12px;
       align-items: center;
+    }
+
+    .count {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #f9b84a;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      margin: 20px 0 12px;
+      flex-wrap: wrap;
     }
 
     .btn {
@@ -203,6 +186,18 @@
       border-left: 8px solid #f9a01b;
     }
 
+    .edit-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .edit-header h2 {
+      font-size: 1.8rem;
+    }
+
     .interactive-text {
       background: #031016;
       padding: 1.2rem;
@@ -210,6 +205,7 @@
       font-family: monospace;
       font-size: 1.1rem;
       margin: 1rem 0;
+      border: 1px solid #2a6b6b;
     }
 
     #editableMessage {
@@ -224,6 +220,17 @@
       resize: vertical;
     }
 
+    .skill-badge {
+      background: #f9a01b20;
+      border-radius: 60px;
+      padding: 6px 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+
+    /* games crate */
     .games-crate {
       background: radial-gradient(ellipse at 30% 20%, #1f4949, #06212b);
       border-radius: 2rem;
@@ -248,6 +255,29 @@
       text-align: center;
     }
 
+    .guess-number {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin: 12px 0;
+    }
+
+    .guess-number input {
+      width: 80px;
+      padding: 10px;
+      border-radius: 30px;
+      border: none;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .flip-card-mini {
+      background: #005c6e33;
+      padding: 12px;
+      border-radius: 20px;
+    }
+
+    /* follower + view counter 5000k style */
     .social-proof {
       display: flex;
       justify-content: space-between;
@@ -275,6 +305,23 @@
       color: #f9bc5c;
     }
 
+    button.small-btn {
+      background: none;
+      border: 1px solid #f9a01b;
+      padding: 5px 12px;
+      border-radius: 2rem;
+      color: white;
+      cursor: pointer;
+      margin-left: 8px;
+      transition: 0.2s;
+    }
+
+    button.small-btn:hover {
+      background: #f9a01b;
+      color: black;
+    }
+
+    /* ipl table */
     .ipl-table {
       background: #05171e;
       border-radius: 1.5rem;
@@ -296,6 +343,7 @@
 
     th {
       color: #f9b84a;
+      font-weight: 600;
     }
 
     .highlight {
@@ -310,36 +358,24 @@
       opacity: 0.7;
     }
 
-    .name-fire {
-      animation: glowPulse 1.5s infinite alternate;
-    }
-
-    @keyframes glowPulse {
-      0% { text-shadow: 0 0 2px #f9a01b; }
-      100% { text-shadow: 0 0 15px #ffcf4a, 0 0 5px #ffa500; }
-    }
-
     @media (max-width: 750px) {
-      .container { padding: 1rem; }
-      .title-box h1 { font-size: 2rem; }
-      .akshay-glow span { font-size: 1.4rem; }
+      .container {
+        padding: 1rem;
+      }
+      .title-box h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
 <div class="container">
-  <!-- HERO with AKSHAY KUMAR premium name design -->
+  <!-- Hero Section : Mumbai Indians -->
   <div class="hero">
     <div class="mumbai-badge">
       <div class="title-box">
         <h1>🇮🇳 MUMBAI INDIANS <span style="font-size:2rem;">💙🏏</span></h1>
-        <div class="akshay-glow">
-          <span class="name-fire">🔥 A K S H A Y   K U M A R 🔥</span>
-        </div>
-        <div class="owner-tag">
-          ⚡ FAN CAPTAIN • CRIC EDITOR • 9TH GRADE LEGEND ⚡
-        </div>
-        <p style="margin-top: 12px;">#OneFamily • IPL Dynasty • 5 Titles | Official MI Superuser</p>
+        <p>#OneFamily • IPL Dynasty • 5 Titles | 9th Grade Fan Command</p>
       </div>
       <div class="stats-soft">
         📍 Wankhede Stadium • Mumbai<br>
@@ -348,47 +384,50 @@
     </div>
   </div>
 
-  <!-- 5000k followers + view500 massive dashboard -->
+  <!-- 5000k followers + view500 (More than view500 interactive) -->
   <div class="social-proof">
     <div class="follower-card">
-      <div style="font-size:0.9rem;">👥 TOTAL FOLLOWERS (AKSHAY's ARMY)</div>
+      <div style="font-size:0.9rem;">👥 TOTAL FOLLOWERS</div>
       <div class="big-number" id="followersDisplay">5.00M</div>
-      <div>⭐ 5000k+ Global MI Paltan ⭐</div>
-      <button class="small-btn" id="boostFollowersBtn" style="background:#f9a01b; border:none; margin-top:6px;">+50K Cheer</button>
+      <div>⭐ 5000k+ Global Army ⭐</div>
+      <button class="small-btn" id="boostFollowersBtn">+50K Cheer</button>
     </div>
     <div class="view-card">
       <div style="font-size:0.9rem;">👁️ MATCH VIEWS (Today)</div>
       <div class="big-number" id="viewsDisplay">500</div>
       <div>🔥 more than view500 🔥</div>
-      <button class="small-btn" id="addViewsBtn" style="background:#f9a01b; border:none; margin-top:6px;">+ Watch Party</button>
+      <button class="small-btn" id="addViewsBtn">+ Watch Party</button>
     </div>
   </div>
 
-  <!-- Games Crate : Akshay's Arcade -->
+  <!-- Games Crate: multiple mini games -->
   <div class="games-crate">
-    <h2>🎮 AKSHAY'S GAMES CRATE 🎲</h2>
+    <h2>🎮 GAMES CRATE 🎲</h2>
     <div class="game-row">
+      <!-- Game 1: Six Hitter Prediction -->
       <div class="game-box">
         <h3>🏏 SIX HITTER</h3>
-        <p>Predict boundaries</p>
-        <div class="guess-number" style="display:flex; gap:10px; justify-content:center;">
-          <input type="number" id="sixGuess" placeholder="0-6" min="0" max="6" style="padding:8px; border-radius:30px; border:none; width:80px;">
+        <p>Predict boundaries in next over!</p>
+        <div class="guess-number">
+          <input type="number" id="sixGuess" placeholder="0-6" min="0" max="6">
           <button class="btn" id="sixBtn">💥 CRACK SIX 💥</button>
         </div>
-        <p id="sixResult" style="font-size:0.9rem;">⚡ Result</p>
+        <p id="sixResult" style="font-size:0.9rem;">⚡ Result will appear</p>
       </div>
+      <!-- Game 2: Score guess (classic crate) -->
       <div class="game-box">
         <h3>🎯 SCORE PREDICTOR</h3>
-        <p>Final runs for MI</p>
-        <div class="guess-number" style="display:flex; gap:10px; justify-content:center;">
-          <input type="number" id="scoreGuess" placeholder="120-250" style="padding:8px; border-radius:30px; width:100px;">
-          <button class="btn" id="scoreBtn">PREDICT</button>
+        <p>Final runs for MI today?</p>
+        <div class="guess-number">
+          <input type="number" id="scoreGuess" placeholder="120-250">
+          <button class="btn" id="scoreBtn">PREDICT & WIN</button>
         </div>
         <p id="scoreResult">🤔 Guess match score</p>
       </div>
+      <!-- Game 3: Toss / luck game -->
       <div class="game-box">
         <h3>🪙 TOSS MASTER</h3>
-        <p>Call Heads/Tails</p>
+        <p>Call Heads or Tails</p>
         <div style="display: flex; gap: 15px; justify-content: center; margin: 10px 0;">
           <button class="btn-outline btn" id="headsBtn">HEADS</button>
           <button class="btn-outline btn" id="tailsBtn">TAILS</button>
@@ -398,13 +437,267 @@
     </div>
   </div>
 
-  <!-- EDITING SKILL ZONE : Akshay's creative studio -->
+  <!-- EDITING SKILL ZONE : more than editing skill (live text editor + style) -->
   <div class="edit-zone">
-    <h2>✍️ AKSHAY KUMAR — EDITING SKILL CENTRAL</h2>
-    <p>✨ Live editor + HTML/CSS mastery | Create match reports like a pro ✨</p>
+    <div class="edit-header">
+      <h2>✍️ YOUR EDITING SKILL CENTRAL</h2>
+      <div class="skill-badge">⚡ live editor + html/css skill ⚡</div>
+    </div>
+    <p>✏️ Edit the match summary below — customize like a true content creator! (real-time update)</p>
     <div class="interactive-text">
-      <textarea id="editableMessage" rows="3" placeholder="Write your own match analysis...">💙 MUMBAI INDIANS: Rohit's storm at Wankhede! Target 210. Bumrah 3/25. #MIvsCSK 🔥</textarea>
+      <textarea id="editableMessage" rows="3" placeholder="Write your own match analysis, Mumbai Indians strategy...">💙 MUMBAI INDIANS: Rohit's storm at Wankhede! Target 210. Bumrah 3/25. #MIvsCSK 🔥</textarea>
     </div>
     <div class="interactive-text" style="background:#154e42;">
-      <strong>🎬 LIVE PREVIEW (Your edit appears here):</strong>
-      <div id="livePreview"
+      <strong>✨ PREVIEW PANEL (your edit goes live):</strong>
+      <div id="livePreview" style="margin-top: 10px; padding: 8px; background:#0c302c; border-radius: 1rem;">💙 MUMBAI INDIANS: Rohit's storm at Wankhede! Target 210. Bumrah 3/25. #MIvsCSK 🔥</div>
+    </div>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
+      <button class="btn" id="resetEditBtn">Reset Editing</button>
+      <button class="btn btn-outline" id="copySkillBtn">📋 Copy Skill Text</button>
+    </div>
+    <p class="skill-badge" style="margin-top: 12px;">🎨 Your editing skill = PRO content creator | dynamic styling ready</p>
+  </div>
+
+  <!-- IPL table: Mumbai Indians player stats + more then view 500/ follw 5000k showcase -->
+  <div class="ipl-table">
+    <h3>🏆 MI CORE SQUAD 2025 (Stats | Fan following 5000k+ vibes)</h3>
+    <table>
+      <thead>
+        <tr><th>Player</th><th>Role</th><th>IPL Runs/Wkts</th><th>Fan Boost ⚡</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Rohit Sharma</td><td>Hitman</td><td>⭐ 6211 runs</td><td class="highlight">5.2M followers</td></tr>
+        <tr><td>Hardik Pandya</td><td>All-Rounder</td><td>🔥 2300+ runs & 53 wkts</td><td>4.8M</td></tr>
+        <tr><td>Jasprit Bumrah</td><td>Yorker King</td><td>⭐ 165 wkts</td><td class="highlight">5.0M</td></tr>
+        <tr><td>Suryakumar Yadav</td><td>360°</td><td>🔥 3500+ runs</td><td>4.9M</td></tr>
+        <tr><td>Tilak Varma</td><td>Rising Star</td><td>💥 987 runs (last season)</td><td>1.2M</td></tr>
+      </tbody>
+    </table>
+    <div style="font-size:0.85rem; padding-bottom: 12px;">🌟 Total Fanbase crossing 5000k+ worldwide 🌟 #MI Paltan</div>
+  </div>
+
+  <!-- More interactive: follw 5000k booster / view 500 additional crate -->
+  <div class="flex-cards" style="margin-top: 10px;">
+    <div class="card">
+      <h3>📈 CRATE: VIEW BOOST</h3>
+      <p>Current match live views: <strong id="liveViewCounter">500</strong> (more than view500 already!)</p>
+      <div class="btn-group">
+        <button class="btn" id="view500PlusBtn">➕ View +100</button>
+        <button class="btn-outline btn" id="resetViewsBtn">Reset Views (500)</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>👑 FOLLOWER DYNASTY</h3>
+      <p>Mumbai Indians Universe: <strong id="followerCountSpan">5000</strong> K (5000k = 5M)</p>
+      <div class="btn-group">
+        <button class="btn" id="followBoostBtn">🎉 Add 100K followers</button>
+        <button class="btn-outline btn" id="resetFollowBtn">Reset 5000k</button>
+      </div>
+      <small>*crossed 5000k milestone, #MostFollwedIPLteam</small>
+    </div>
+    <div class="card">
+      <h3>🎬 EDITING MASTERY</h3>
+      <p>++ HTML/CSS live editing skill more then games crate ✨</p>
+      <button class="btn" id="themeFlashBtn">🌈 Flash MI Theme</button>
+      <div id="flashMsg" style="margin-top: 12px; font-size:0.8rem;"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>🏏 Mumbhai Indians | 9th Grade Project | IPL Mania | Games, Editing Skills, 5000k Fandom, Views 500+ | #OneFamily 🏆</p>
+  </footer>
+</div>
+
+<script>
+  // ---------- FOLLOWER & VIEW LOGIC (5000k / view500) ----------
+  let followersInK = 5000;   // represents 5000k followers => 5,000,000
+  let currentViews = 500;
+
+  const followersDisplayEl = document.getElementById('followersDisplay');
+  const viewsDisplayEl = document.getElementById('viewsDisplay');
+  const liveViewCounter = document.getElementById('liveViewCounter');
+  const followerCountSpan = document.getElementById('followerCountSpan');
+
+  function updateSocialUI() {
+    let millionValue = (followersInK / 1000).toFixed(2);
+    if(followersInK >= 1000) {
+      followersDisplayEl.innerText = millionValue + "M";
+    } else {
+      followersDisplayEl.innerText = followersInK + "K";
+    }
+    followerCountSpan.innerText = followersInK;
+    viewsDisplayEl.innerText = currentViews;
+    liveViewCounter.innerText = currentViews;
+  }
+
+  document.getElementById('boostFollowersBtn').addEventListener('click', () => {
+    followersInK += 50;
+    if(followersInK > 9999) followersInK = 9999;
+    updateSocialUI();
+  });
+  document.getElementById('addViewsBtn').addEventListener('click', () => {
+    currentViews += 75;
+    updateSocialUI();
+  });
+  document.getElementById('view500PlusBtn').addEventListener('click', () => {
+    currentViews += 100;
+    updateSocialUI();
+  });
+  document.getElementById('resetViewsBtn').addEventListener('click', () => {
+    currentViews = 500;
+    updateSocialUI();
+  });
+  document.getElementById('followBoostBtn').addEventListener('click', () => {
+    followersInK += 100;
+    if(followersInK > 9999) followersInK = 9999;
+    updateSocialUI();
+  });
+  document.getElementById('resetFollowBtn').addEventListener('click', () => {
+    followersInK = 5000;
+    updateSocialUI();
+  });
+
+  updateSocialUI();
+
+  // ---------- GAME 1: SIX PREDICTION ----------
+  const sixBtn = document.getElementById('sixBtn');
+  const sixGuessInput = document.getElementById('sixGuess');
+  const sixResult = document.getElementById('sixResult');
+  sixBtn.addEventListener('click', () => {
+    let guess = parseInt(sixGuessInput.value);
+    if(isNaN(guess) || guess < 0 || guess > 6) {
+      sixResult.innerText = "❌ Enter number between 0-6!";
+      return;
+    }
+    const actualSixes = Math.floor(Math.random() * 7); // 0-6
+    if(guess === actualSixes) {
+      sixResult.innerHTML = `🎉 PERFECT HIT! Sixes: ${actualSixes}. You guessed it right! +100 Fan energy 🎉`;
+    } else {
+      sixResult.innerHTML = `😲 Actual sixes: ${actualSixes}. Your guess: ${guess}. Better luck in next over! 🏏`;
+    }
+  });
+
+  // GAME 2: Score predictor
+  const scoreBtn = document.getElementById('scoreBtn');
+  const scoreGuessInput = document.getElementById('scoreGuess');
+  const scoreResult = document.getElementById('scoreResult');
+  scoreBtn.addEventListener('click', () => {
+    let guessScore = parseInt(scoreGuessInput.value);
+    if(isNaN(guessScore) || guessScore < 50 || guessScore > 300) {
+      scoreResult.innerText = "📊 Please enter realistic score 50-300";
+      return;
+    }
+    const actualScore = Math.floor(Math.random() * (260 - 120 + 1) + 120);
+    const diff = Math.abs(guessScore - actualScore);
+    if(diff <= 10) {
+      scoreResult.innerHTML = `🏆 SPOT ON! MI scored ${actualScore}. You're a true predictor! 🏆`;
+    } else if(diff <= 25) {
+      scoreResult.innerHTML = `👍 Close! Actual: ${actualScore}, You guessed ${guessScore}. Good effort!`;
+    } else {
+      scoreResult.innerHTML = `💔 Missed. MI made ${actualScore} runs. Your guess ${guessScore}. Next time!`;
+    }
+  });
+
+  // GAME 3: TOSS
+  const headsBtn = document.getElementById('headsBtn');
+  const tailsBtn = document.getElementById('tailsBtn');
+  const tossResultSpan = document.getElementById('tossResult');
+  function tossGame(call) {
+    const outcome = Math.random() < 0.5 ? 'HEADS' : 'TAILS';
+    if(call === outcome) {
+      tossResultSpan.innerHTML = `🎉 TOSS WIN! You called ${call} and it's ${outcome}. Captain chose to bat first! 🎉`;
+    } else {
+      tossResultSpan.innerHTML = `😓 Toss lost! You called ${call}, result is ${outcome}. Better luck next flip!`;
+    }
+  }
+  headsBtn.addEventListener('click', () => tossGame('HEADS'));
+  tailsBtn.addEventListener('click', () => tossGame('TAILS'));
+
+  // ---------- EDITING SKILL : live text editor ----------
+  const textareaEdit = document.getElementById('editableMessage');
+  const livePreviewDiv = document.getElementById('livePreview');
+  function updatePreview() {
+    let rawText = textareaEdit.value;
+    livePreviewDiv.innerText = rawText;
+  }
+  textareaEdit.addEventListener('input', updatePreview);
+  document.getElementById('resetEditBtn').addEventListener('click', () => {
+    textareaEdit.value = "💙 MUMBAI INDIANS: Rohit's storm at Wankhede! Target 210. Bumrah 3/25. #MIvsCSK 🔥";
+    updatePreview();
+  });
+  document.getElementById('copySkillBtn').addEventListener('click', () => {
+    navigator.clipboard.writeText(textareaEdit.value);
+    alert("✅ Your edited match summary copied! Show your editing skills 🔥");
+  });
+  updatePreview();
+
+  // Theme flash effect (editing skill + games crate)
+  const themeBtn = document.getElementById('themeFlashBtn');
+  const flashMsgSpan = document.getElementById('flashMsg');
+  themeBtn.addEventListener('click', () => {
+    document.body.style.transition = "background 0.2s";
+    document.body.style.background = "linear-gradient(145deg, #2a4b3a, #0d2a2f)";
+    flashMsgSpan.innerText = "✨ Mumbai Indians Gold Rush! Styling edited ✨";
+    setTimeout(() => {
+      document.body.style.background = "linear-gradient(145deg, #0a1f1e 0%, #071a1f 100%)";
+      flashMsgSpan.innerText = "🏏 Back to MI vibe! Your editing skill is powerful!";
+    }, 600);
+  });
+
+  // Additional follower-view consistency with the cards : ensure dynamic numbers across elements
+  function syncExtraElements() {
+    const folDisplayLarge = document.getElementById('followersDisplay');
+    if(folDisplayLarge) folDisplayLarge.innerText = (followersInK >= 1000) ? (followersInK/1000).toFixed(2)+"M" : followersInK+"K";
+    const viewSpan = document.getElementById('viewsDisplay');
+    if(viewSpan) viewSpan.innerText = currentViews;
+    const liveC = document.getElementById('liveViewCounter');
+    if(liveC) liveC.innerText = currentViews;
+    const followerKspan = document.getElementById('followerCountSpan');
+    if(followerKspan) followerKspan.innerText = followersInK;
+  }
+
+  // Override any update eventlistener to also sync
+  const origUpdate = updateSocialUI;
+  window.updateSocialUI = function() {
+    origUpdate();
+    syncExtraElements();
+  };
+  updateSocialUI();
+
+  // extra manual rebind for buttons that modify followers or views
+  const allButtons = document.querySelectorAll('button');
+  function patchButtons() {
+    let btnsList = [document.getElementById('boostFollowersBtn'), document.getElementById('addViewsBtn'), document.getElementById('view500PlusBtn'), document.getElementById('resetViewsBtn'), document.getElementById('followBoostBtn'), document.getElementById('resetFollowBtn')];
+    btnsList.forEach(btn => {
+      if(btn) {
+        let oldClick = btn.onclick;
+        btn.addEventListener('click', () => {
+          setTimeout(() => {
+            syncExtraElements();
+          }, 10);
+        });
+      }
+    });
+  }
+  patchButtons();
+  syncExtraElements();
+
+  // extra dynamic text to show "more then view500" note
+  const viewDisplayDiv = document.querySelector('.view-card .big-number');
+  if(viewDisplayDiv && currentViews >= 500) {
+    // just for fun visual
+  }
+
+  // final feature: show "9th grade student ipl mumbhai" pride message in console
+  console.log("🏏 Mumbhai Indians | 9th Grade | Games Crate + Editing Skill + 5000k followers & view500+ 🔥");
+
+  // add dynamic total followers hint = 5000k exclamation
+  const followerStatement = document.createElement('div');
+  followerStatement.style.textAlign = 'center';
+  followerStatement.style.marginTop = '10px';
+  followerStatement.style.fontSize = '0.75rem';
+  followerStatement.innerHTML = '💎 5000k+ followers = 5 Million+ MI Family | View500+ is just start 🔥';
+  document.querySelector('.social-proof')?.after(followerStatement);
+</script>
+</body>
+</html>
