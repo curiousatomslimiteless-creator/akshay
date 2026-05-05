@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Mumbai Indians IPL Arena | 9th Grade Fan Hub</title>
+  <title>IPL MASTER ARENA | Akshay Kumar Editor | All Teams Win/Loss</title>
   <style>
     * {
       margin: 0;
@@ -14,7 +14,484 @@
 
     body {
       background: linear-gradient(145deg, #0a1f1e 0%, #071a1f 100%);
-      font-family: 'Poppins', 'Segoe UI', system-ui, -apple-system, 'Inter', sans-serif;
+      font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+      color: #f0f3f5;
+      overflow-x: auto;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track { background: #0c2b2b; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb { background: #f9a01b; border-radius: 10px; }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1.2rem 1.5rem;
+    }
+
+    /* hero */
+    .hero {
+      background: radial-gradient(circle at 20% 30%, #003b5c, #001c2b);
+      border-radius: 2rem;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid #f9a01b66;
+    }
+
+    .title-box h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #ffb347, #ffdd99);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* AKSHAY KUMAR EDITOR premium badge */
+    .akshay-badge {
+      background: linear-gradient(120deg, #f9a01b, #ffcf4a, #ffb347);
+      display: inline-block;
+      padding: 0.3rem 1.8rem;
+      border-radius: 60px;
+      margin: 10px 0;
+      box-shadow: 0 0 15px #f9a01b, 0 0 5px #ffb347;
+      animation: glowPulse 1.8s infinite alternate;
+    }
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 5px #f9a01b; }
+      100% { box-shadow: 0 0 20px #ffcf4a, 0 0 8px #ffa500; }
+    }
+    .akshay-badge span {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: #0a1a1f;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 2px;
+    }
+    .editor-tag {
+      font-size: 0.85rem;
+      background: #000000aa;
+      display: inline-block;
+      padding: 4px 15px;
+      border-radius: 40px;
+      margin-left: 10px;
+      border-left: 3px solid #f9a01b;
+    }
+
+    /* team grid */
+    .teams-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+    .team-card {
+      background: #0a2329cc;
+      backdrop-filter: blur(4px);
+      border-radius: 1.5rem;
+      padding: 0.8rem 1rem;
+      min-width: 110px;
+      text-align: center;
+      border: 1px solid #f9a01b55;
+      transition: 0.2s;
+    }
+    .team-card h4 {
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+    .team-stats {
+      font-size: 0.8rem;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 8px;
+    }
+    .win { color: #6fcf97; }
+    .loss { color: #e67e7e; }
+    .points { color: #f9b84a; font-weight: bold; }
+
+    /* match simulator */
+    .match-simulator {
+      background: #0e2a30dd;
+      border-radius: 2rem;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border: 1px solid #f9a01b;
+    }
+    .selector-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: flex-end;
+      margin: 1rem 0;
+    }
+    .select-box {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .select-box select {
+      background: #031016;
+      color: #ffd966;
+      padding: 10px 15px;
+      border-radius: 40px;
+      border: 1px solid #f9a01b;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn {
+      background: #f9a01b;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn:hover { background: #ffb84d; transform: scale(0.97);}
+    .match-result {
+      background: #03161c;
+      padding: 1rem;
+      border-radius: 1.5rem;
+      margin-top: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    /* points table */
+    .points-table-wrapper {
+      overflow-x: auto;
+      background: #05171e;
+      border-radius: 1.5rem;
+      padding: 1rem;
+      margin: 2rem 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+    th, td {
+      padding: 12px 8px;
+      text-align: center;
+      border-bottom: 1px solid #f9a01b33;
+    }
+    th { color: #f9b84a; }
+    .team-name { font-weight: bold; text-align: left; }
+
+    .live-score {
+      background: #01161e;
+      border-radius: 1.2rem;
+      padding: 0.8rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      opacity: 0.7;
+    }
+    @media (max-width: 700px) {
+      .container { padding: 0.8rem; }
+      .team-card { min-width: 85px; }
+      .akshay-badge span { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- Hero Section with Akshay Kumar Editor -->
+  <div class="hero">
+    <div class="title-box">
+      <h1>🇮🇳 IPL MEGA ARENA 🇮🇳</h1>
+      <div class="akshay-badge"><span>🔥 AKSHAY KUMAR — EDITOR 🔥</span></div>
+      <p>#OneFamily • ALL 10 TEAMS • WIN/LOSS TRACKER • TOSS + MATCH SIMULATOR</p>
+      <p style="font-size:0.85rem;">🏆 MI | CSK | RCB | SRH | GT | RR | LSG | PBKS | KKR | DC 🏆</p>
+      <div class="editor-tag">✍️ LIVE EDITING SKILL • MATCH PREDICTOR • CREATOR MODE ✍️</div>
+    </div>
+  </div>
+
+  <!-- ALL IPL TEAMS with realtime stats -->
+  <div class="teams-grid" id="teamsContainer"></div>
+
+  <!-- MATCH SIMULATOR: WHO WIN / LOSS / TOSS -->
+  <div class="match-simulator">
+    <h2>🎲 AKSHAY'S ULTIMATE MATCH CRATE 🎲</h2>
+    <p>Select two teams & simulate REALISTIC TOSS + MATCH RESULT (Win/Loss)</p>
+    <div class="selector-group">
+      <div class="select-box">
+        <label>🏏 TEAM A</label>
+        <select id="teamASelect"></select>
+      </div>
+      <div class="select-box">
+        <label>⚡ TEAM B</label>
+        <select id="teamBSelect"></select>
+      </div>
+      <button class="btn" id="simulateMatchBtn">🔥 SIMULATE MATCH 🔥</button>
+      <button class="btn" id="resetTourneyBtn" style="background:#2c5a6e;">🔄 RESET ALL STATS</button>
+    </div>
+    <div id="matchResultArea" class="match-result">
+      💥 Click "SIMULATE MATCH" to get TOSS winner, MATCH winner & margin 💥
+    </div>
+  </div>
+
+  <!-- POINTS TABLE (WIN/LOSS/NRR style) -->
+  <div class="points-table-wrapper">
+    <h3>📊 IPL POINTS TABLE (2025 EDITION) — EDITED BY AKSHAY KUMAR</h3>
+    <table id="pointsTable">
+      <thead>
+        <tr><th>#</th><th class="team-name">TEAM</th><th>PLAYED</th><th>WON</th><th>LOST</th><th>POINTS</th><th>NRR (SIM)</th></tr>
+      </thead>
+      <tbody id="pointsTableBody"></tbody>
+    </table>
+    <div class="live-score">🏆 *Every match updates Wins/Losses & Points live — Real IPL vibe* 🏆</div>
+  </div>
+
+  <!-- Extra feature: recent match feed + Live editing zone -->
+  <div style="background:#03212b; border-radius: 1.5rem; padding: 1rem; margin-top: 1rem;">
+    <h3>📺 RECENT MATCH FEED | AKSHAY EDITOR LIVE</h3>
+    <div id="matchFeed" style="max-height: 150px; overflow-y: auto; font-size:0.85rem;"></div>
+  </div>
+
+  <!-- EDITING SKILL ZONE - Akshay Kumar's signature editor -->
+  <div style="background: #0a262b; border-radius: 2rem; padding: 1.5rem; margin: 1.5rem 0; border-left: 8px solid #f9a01b;">
+    <h2>✍️ AKSHAY KUMAR — EDITOR'S STUDIO ✍️</h2>
+    <p>🎬 Live HTML/CSS editing skill | Create match reports, tweak messages, show your editing power!</p>
+    <div style="background: #031016; padding: 1rem; border-radius: 1rem; margin: 1rem 0;">
+      <textarea id="editableMessage" rows="3" style="width:100%; background:#fff7e8; color:#1e2a32; padding:1rem; border-radius:1rem; font-family:monospace; border:none;" placeholder="Write your own match analysis...">💥 AKSHAY KUMAR EDITOR: MI vs CSK blockbuster! Rohit's century leads Mumbai to victory. #IPL2025 🔥</textarea>
+    </div>
+    <div style="background: #154e42; padding: 1rem; border-radius: 1rem;">
+      <strong>✨ LIVE PREVIEW (your edit appears here):</strong>
+      <div id="livePreview" style="margin-top: 10px; padding: 10px; background:#0c302c; border-radius: 1rem;">💥 AKSHAY KUMAR EDITOR: MI vs CSK blockbuster! Rohit's century leads Mumbai to victory. #IPL2025 🔥</div>
+    </div>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 15px;">
+      <button class="btn" id="resetEditBtn">Reset Editor</button>
+      <button class="btn btn-outline" id="copySkillBtn" style="background:transparent; border:1.5px solid #f9a01b; color:#f9a01b;">📋 Copy Skill Text</button>
+      <button class="btn" id="themeFlashBtn">🌈 Flash Editor Theme</button>
+    </div>
+    <p style="margin-top:12px; background:#f9a01b20; display:inline-block; padding:5px 18px; border-radius:30px;">🎨 Akshay Kumar • Pro Editing Skill • Content Creator Mode 🎨</p>
+  </div>
+
+  <footer>🏏 Akshay Kumar — EDITOR | All 10 Teams | Win/Loss Tracker | Toss + Match Simulator | MI,CSK,RCB,SRH,GT,RR,LSG,PBKS,KKR,DC</footer>
+</div>
+
+<script>
+  // ---------- ALL 10 IPL TEAMS ----------
+  const teamsList = [
+    { code: "MI", name: "Mumbai Indians", short: "MI", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
+    { code: "CSK", name: "Chennai Super Kings", short: "CSK", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
+    { code: "RCB", name: "Royal Challengers", short: "RCB", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
+    { code: "SRH", name: "Sunrisers Hyd", short: "SRH", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
+    { code: "GT", name: "Gujarat Titans", short: "GT", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
+    { code: "RR", name: "Rajasthan Royals", short: "RR", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
+    { code: "LSG", name: "Lucknow SG", short: "LSG", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
+    { code: "PBKS", name: "Punjab Kings", short: "PBKS", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
+    { code: "KKR", name: "Kolkata KNR", short: "KKR", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 },
+    { code: "DC", name: "Delhi Capitals", short: "DC", played: 0, wins: 0, losses: 0, points: 0, nrr: 0.000 }
+  ];
+
+  function loadStats() {
+    const saved = localStorage.getItem("iplAllTeamsStats");
+    if(saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if(parsed.length === teamsList.length) {
+          for(let i=0; i<teamsList.length; i++) {
+            teamsList[i].played = parsed[i].played;
+            teamsList[i].wins = parsed[i].wins;
+            teamsList[i].losses = parsed[i].losses;
+            teamsList[i].points = parsed[i].points;
+            teamsList[i].nrr = parsed[i].nrr || 0;
+          }
+        }
+      } catch(e) {}
+    }
+  }
+  function saveStats() {
+    localStorage.setItem("iplAllTeamsStats", JSON.stringify(teamsList.map(t => ({ played:t.played, wins:t.wins, losses:t.losses, points:t.points, nrr:t.nrr }))));
+  }
+
+  function renderTeamsGrid() {
+    const container = document.getElementById("teamsContainer");
+    container.innerHTML = "";
+    teamsList.forEach(team => {
+      const card = document.createElement("div");
+      card.className = "team-card";
+      card.innerHTML = `
+        <h4>${team.short}</h4>
+        <div class="team-stats">
+          <span class="win">W:${team.wins}</span>
+          <span class="loss">L:${team.losses}</span>
+          <span class="points">Pts:${team.points}</span>
+        </div>
+        <div style="font-size:0.7rem;">NRR: ${team.nrr.toFixed(2)}</div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  function renderPointsTable() {
+    const sorted = [...teamsList].sort((a,b) => {
+      if(a.points !== b.points) return b.points - a.points;
+      return b.nrr - a.nrr;
+    });
+    const tbody = document.getElementById("pointsTableBody");
+    tbody.innerHTML = "";
+    sorted.forEach((team, idx) => {
+      const row = tbody.insertRow();
+      row.insertCell(0).innerText = idx+1;
+      row.insertCell(1).innerHTML = `<strong>${team.short}</strong> (${team.name})`;
+      row.insertCell(2).innerText = team.played;
+      row.insertCell(3).innerText = team.wins;
+      row.insertCell(4).innerText = team.losses;
+      row.insertCell(5).innerText = team.points;
+      row.insertCell(6).innerText = team.nrr.toFixed(3);
+    });
+  }
+
+  function addFeedMessage(winnerShort, loserShort, margin, tossInfo = "") {
+    const feedDiv = document.getElementById("matchFeed");
+    const newMsg = document.createElement("div");
+    newMsg.style.padding = "5px";
+    newMsg.style.borderBottom = "1px solid #f9a01b55";
+    newMsg.innerHTML = `🏏 ${winnerShort} defeated ${loserShort} by ${margin} runs | ${tossInfo} | Akshay Editor Live`;
+    feedDiv.prepend(newMsg);
+    if(feedDiv.children.length > 12) feedDiv.removeChild(feedDiv.lastChild);
+  }
+
+  function populateSelectors() {
+    const teamASelect = document.getElementById("teamASelect");
+    const teamBSelect = document.getElementById("teamBSelect");
+    teamASelect.innerHTML = "";
+    teamBSelect.innerHTML = "";
+    teamsList.forEach((team, idx) => {
+      let optA = document.createElement("option");
+      optA.value = idx;
+      optA.text = `${team.short} - ${team.name}`;
+      let optB = document.createElement("option");
+      optB.value = idx;
+      optB.text = `${team.short} - ${team.name}`;
+      teamASelect.appendChild(optA);
+      teamBSelect.appendChild(optB);
+    });
+    if(teamASelect.options.length>1 && teamBSelect.options.length>1) {
+      teamASelect.selectedIndex = 0;
+      teamBSelect.selectedIndex = 1;
+    }
+  }
+
+  // MAIN SIMULATE MATCH FUNCTION (realistic toss + win/loss)
+  window.simulateMatch = function() {
+    const teamAIdx = parseInt(document.getElementById("teamASelect").value);
+    const teamBIdx = parseInt(document.getElementById("teamBSelect").value);
+    if(teamAIdx === teamBIdx) {
+      document.getElementById("matchResultArea").innerHTML = "⚠️ Please choose two different IPL teams ⚠️";
+      return;
+    }
+    const teamA = teamsList[teamAIdx];
+    const teamB = teamsList[teamBIdx];
+    const tossWinner = Math.random() < 0.5 ? teamA : teamB;
+    const tossDecision = Math.random() < 0.6 ? "bat first" : "bowl first";
+    const strengthMap = { MI: 90, CSK: 89, RCB: 86, SRH: 83, GT: 87, RR: 84, LSG: 81, PBKS: 79, KKR: 81, DC: 80 };
+    let strA = strengthMap[teamA.short] || 80, strB = strengthMap[teamB.short] || 80;
+    let totalA = strA + Math.random() * 15 + (teamA.wins * 0.7);
+    let totalB = strB + Math.random() * 15 + (teamB.wins * 0.7);
+    let winner = totalA > totalB ? teamA : teamB;
+    let loser = winner === teamA ? teamB : teamA;
+    let margin = Math.floor(Math.random() * 45) + 8;
+    if(Math.random() < 0.1) { winner = loser; loser = (winner === teamA ? teamB : teamA); margin = Math.floor(Math.random() * 30)+5; }
+    
+    // Update stats
+    winner.played++; loser.played++; winner.wins++; loser.losses++; winner.points += 2;
+    let winNrrDelta = (Math.random() * 0.7 + 0.2).toFixed(3);
+    let lossNrrDelta = -(Math.random() * 0.6 + 0.2).toFixed(3);
+    winner.nrr = +(winner.nrr + parseFloat(winNrrDelta)).toFixed(3);
+    loser.nrr = +(loser.nrr + parseFloat(lossNrrDelta)).toFixed(3);
+    if(winner.nrr > 2.5) winner.nrr = 2.5;
+    if(loser.nrr < -2.5) loser.nrr = -2.5;
+    saveStats();
+    renderTeamsGrid();
+    renderPointsTable();
+    addFeedMessage(winner.short, loser.short, margin, `Toss: ${tossWinner.short} ${tossDecision}`);
+    
+    document.getElementById("matchResultArea").innerHTML = `
+      🎲 TOSS: ${tossWinner.short} won the toss and chose to ${tossDecision}. <br>
+      🏆 MATCH RESULT: ${winner.short} beat ${loser.short} by ${margin} runs! 🏆<br>
+      ⚡ Points updated: ${winner.short} +2 pts | Edited by Akshay Kumar.
+    `;
+  };
+
+  function resetAllStats() {
+    for(let t of teamsList) {
+      t.played = 0; t.wins = 0; t.losses = 0; t.points = 0; t.nrr = 0;
+    }
+    saveStats();
+    renderTeamsGrid();
+    renderPointsTable();
+    document.getElementById("matchResultArea").innerHTML = "🔄 All IPL stats reset by Akshay Editor! New simulation season started 🔄";
+    const feedDiv = document.getElementById("matchFeed");
+    feedDiv.innerHTML = "<div>✨ Season Reset — All teams back to 0 points | Akshay Kumar Editor ✨</div>";
+  }
+
+  // ---------- EDITING SKILL ZONE SCRIPT ----------
+  const textareaEdit = document.getElementById('editableMessage');
+  const livePreviewDiv = document.getElementById('livePreview');
+  function updatePreview() { livePreviewDiv.innerText = textareaEdit.value; }
+  if(textareaEdit) textareaEdit.addEventListener('input', updatePreview);
+  const resetEditBtn = document.getElementById('resetEditBtn');
+  if(resetEditBtn) {
+    resetEditBtn.addEventListener('click', () => {
+      textareaEdit.value = "💥 AKSHAY KUMAR EDITOR: MI vs CSK blockbuster! Rohit's century leads Mumbai to victory. #IPL2025 🔥";
+      updatePreview();
+    });
+  }
+  const copyBtn = document.getElementById('copySkillBtn');
+  if(copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(textareaEdit.value);
+      alert("✅ Akshay's match summary copied! Editing skills on fire 🔥");
+    });
+  }
+  const themeBtn = document.getElementById('themeFlashBtn');
+  if(themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      document.body.style.transition = "background 0.3s";
+      document.body.style.background = "linear-gradient(145deg, #2a4b3a, #f9a01b30)";
+      setTimeout(() => {
+        document.body.style.background = "linear-gradient(145deg, #0a1f1e 0%, #071a1f 100%)";
+      }, 700);
+    });
+  }
+  updatePreview();
+
+  // INIT
+  function finalInit() {
+    loadStats();
+    populateSelectors();
+    renderTeamsGrid();
+    renderPointsTable();
+    const simBtn = document.getElementById("simulateMatchBtn");
+    const resetBtn = document.getElementById("resetTourneyBtn");
+    const newSimBtn = simBtn.cloneNode(true);
+    simBtn.parentNode.replaceChild(newSimBtn, simBtn);
+    const newResetBtn = resetBtn.cloneNode(true);
+    resetBtn.parentNode.replaceChild(newResetBtn, resetBtn);
+    newSimBtn.addEventListener("click", () => { window.simulateMatch(); });
+    newResetBtn.addEventListener("click", () => { resetAllStats(); populateSelectors(); });
+  }
+  finalInit();
+  setTimeout(() => {
+    renderTeamsGrid();
+    renderPointsTable();
+  }, 20);
+</script>
+</body>
+</html>
       color: #f0f3f5;
       overflow-x: hidden;
     }
