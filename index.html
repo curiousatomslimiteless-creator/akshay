@@ -2,514 +2,699 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>IPL 2026 · 19th SEASON · Ultimate Match Hub & Standings</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MI vs CSK · Ultimate Rivalry Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --mi: #004BA0;
+  --mi-light: #0066CC;
+  --mi-gold: #FFD700;
+  --csk: #F9CD05;
+  --csk-dark: #E8B800;
+  --csk-bg: #1a2a1a;
+  --bg: #05080d;
+  --surface: #0c1118;
+  --border: rgba(255,255,255,0.08);
+  --text: #f0f4f8;
+  --muted: #6b7a8d;
+}
 
-  :root {
-    --gold: #F5A623;
-    --gold-dark: #c47f0e;
-    --bg: #05090e;
-    --surface: #0e141a;
-    --surface2: #161f28;
-    --border: rgba(245,166,35,0.25);
-    --text: #eef2f6;
-    --muted: #7e8c9e;
-    --glow: 0 0 12px rgba(245,166,35,0.4);
-    --season-badge: #dc2626;
-  }
+body {
+  background: var(--bg);
+  font-family: 'Oswald', sans-serif;
+  color: var(--text);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
 
-  body {
-    background: var(--bg);
-    font-family: 'Rajdhani', sans-serif;
-    color: var(--text);
-    overflow-x: hidden;
-  }
+/* ANIMATED BG */
+body::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  background: 
+    radial-gradient(ellipse 60% 40% at 20% 30%, rgba(0,75,160,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 70%, rgba(249,205,5,0.10) 0%, transparent 60%);
+  z-index:0; pointer-events:none;
+}
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: linear-gradient(rgba(245,166,35,0.03) 1px, transparent 1px),
-                      linear-gradient(90deg, rgba(245,166,35,0.03) 1px, transparent 1px);
-    background-size: 48px 48px;
-    z-index: 0;
-    pointer-events: none;
-  }
+.page { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:0 20px 60px; }
 
-  .wrap {
-    position: relative;
-    z-index: 2;
-    max-width: 1360px;
-    margin: 0 auto;
-    padding: 0 24px 60px;
-  }
+/* HERO */
+.hero {
+  position:relative;
+  text-align:center;
+  padding:50px 20px 0;
+  overflow:hidden;
+  margin-bottom:0;
+}
+.hero-bg-split {
+  position:absolute;
+  inset:0;
+  background: linear-gradient(90deg, rgba(0,75,160,0.25) 50%, rgba(249,205,5,0.12) 50%);
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+}
+.rivalry-badge {
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.7rem;
+  letter-spacing:4px;
+  color:#aaa;
+  text-transform:uppercase;
+  margin-bottom:14px;
+  display:block;
+}
+.hero h1 {
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(3.5rem, 10vw, 7.5rem);
+  letter-spacing:8px;
+  line-height:0.9;
+  background: linear-gradient(90deg, #6ab0ff 0%, #fff 40%, #FFD700 70%, #F9CD05 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:8px;
+  position:relative;
+  z-index:2;
+}
+.hero-sub {
+  font-size:1rem;
+  color:var(--muted);
+  letter-spacing:3px;
+  font-family:'IBM Plex Mono',monospace;
+  margin-bottom:32px;
+  position:relative;
+  z-index:2;
+}
 
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 28px 0 16px;
-    border-bottom: 2px solid var(--border);
-    margin-bottom: 32px;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  .brand {
-    display: flex;
-    align-items: baseline;
-    gap: 18px;
-    flex-wrap: wrap;
-  }
-  .logo-ipl {
-    font-family: 'Bebas Neue', cursive;
-    font-size: 3.6rem;
-    color: var(--gold);
-    letter-spacing: 6px;
-    text-shadow: 0 0 8px rgba(245,166,35,0.6);
-    line-height: 1;
-  }
-  .season-19 {
-    background: linear-gradient(135deg, #1e2a3a, #0f1722);
-    padding: 6px 16px;
-    border-radius: 60px;
-    font-family: 'Space Mono', monospace;
-    font-weight: 700;
-    font-size: 0.75rem;
-    color: var(--gold);
-    border: 1px solid var(--gold);
-    letter-spacing: 2px;
-  }
-  .live-pulse {
-    background: #e11d48;
-    color: white;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    padding: 6px 18px;
-    border-radius: 100px;
-    animation: pulseRed 1.2s infinite;
-    font-weight: 700;
-  }
-  @keyframes pulseRed { 0%,100%{opacity:1;} 50%{opacity:0.55;} }
-  .date-badge {
-    background: var(--surface2);
-    padding: 6px 18px;
-    border-radius: 60px;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    color: #b9c8ff;
-  }
+/* PHOTO SECTION */
+.photos-row {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin:36px 0;
+}
+.photo-card {
+  border-radius:28px;
+  overflow:hidden;
+  position:relative;
+  border:2px solid var(--border);
+  transition:0.3s ease;
+  cursor:pointer;
+}
+.photo-card:hover { transform:scale(1.02); }
+.photo-card:first-child { border-color:rgba(0,75,160,0.5); box-shadow:0 0 30px rgba(0,75,160,0.3); }
+.photo-card:last-child { border-color:rgba(249,205,5,0.4); box-shadow:0 0 30px rgba(249,205,5,0.2); }
+.photo-card img {
+  width:100%; height:220px;
+  object-fit:cover; display:block;
+  filter:saturate(1.2);
+}
+.photo-overlay {
+  position:absolute; bottom:0; left:0; right:0;
+  padding:14px 18px;
+  background:linear-gradient(0deg,rgba(0,0,0,0.85) 0%,transparent 100%);
+}
+.photo-label {
+  font-family:'Bebas Neue',cursive;
+  font-size:1.3rem;
+  letter-spacing:3px;
+}
 
-  .section-label {
-    font-family: 'Bebas Neue', cursive;
-    font-size: 2rem;
-    letter-spacing: 6px;
-    color: var(--gold);
-    margin: 40px 0 24px 0;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-  }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 2px;
-    background: linear-gradient(90deg, var(--gold), transparent);
-  }
+/* MATCH SELECTOR */
+.match-selector {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:28px;
+  margin-bottom:28px;
+}
+.match-selector h2 {
+  font-family:'Bebas Neue',cursive;
+  font-size:1.8rem;
+  letter-spacing:4px;
+  color:var(--mi-gold);
+  margin-bottom:18px;
+  display:flex; align-items:center; gap:12px;
+}
+.match-selector h2::after { content:''; flex:1; height:1px; background:linear-gradient(90deg, var(--mi-gold), transparent); }
 
-  .tabs {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 28px;
-  }
-  .tab-btn {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 1.5px;
-    padding: 8px 22px;
-    border-radius: 40px;
-    border: 1px solid var(--border);
-    background: rgba(22,31,40,0.9);
-    color: var(--muted);
-    cursor: pointer;
-    transition: 0.2s;
-    font-weight: 600;
-  }
-  .tab-btn.active, .tab-btn:hover {
-    background: var(--gold);
-    color: #000;
-    border-color: var(--gold);
-    box-shadow: 0 0 8px gold;
-  }
+.matches-scroll {
+  display:flex; gap:12px; overflow-x:auto; padding-bottom:8px;
+  scrollbar-width:thin; scrollbar-color:rgba(255,215,0,0.3) transparent;
+}
+.match-pill {
+  flex-shrink:0;
+  background:rgba(255,255,255,0.05);
+  border:1px solid var(--border);
+  border-radius:50px;
+  padding:8px 20px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.65rem;
+  cursor:pointer;
+  transition:0.2s;
+  white-space:nowrap;
+}
+.match-pill:hover, .match-pill.active {
+  background:rgba(255,215,0,0.12);
+  border-color:var(--mi-gold);
+  color:var(--mi-gold);
+}
 
-  /* MATCH CARDS */
-  .matches-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
-    gap: 28px;
-    margin-bottom: 56px;
-  }
-  .match-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 32px;
-    overflow: hidden;
-    transition: 0.25s ease;
-    cursor: pointer;
-    backdrop-filter: blur(2px);
-    box-shadow: 0 15px 28px rgba(0,0,0,0.6);
-  }
-  .match-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 22px 36px rgba(0,0,0,0.7); }
-  .match-ribbon { height: 6px; width: 100%; }
-  .match-header {
-    padding: 16px 22px 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .status-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 2px;
-    padding: 4px 14px;
-    border-radius: 30px;
-    font-weight: 800;
-  }
-  .tag-live { background: #e11d48; color: #fff; animation: pulseRed 1.2s infinite; }
-  .tag-today { background: var(--gold); color: #000; box-shadow: 0 0 6px gold;}
-  .tag-result { background: #15803d66; color: #bbf7d0; border: 1px solid #22c55e; }
-  .tag-upcoming { background: #1e293b; color: #a0afc0; }
-  .match-num { font-size: 0.65rem; font-family: 'Space Mono'; background: #000000aa; padding: 4px 12px; border-radius: 30px; color: var(--gold); }
+/* LIVE SCOREBOARD */
+.scoreboard {
+  background: linear-gradient(135deg, #06101a, #0a1628);
+  border:1px solid rgba(0,75,160,0.4);
+  border-radius:32px;
+  overflow:hidden;
+  margin-bottom:28px;
+  position:relative;
+}
+.scoreboard::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:4px;
+  background: linear-gradient(90deg, var(--mi) 50%, var(--csk) 50%);
+}
+.sb-top {
+  padding:20px 28px 16px;
+  display:flex; justify-content:space-between; align-items:center;
+  border-bottom:1px solid var(--border);
+  flex-wrap:wrap; gap:10px;
+}
+.sb-label {
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.65rem;
+  letter-spacing:3px;
+  color:var(--muted);
+}
+.winner-tag {
+  background:linear-gradient(135deg, #FFD700, #FFA500);
+  color:#000;
+  font-family:'Bebas Neue',cursive;
+  font-size:0.9rem;
+  padding:5px 18px;
+  border-radius:30px;
+  letter-spacing:2px;
+}
 
-  .teams-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 22px 22px;
-    gap: 16px;
-  }
-  .team { display: flex; flex-direction: column; align-items: center; gap: 10px; flex: 1; }
-  .crest {
-    width: 78px;
-    height: 78px;
-    border-radius: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    font-weight: 900;
-    font-family: 'Bebas Neue', cursive;
-    transition: 0.2s;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
-  }
-  .team-name { font-family: 'Bebas Neue', cursive; font-size: 1.5rem; letter-spacing: 1px; }
-  .team-full { font-size: 0.7rem; color: var(--muted); text-align: center; }
-  .vs-badge { font-family: 'Bebas Neue', cursive; font-size: 2rem; color: var(--gold); margin: 0 4px; }
-  .score { font-family: 'Space Mono', monospace; font-size: 0.7rem; background: #00000077; padding: 3px 12px; border-radius: 20px; margin-top: 4px; }
+.teams-score {
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  padding:24px 28px;
+  align-items:center;
+  gap:20px;
+}
+.team-block { text-align:center; }
+.team-abbr-big {
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(2.2rem,5vw,4rem);
+  letter-spacing:4px;
+  line-height:1;
+  margin-bottom:4px;
+}
+.team-abbr-big.mi { color:var(--mi-gold); text-shadow:0 0 20px rgba(0,75,160,0.6); }
+.team-abbr-big.csk { color:var(--csk); text-shadow:0 0 20px rgba(249,205,5,0.4); }
+.score-num {
+  font-family:'IBM Plex Mono',monospace;
+  font-size:clamp(1.4rem,3vw,2.4rem);
+  font-weight:700;
+  margin-bottom:4px;
+}
+.score-overs { font-size:0.7rem; color:var(--muted); font-family:'IBM Plex Mono',monospace; }
+.vs-center { 
+  font-family:'Bebas Neue',cursive; 
+  font-size:2rem; color:white; 
+  background:rgba(255,255,255,0.05);
+  border-radius:50%;
+  width:52px; height:52px;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--border);
+}
+.result-line {
+  background: linear-gradient(90deg, rgba(0,75,160,0.15), rgba(249,205,5,0.1));
+  padding:14px 28px;
+  font-size:0.85rem;
+  font-weight:600;
+  color:#d4edff;
+  border-top:1px solid var(--border);
+  text-align:center;
+  letter-spacing:1px;
+}
 
-  .card-footer {
-    border-top: 1px solid var(--border);
-    padding: 12px 22px;
-    display: flex;
-    justify-content: space-between;
-    background: var(--surface2);
-    font-size: 0.7rem;
-  }
-  .result-banner {
-    background: linear-gradient(90deg, #0a2b1a, #0a1f17);
-    padding: 12px;
-    text-align: center;
-    font-weight: 800;
-    color: #d9f99d;
-  }
+/* STATS SECTION */
+.stats-header {
+  font-family:'Bebas Neue',cursive;
+  font-size:1.8rem;
+  letter-spacing:4px;
+  color:var(--mi-gold);
+  margin:36px 0 20px;
+  display:flex; align-items:center; gap:12px;
+}
+.stats-header::after { content:''; flex:1; height:1px; background:linear-gradient(90deg, var(--mi-gold), transparent); }
 
-  /* POINTS TABLE — ENHANCED */
-  .table-wrap {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 32px;
-    overflow: hidden;
-    margin-bottom: 52px;
-  }
-  .table-header {
-    background: var(--surface2);
-    padding: 18px 28px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    border-bottom: 1px solid var(--border);
-  }
-  .points-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-  .points-table th {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 1.5px;
-    color: var(--gold);
-    padding: 16px 8px;
-    text-align: center;
-  }
-  .points-table td { padding: 12px 8px; text-align: center; border-bottom: 1px solid rgba(245,166,35,0.08); font-weight: 600; }
-  .team-cell { display: flex; align-items: center; gap: 12px; }
-  .team-dot { width: 12px; height: 12px; border-radius: 50%; }
-  .pts-cell { font-family: 'Bebas Neue', cursive; font-size: 1.4rem; color: var(--gold); }
-  .rank-badge {
-    font-family: 'Space Mono', monospace;
-    display: inline-flex;
-    width: 30px;
-    height: 30px;
-    border-radius: 14px;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-  }
-  .rank-1 { background: var(--gold); color: #000; box-shadow: 0 0 10px gold; }
-  .rank-2 { background: #94a3b8; color: #0f0f0f; }
-  .rank-3 { background: #b45309; color: #fff; }
-  .form-dots { display: flex; gap: 6px; justify-content: center; }
-  .form-w { width: 10px; height: 10px; background: #4ade80; border-radius: 50%; box-shadow: 0 0 4px #4ade80; }
-  .form-l { width: 10px; height: 10px; background: #f87171; border-radius: 50%; }
+.stats-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap:16px;
+  margin-bottom:28px;
+}
+.stat-card {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:20px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  transition:0.25s;
+}
+.stat-card:hover { transform:translateY(-4px); border-color:rgba(255,215,0,0.3); }
+.stat-card::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:3px;
+}
+.stat-card.mi-stat::before { background:var(--mi); }
+.stat-card.csk-stat::before { background:var(--csk); }
+.stat-card.shared::before { background:linear-gradient(90deg, var(--mi), var(--csk)); }
+.stat-icon { font-size:2rem; margin-bottom:8px; display:block; }
+.stat-value {
+  font-family:'Bebas Neue',cursive;
+  font-size:2.8rem;
+  line-height:1;
+  color:var(--mi-gold);
+  margin-bottom:4px;
+}
+.stat-label { font-size:0.7rem; color:var(--muted); font-family:'IBM Plex Mono',monospace; letter-spacing:2px; text-transform:uppercase; }
+.stat-name { font-size:0.85rem; font-weight:600; color:var(--text); margin-top:4px; }
+.stat-team { font-size:0.65rem; font-family:'IBM Plex Mono',monospace; margin-top:2px; }
+.stat-team.mi-t { color:#6ab0ff; }
+.stat-team.csk-t { color:#F9CD05; }
 
-  .table-actions { display: flex; gap: 16px; padding: 18px 28px; border-top: 1px solid var(--border); background: var(--surface2); }
-  .btn {
-    background: var(--gold);
-    border: none;
-    border-radius: 60px;
-    padding: 10px 30px;
-    font-family: 'Bebas Neue', cursive;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-  }
-  .btn:hover { background: #e59414; transform: scale(0.97); }
-  .btn-outline {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 9px 26px;
-    border-radius: 60px;
-    font-family: 'Bebas Neue', cursive;
-    cursor: pointer;
-  }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+/* H2H BAR */
+.h2h-section {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:28px;
+  margin-bottom:28px;
+}
+.h2h-title {
+  font-family:'Bebas Neue',cursive;
+  font-size:1.5rem;
+  letter-spacing:3px;
+  margin-bottom:20px;
+  color:white;
+}
+.h2h-bar-row { margin-bottom:18px; }
+.h2h-labels {
+  display:flex; justify-content:space-between;
+  margin-bottom:8px; font-size:0.75rem; font-weight:600;
+}
+.h2h-bar-wrap {
+  background:rgba(255,255,255,0.05);
+  border-radius:30px;
+  height:16px;
+  overflow:hidden;
+  display:flex;
+}
+.h2h-fill-mi {
+  background:linear-gradient(90deg, var(--mi), var(--mi-light));
+  border-radius:30px 0 0 30px;
+  transition:width 1.2s cubic-bezier(.4,0,.2,1);
+  position:relative;
+}
+.h2h-fill-csk {
+  background:linear-gradient(90deg, var(--csk-dark), var(--csk));
+  border-radius:0 30px 30px 0;
+  transition:width 1.2s cubic-bezier(.4,0,.2,1);
+}
 
-  .games-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-    gap: 26px;
-    margin-bottom: 50px;
-  }
-  .game-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 28px;
-    padding: 24px;
-    transition: 0.2s;
-  }
-  .game-card:hover { border-color: var(--gold); }
-  .game-card h3 { font-family: 'Bebas Neue', cursive; font-size: 1.5rem; color: var(--gold); margin-bottom: 12px; }
-  .game-input {
-    width: 100%;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 10px 16px;
-    color: white;
-    font-family: 'Space Mono', monospace;
-    margin-bottom: 12px;
-  }
-  .game-result {
-    margin-top: 14px;
-    background: var(--surface2);
-    border-radius: 20px;
-    padding: 10px 16px;
-    font-size: 0.75rem;
-    font-family: 'Space Mono', monospace;
-    border-left: 4px solid var(--gold);
-  }
-  .game-result.win { border-left-color: #4ade80; color: #bbf7d0; background: #0c2a1a; }
-  .game-result.loss { border-left-color: #f87171; color: #ffcccb; background: #2c1018; }
+/* TOSS & PREDICTION */
+.bottom-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-bottom:28px;
+}
+.mini-card {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:22px;
+}
+.mini-card h3 {
+  font-family:'Bebas Neue',cursive;
+  font-size:1.3rem;
+  letter-spacing:3px;
+  color:var(--mi-gold);
+  margin-bottom:14px;
+}
+.toss-btn-row { display:flex; gap:10px; flex-wrap:wrap; }
+.btn {
+  background:var(--mi);
+  border:none; border-radius:50px;
+  padding:9px 24px;
+  font-family:'Bebas Neue',cursive;
+  font-size:1rem;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:0.2s;
+  color:white;
+}
+.btn.csk-btn { background:var(--csk); color:#000; }
+.btn:hover { filter:brightness(1.2); transform:scale(0.97); }
+.btn-outline {
+  background:transparent;
+  border:1px solid var(--border);
+  border-radius:50px;
+  padding:8px 22px;
+  font-family:'Bebas Neue',cursive;
+  font-size:0.95rem;
+  letter-spacing:1px;
+  cursor:pointer;
+  color:var(--text);
+  transition:0.2s;
+}
+.btn-outline:hover { border-color:var(--mi-gold); color:var(--mi-gold); }
+.pred-result {
+  margin-top:12px;
+  background:rgba(0,0,0,0.3);
+  border-radius:16px;
+  padding:12px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.7rem;
+  border-left:3px solid var(--mi-gold);
+  min-height:40px;
+}
+.pred-result.mi-win { border-left-color:var(--mi); color:#a5c8ff; background:rgba(0,75,160,0.1); }
+.pred-result.csk-win { border-left-color:var(--csk); color:#fef08a; background:rgba(249,205,5,0.08); }
 
-  footer {
-    text-align: center;
-    padding: 28px 0 20px;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.65rem;
-    color: var(--muted);
-    border-top: 1px solid var(--border);
-  }
-  @media (max-width: 680px) {
-    .crest { width: 58px; height: 58px; font-size: 1.5rem; }
-    .logo-ipl { font-size: 2.2rem; }
-  }
+/* FOOTER */
+footer {
+  text-align:center;
+  padding:28px 0 8px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.6rem;
+  color:var(--muted);
+  border-top:1px solid var(--border);
+  letter-spacing:2px;
+}
+
+@media(max-width:640px) {
+  .photos-row { grid-template-columns:1fr; }
+  .bottom-grid { grid-template-columns:1fr; }
+  .stats-grid { grid-template-columns:repeat(2,1fr); }
+  .teams-score { padding:16px; gap:10px; }
+}
+
+/* Animations */
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.scoreboard, .photos-row, .stats-grid, .h2h-section {
+  animation: fadeUp 0.6s ease both;
+}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="brand">
-      <div class="logo-ipl">IPL 2026</div>
-      <div class="season-19">★ 19TH SEASON ★</div>
-    </div>
-    <div style="display: flex; gap: 14px;">
-      <span class="live-pulse">● LIVE: DC v CSK</span>
-      <span class="date-badge">TUE · MAY 05 · 2026</span>
-    </div>
-  </header>
+<div class="page">
 
-  <div class="tabs" id="matchTabs">
-    <button class="tab-btn active" data-filter="all">📋 ALL MATCHES (20)</button>
-    <button class="tab-btn" data-filter="today">⚡ TODAY</button>
-    <button class="tab-btn" data-filter="result">🏆 RESULTS</button>
-    <button class="tab-btn" data-filter="upcoming">⏳ UPCOMING</button>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-bg-split"></div>
+    <span class="rivalry-badge">⚡ THE GREATEST IPL RIVALRY · ALL TIME</span>
+    <h1>MI vs CSK</h1>
+    <p class="hero-sub">🔵 MUMBAI INDIANS &nbsp;·&nbsp; EL CLASICO OF IPL &nbsp;·&nbsp; CHENNAI SUPER KINGS 🟡</p>
   </div>
 
-  <div class="section-label">🏟️ MATCH CENTER · SEASON 19</div>
-  <div class="matches-grid" id="matchGrid"></div>
-
-  <div class="section-label">🏆 POINTS TABLE · FULL STANDINGS</div>
-  <div class="table-wrap">
-    <div class="table-header">
-      <span style="font-family:'Bebas Neue';font-size:1.3rem;">IPL 2026 | 10 TEAMS | 74 MATCHES</span>
-      <span id="topLeaderSpan" style="background:var(--gold); color:#000; border-radius: 50px; padding:6px 20px; font-weight:800;"></span>
+  <!-- PHOTOS -->
+  <div class="photos-row">
+    <div class="photo-card" style="background:linear-gradient(135deg,#001f4d,#003580)">
+      <img id="img_match" src="" alt="MI vs CSK Toss/Match" />
+      <div class="photo-overlay">
+        <div class="photo-label" style="color:#FFD700">🤝 PRE-MATCH · TOSS MOMENT</div>
+        <div style="font-size:0.65rem;color:#aac4e8;font-family:'IBM Plex Mono',monospace;margin-top:2px;">Hardik Pandya (MI) · Ruturaj Gaikwad (CSK)</div>
+      </div>
     </div>
-    <div style="overflow-x:auto;">
-      <table class="points-table">
-        <thead><tr><th>#</th><th style="text-align:left">TEAM</th><th>M</th><th>W</th><th>L</th><th>NR</th><th>PTS</th><th>NRR</th><th>RECENT 5</th></tr></thead>
-        <tbody id="ptsTableBody"></tbody>
-      </table>
-    </div>
-    <div class="table-actions">
-      <button class="btn" id="simulateBtn">⚡ SIMULATE RIVALRY MATCH</button>
-      <button class="btn-outline" id="resetStandingsBtn">⟳ RESET TO OFFICIAL</button>
+    <div class="photo-card" style="background:linear-gradient(135deg,#001233,#002a6e)">
+      <img id="img_mi" src="" alt="MI Team Qualified" />
+      <div class="photo-overlay">
+        <div class="photo-label" style="color:#FFD700">🏆 MUMBAI INDIANS · QUALIFIED</div>
+        <div style="font-size:0.65rem;color:#aac4e8;font-family:'IBM Plex Mono',monospace;margin-top:2px;">Rohit Sharma · Hardik Pandya · Jasprit Bumrah</div>
+      </div>
     </div>
   </div>
 
-  <div class="section-label">🎮 FAN PREDICTION ZONE</div>
-  <div class="games-grid">
-    <div class="game-card"><h3>🪙 TOSS PREDICTOR</h3><div style="display:flex;gap:12px"><button class="btn-outline" id="headsBtn">HEADS</button><button class="btn-outline" id="tailsBtn">TAILS</button></div><div class="game-result" id="tossOut">—</div></div>
-    <div class="game-card"><h3>🎯 SCORE GUESS</h3><input type="number" class="game-input" id="scoreGuess" placeholder="120-230"><button class="btn" id="scoreGuessBtn">PREDICT</button><div class="game-result" id="scoreRes">—</div></div>
-    <div class="game-card"><h3>🏏 MAX SIXES</h3><input type="number" class="game-input" id="sixGuess" placeholder="0-6"><button class="btn" id="sixBtn">SMASH</button><div class="game-result" id="sixRes">—</div></div>
-    <div class="game-card"><h3>⭐ PLAYER OF MATCH</h3><select class="game-input" id="momTeamSelect"><option value="">Pick Team</option><option value="MI">MI</option><option value="CSK">CSK</option><option value="DC">DC</option><option value="RR">RR</option><option value="SRH">SRH</option></select><button class="btn" id="momRevealBtn">REVEAL STAR</button><div class="game-result" id="momRes">—</div></div>
-    <div class="game-card"><h3>🎳 WICKET HUNTER</h3><input type="number" class="game-input" id="wicketGuess" placeholder="0-20"><button class="btn" id="wicketBtn">PREDICT</button><div class="game-result" id="wicketRes">—</div></div>
-    <div class="game-card"><h3>🏆 TODAY'S WINNER</h3><p style="font-size:0.7rem;">DC vs CSK (Eliminator vibe)</p><div style="display:flex;gap:12px"><button class="btn-outline" id="pickDCwin">🔵 DELHI</button><button class="btn-outline" id="pickCSKwin">💛 CSK</button></div><div class="game-result" id="winnerPredRes">—</div></div>
+  <!-- MATCH PICKER -->
+  <div class="match-selector">
+    <h2>📅 SELECT MATCH</h2>
+    <div class="matches-scroll" id="matchScroll"></div>
   </div>
-  <footer>🏏 IPL 2026 · 19th EDITION · ALL MATCH LOGS + LIVE STANDINGS BASED ON REAL OUTCOMES · FAN HUB</footer>
+
+  <!-- SCOREBOARD -->
+  <div class="scoreboard" id="scoreboard">
+    <div class="sb-top">
+      <div>
+        <div class="sb-label" id="sb-matchnum">MATCH 18 · EL CLASICO · APR 5, 2026</div>
+        <div style="font-size:0.7rem;color:#a0b0c0;margin-top:3px;" id="sb-venue">📍 Wankhede Stadium, Mumbai</div>
+      </div>
+      <div class="winner-tag" id="sb-winner">🏆 CSK WON</div>
+    </div>
+    <div class="teams-score">
+      <div class="team-block">
+        <div class="team-abbr-big mi">MI</div>
+        <div style="font-size:0.65rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-bottom:6px;">MUMBAI INDIANS</div>
+        <div class="score-num" id="sb-mi-score">210/6</div>
+        <div class="score-overs" id="sb-mi-overs">(20 overs)</div>
+      </div>
+      <div class="vs-center">VS</div>
+      <div class="team-block">
+        <div class="team-abbr-big csk">CSK</div>
+        <div style="font-size:0.65rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-bottom:6px;">CHENNAI SUPER KINGS</div>
+        <div class="score-num" id="sb-csk-score">214/7</div>
+        <div class="score-overs" id="sb-csk-overs">(19.4 overs)</div>
+      </div>
+    </div>
+    <div class="result-line" id="sb-result">🏆 CSK won by 3 wickets · Toss: MI (Elected to Bat)</div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-header">📊 KEY STATS · THIS MATCH</div>
+  <div class="stats-grid" id="statsGrid">
+    <!-- filled by JS -->
+  </div>
+
+  <!-- H2H -->
+  <div class="h2h-section">
+    <div class="h2h-title">⚔️ HEAD-TO-HEAD · ALL TIME (IPL)</div>
+    <div class="h2h-bar-row">
+      <div class="h2h-labels">
+        <span style="color:#6ab0ff">🔵 MI — <span id="mi-wins">16</span> Wins</span>
+        <span style="color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:0.65rem">37 Matches</span>
+        <span style="color:#F9CD05">CSK — <span id="csk-wins">21</span> Wins 🟡</span>
+      </div>
+      <div class="h2h-bar-wrap">
+        <div class="h2h-fill-mi" id="mi-bar" style="width:43%"></div>
+        <div class="h2h-fill-csk" id="csk-bar" style="width:57%"></div>
+      </div>
+    </div>
+    <div class="h2h-bar-row">
+      <div class="h2h-labels">
+        <span style="color:#6ab0ff">🏠 Home Wins (MI) — 9</span>
+        <span style="color:#F9CD05">Away Wins (CSK) — 13 🟡</span>
+      </div>
+      <div class="h2h-bar-wrap">
+        <div class="h2h-fill-mi" style="width:40%"></div>
+        <div class="h2h-fill-csk" style="width:60%"></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px;">
+      <div style="background:rgba(0,75,160,0.12);border:1px solid rgba(0,75,160,0.25);border-radius:16px;padding:14px;text-align:center;">
+        <div style="font-family:'Bebas Neue',cursive;font-size:2rem;color:#6ab0ff">37</div>
+        <div style="font-size:0.65rem;color:var(--muted);font-family:'IBM Plex Mono',monospace">TOTAL MATCHES</div>
+      </div>
+      <div style="background:rgba(249,205,5,0.08);border:1px solid rgba(249,205,5,0.2);border-radius:16px;padding:14px;text-align:center;">
+        <div style="font-family:'Bebas Neue',cursive;font-size:2rem;color:#F9CD05">CSK</div>
+        <div style="font-size:0.65rem;color:var(--muted);font-family:'IBM Plex Mono',monospace">DOMINATES H2H</div>
+      </div>
+      <div style="background:rgba(0,75,160,0.12);border:1px solid rgba(0,75,160,0.25);border-radius:16px;padding:14px;text-align:center;">
+        <div style="font-family:'Bebas Neue',cursive;font-size:2rem;color:#6ab0ff">5</div>
+        <div style="font-size:0.65rem;color:var(--muted);font-family:'IBM Plex Mono',monospace">FINAL CLASHES</div>
+      </div>
+      <div style="background:rgba(249,205,5,0.08);border:1px solid rgba(249,205,5,0.2);border-radius:16px;padding:14px;text-align:center;">
+        <div style="font-family:'Bebas Neue',cursive;font-size:2rem;color:#F9CD05">3</div>
+        <div style="font-size:0.65rem;color:var(--muted);font-family:'IBM Plex Mono',monospace">CSK FINAL WINS</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREDICTION ZONE -->
+  <div class="bottom-grid">
+    <div class="mini-card">
+      <h3>🪙 TOSS SIMULATOR</h3>
+      <div class="toss-btn-row">
+        <button class="btn" onclick="tossCoin('MI')">🔵 CALL MI</button>
+        <button class="btn csk-btn" onclick="tossCoin('CSK')">🟡 CALL CSK</button>
+      </div>
+      <div class="pred-result" id="tossResult">Call the toss for today's match!</div>
+    </div>
+    <div class="mini-card">
+      <h3>🏆 WINNER PREDICT</h3>
+      <div class="toss-btn-row">
+        <button class="btn" onclick="predictWinner('MI')">🔵 MI WINS</button>
+        <button class="btn csk-btn" onclick="predictWinner('CSK')">🟡 CSK WINS</button>
+      </div>
+      <div class="pred-result" id="winResult">Who will win today's El Clasico?</div>
+    </div>
+    <div class="mini-card">
+      <h3>💥 SIX PREDICTOR</h3>
+      <input type="number" id="sixInput" placeholder="Guess total sixes (0-30)" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:16px;padding:10px 14px;color:white;font-family:'IBM Plex Mono',monospace;font-size:0.8rem;margin-bottom:10px;">
+      <button class="btn-outline" onclick="guessSixes()" style="width:100%">PREDICT SIXES</button>
+      <div class="pred-result" id="sixResult">Guess how many sixes will be hit!</div>
+    </div>
+    <div class="mini-card">
+      <h3>🏃 TOP SCORER PICK</h3>
+      <select id="scorerPick" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:16px;padding:10px 14px;color:white;font-family:'IBM Plex Mono',monospace;font-size:0.75rem;margin-bottom:10px;">
+        <option value="">-- Pick Star Batter --</option>
+        <option value="Rohit Sharma">Rohit Sharma (MI)</option>
+        <option value="Hardik Pandya">Hardik Pandya (MI)</option>
+        <option value="Suryakumar Yadav">Suryakumar Yadav (MI)</option>
+        <option value="MS Dhoni">MS Dhoni (CSK)</option>
+        <option value="Ruturaj Gaikwad">Ruturaj Gaikwad (CSK)</option>
+        <option value="Shivam Dube">Shivam Dube (CSK)</option>
+      </select>
+      <button class="btn-outline" onclick="revealScorer()" style="width:100%">REVEAL RESULT</button>
+      <div class="pred-result" id="scorerResult">Pick the player of the match!</div>
+    </div>
+  </div>
+
+  <footer>🏏 MI vs CSK · EL CLASICO OF IPL · ALL STATS BASED ON IPL 2026 SEASON 19 · FAN HUB</footer>
 </div>
 
 <script>
-  // TEAM METADATA (full)
-  const TEAM_INFO = {
-    MI: { color: '#005DA0', accent: '#FFD700', full: 'Mumbai Indians', venue: 'Wankhede' },
-    CSK: { color: '#F9CD05', accent: '#1a2f3f', full: 'Chennai Super Kings', venue: 'Chepauk' },
-    DC: { color: '#0078BC', accent: '#EF1C25', full: 'Delhi Capitals', venue: 'Arun Jaitley' },
-    RR: { color: '#EB1F6A', accent: '#254AA5', full: 'Rajasthan Royals', venue: 'Sawai Mansingh' },
-    SRH: { color: '#FF822A', accent: '#000', full: 'Sunrisers Hyderabad', venue: 'Uppal' },
-    RCB: { color: '#DC143C', accent: '#F7EFE5', full: 'RC Bengaluru', venue: 'Chinnaswamy' },
-    KKR: { color: '#3A225D', accent: '#F0BC42', full: 'Kolkata Knight Riders', venue: 'Eden Gardens' },
-    LSG: { color: '#A72B2A', accent: '#00BFFF', full: 'Lucknow Super Giants', venue: 'Ekana' },
-    GT: { color: '#1C1C1C', accent: '#1382C2', full: 'Gujarat Titans', venue: 'Ahmedabad' },
-    PBKS: { color: '#DC143C', accent: '#FFD700', full: 'Punjab Kings', venue: 'Mohali' }
-  };
+// Embed images
+document.getElementById('img_match').src = 'data:image/jpeg;base64,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';
+document.getElementById('img_mi').src = 'data:image/jpeg;base64,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';
 
-  // ---- EXPANDED 20 MATCHES FOR 2026 SEASON 19 ----
-  const FULL_MATCHES = [
-    { id:1, status:'result', matchNum:'MATCH 1', home:'MI', away:'RCB', homeScore:'214/5', awayScore:'198/8', time:'MAR 22 · 7:30 PM', result:'✅ MI won by 16 runs' },
-    { id:2, status:'result', matchNum:'MATCH 2', home:'CSK', away:'DC', homeScore:'177/6', awayScore:'178/4', time:'MAR 23 · 3:30 PM', result:'✅ DC won by 6 wickets' },
-    { id:3, status:'result', matchNum:'MATCH 3', home:'KKR', away:'SRH', homeScore:'189/7', awayScore:'190/3', time:'MAR 24 · 7:30 PM', result:'✅ SRH won by 7 wickets' },
-    { id:4, status:'result', matchNum:'MATCH 4', home:'RR', away:'GT', homeScore:'205/3', awayScore:'167/9', time:'MAR 25 · 7:30 PM', result:'✅ RR won by 38 runs' },
-    { id:5, status:'result', matchNum:'MATCH 5', home:'LSG', away:'PBKS', homeScore:'156/5', awayScore:'152/8', time:'MAR 26 · 3:30 PM', result:'✅ LSG won by 4 runs' },
-    { id:6, status:'result', matchNum:'MATCH 15', home:'RCB', away:'RR', homeScore:'189/4', awayScore:'191/5', time:'APR 2 · 7:30 PM', result:'✅ RR won by 5 wickets' },
-    { id:7, status:'result', matchNum:'MATCH 18', home:'MI', away:'CSK', homeScore:'210/6', awayScore:'214/7', time:'APR 5 · 7:30 PM', result:'✅ CSK won by 3 wickets (El Clasico)' },
-    { id:8, status:'result', matchNum:'MATCH 22', home:'DC', away:'KKR', homeScore:'152/9', awayScore:'155/5', time:'APR 8 · 7:30 PM', result:'✅ KKR won by 5 wickets' },
-    { id:9, status:'result', matchNum:'MATCH 28', home:'SRH', away:'GT', homeScore:'198/6', awayScore:'178/8', time:'APR 12 · 3:30 PM', result:'✅ SRH won by 20 runs' },
-    { id:10, status:'result', matchNum:'MATCH 32', home:'PBKS', away:'MI', homeScore:'164/7', awayScore:'166/4', time:'APR 15 · 7:30 PM', result:'✅ MI won by 6 wickets' },
-    { id:11, status:'result', matchNum:'MATCH 36', home:'CSK', away:'RCB', homeScore:'149/9', awayScore:'151/3', time:'APR 18 · 7:30 PM', result:'✅ RCB won by 7 wickets' },
-    { id:12, status:'result', matchNum:'MATCH 40', home:'RR', away:'LSG', homeScore:'204/2', awayScore:'184/8', time:'APR 22 · 7:30 PM', result:'✅ RR won by 20 runs' },
-    { id:13, status:'result', matchNum:'MATCH 44', home:'DC', away:'SRH', homeScore:'188/9', awayScore:'189/6', time:'APR 26 · 3:30 PM', result:'✅ SRH won by 4 wickets' },
-    { id:14, status:'result', matchNum:'MATCH 47', home:'KKR', away:'PBKS', homeScore:'212/5', awayScore:'200/7', time:'APR 28 · 7:30 PM', result:'✅ KKR won by 12 runs' },
-    { id:15, status:'result', matchNum:'MATCH 51', home:'GT', away:'MI', homeScore:'130/10', awayScore:'131/3', time:'MAY 1 · 7:30 PM', result:'✅ MI won by 7 wickets' },
-    { id:16, status:'result', matchNum:'MATCH 55', home:'RCB', away:'LSG', homeScore:'196/5', awayScore:'177/8', time:'MAY 3 · 3:30 PM', result:'✅ RCB won by 19 runs' },
-    { id:17, status:'today', matchNum:'MATCH 58', home:'DC', away:'CSK', homeScore:null, awayScore:null, time:'MAY 5 · 7:30 PM', venue:'Arun Jaitley Stadium', result:null, isLive:true },
-    { id:18, status:'upcoming', matchNum:'MATCH 60', home:'RR', away:'RCB', homeScore:null, awayScore:null, time:'MAY 7 · 7:30 PM', venue:'Sawai Mansingh' },
-    { id:19, status:'upcoming', matchNum:'MATCH 62', home:'MI', away:'KKR', homeScore:null, awayScore:null, time:'MAY 9 · 3:30 PM', venue:'Wankhede' },
-    { id:20, status:'upcoming', matchNum:'MATCH 65', home:'SRH', away:'PBKS', homeScore:null, awayScore:null, time:'MAY 10 · 7:30 PM', venue:'Uppal' }
+// MATCH DATA
+const MATCHES = [
+  { id:1, label:'Match 18 · Apr 5, 2026', mi:'210/6', csk:'214/7', miOvers:'20 overs', cskOvers:'19.4 overs', winner:'CSK', toss:'MI', tossDec:'Elected to Bat', venue:'Wankhede, Mumbai', result:'CSK won by 3 wickets', topRunMI:'Suryakumar Yadav 87(48)', topRunCSK:'Ruturaj Gaikwad 91(54)', topSixMI:4, topSixCSK:5, totalSix:9, topWktMI:'Bumrah 2/28', topWktCSK:'Jadeja 3/34', potm:'Ruturaj Gaikwad' },
+  { id:2, label:'Match 32 · Apr 15, 2026', mi:'166/4', csk:'164/7', miOvers:'19.2 overs', cskOvers:'20 overs', winner:'MI', toss:'CSK', tossDec:'Elected to Field', venue:'Chepauk, Chennai', result:'MI won by 6 wickets', topRunMI:'Rohit Sharma 78(52)', topRunCSK:'Shivam Dube 69(38)', topSixMI:5, topSixCSK:3, totalSix:8, topWktMI:'Bumrah 3/22', topWktCSK:'Deepak Chahar 2/30', potm:'Rohit Sharma' },
+  { id:3, label:'Earlier 2026 · Mar 30', mi:'198/5', csk:'193/8', miOvers:'20 overs', cskOvers:'20 overs', winner:'MI', toss:'MI', tossDec:'Elected to Bat', venue:'Wankhede, Mumbai', result:'MI won by 5 runs', topRunMI:'Hardik Pandya 65(35)', topRunCSK:'MS Dhoni 44(22)', topSixMI:6, topSixCSK:4, totalSix:10, topWktMI:'Bumrah 2/25', topWktCSK:'Tushar Deshpande 2/38', potm:'Hardik Pandya' },
+];
+
+let currentMatch = MATCHES[0];
+
+function renderMatchPills() {
+  const scroll = document.getElementById('matchScroll');
+  scroll.innerHTML = MATCHES.map((m,i) => `<div class="match-pill ${i===0?'active':''}" onclick="selectMatch(${m.id},this)">${m.label}</div>`).join('');
+}
+
+function selectMatch(id, el) {
+  document.querySelectorAll('.match-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  currentMatch = MATCHES.find(m => m.id === id);
+  updateScoreboard();
+  updateStats();
+}
+
+function updateScoreboard() {
+  const m = currentMatch;
+  document.getElementById('sb-matchnum').textContent = m.label.toUpperCase();
+  document.getElementById('sb-venue').textContent = '📍 ' + m.venue;
+  document.getElementById('sb-mi-score').textContent = m.mi;
+  document.getElementById('sb-csk-score').textContent = m.csk;
+  document.getElementById('sb-mi-overs').textContent = '(' + m.miOvers + ')';
+  document.getElementById('sb-csk-overs').textContent = '(' + m.cskOvers + ')';
+  const winTag = document.getElementById('sb-winner');
+  winTag.textContent = m.winner === 'MI' ? '🔵 MI WON' : '🟡 CSK WON';
+  winTag.style.background = m.winner === 'MI' ? 'linear-gradient(135deg,#004BA0,#0066CC)' : 'linear-gradient(135deg,#FFD700,#FFA500)';
+  winTag.style.color = m.winner === 'MI' ? 'white' : '#000';
+  document.getElementById('sb-result').innerHTML = `🏆 ${m.result} &nbsp;·&nbsp; Toss: ${m.toss} (${m.tossDec})`;
+}
+
+function updateStats() {
+  const m = currentMatch;
+  const stats = [
+    { icon:'🏏', value: m.topRunMI.split(' ')[0] + ' ' + m.topRunMI.split(' ')[1], label:'TOP SCORER', name: m.topRunMI.split(' ')[0], team:'MI', cls:'mi-stat', teamCls:'mi-t' },
+    { icon:'🏏', value: m.topRunCSK.split(' ')[0] + ' ' + m.topRunCSK.split(' ')[1], label:'TOP SCORER', name: m.topRunCSK.split(' ')[0], team:'CSK', cls:'csk-stat', teamCls:'csk-t' },
+    { icon:'💥', value: m.topSixMI, label:'SIXES HIT', name:'Mumbai Indians', team:'MI', cls:'mi-stat', teamCls:'mi-t' },
+    { icon:'💥', value: m.topSixCSK, label:'SIXES HIT', name:'Chennai Super Kings', team:'CSK', cls:'csk-stat', teamCls:'csk-t' },
+    { icon:'🎯', value: m.topWktMI.split(' ')[0] + ' ' + m.topWktMI.split(' ')[1], label:'TOP WICKETS', name: m.topWktMI.split(' ')[0], team:'MI', cls:'mi-stat', teamCls:'mi-t' },
+    { icon:'🎯', value: m.topWktCSK.split(' ')[0] + ' ' + m.topWktCSK.split(' ')[1], label:'TOP WICKETS', name: m.topWktCSK.split(' ')[0], team:'CSK', cls:'csk-stat', teamCls:'csk-t' },
+    { icon:'🌟', value: m.potm.split(' ')[1] || m.potm, label:'PLAYER OF MATCH', name: m.potm, team: m.winner, cls:'shared', teamCls: m.winner==='MI'?'mi-t':'csk-t' },
+    { icon:'🏆', value: m.winner, label:'MATCH WINNER', name: m.winner==='MI'?'Mumbai Indians':'Chennai Super Kings', team: m.winner, cls: m.winner==='MI'?'mi-stat':'csk-stat', teamCls: m.winner==='MI'?'mi-t':'csk-t' },
   ];
+  document.getElementById('statsGrid').innerHTML = stats.map(s => `
+    <div class="stat-card ${s.cls}">
+      <span class="stat-icon">${s.icon}</span>
+      <div class="stat-value">${s.value}</div>
+      <div class="stat-label">${s.label}</div>
+      <div class="stat-name">${s.name}</div>
+      <div class="stat-team ${s.teamCls}">${s.team}</div>
+    </div>
+  `).join('');
+}
 
-  // ---- DYNAMIC POINTS TABLE BASED ON REAL WINS (19 SEASON VIBE) ----
-  let teamsStandings = [
-    { abbr:'MI', full:'Mumbai Indians', m:14, w:10, l:3, nr:1, pts:21, nrr:'+1.41', form:['W','W','W','W','L'] },
-    { abbr:'RCB', full:'RC Bengaluru', m:14, w:9, l:5, nr:0, pts:18, nrr:'+0.78', form:['W','L','W','W','W'] },
-    { abbr:'CSK', full:'Chennai Super Kings', m:13, w:8, l:5, nr:0, pts:16, nrr:'+0.62', form:['W','L','W','L','W'] },
-    { abbr:'RR', full:'Rajasthan Royals', m:14, w:8, l:5, nr:1, pts:17, nrr:'+0.45', form:['W','W','W','L','W'] },
-    { abbr:'SRH', full:'Sunrisers Hyderabad', m:14, w:7, l:6, nr:1, pts:15, nrr:'+0.12', form:['W','L','W','W','L'] },
-    { abbr:'KKR', full:'Kolkata Knight Riders', m:14, w:6, l:7, nr:1, pts:13, nrr:'-0.03', form:['L','W','L','W','W'] },
-    { abbr:'DC', full:'Delhi Capitals', m:13, w:6, l:7, nr:0, pts:12, nrr:'-0.21', form:['L','L','W','L','L'] },
-    { abbr:'LSG', full:'Lucknow Super Giants', m:14, w:5, l:8, nr:1, pts:11, nrr:'-0.54', form:['L','L','W','L','L'] },
-    { abbr:'PBKS', full:'Punjab Kings', m:14, w:4, l:10, nr:0, pts:8, nrr:'-0.97', form:['L','L','L','L','W'] },
-    { abbr:'GT', full:'Gujarat Titans', m:14, w:3, l:10, nr:1, pts:7, nrr:'-1.22', form:['L','L','L','L','L'] }
-  ];
-  const originalStandings = JSON.parse(JSON.stringify(teamsStandings));
+// INTERACTIONS
+function tossCoin(call) {
+  const result = Math.random() > 0.5 ? 'MI' : 'CSK';
+  const res = document.getElementById('tossResult');
+  res.className = 'pred-result ' + (call === result ? (result==='MI'?'mi-win':'csk-win') : '');
+  if(call === result) {
+    res.textContent = `✅ ${result} wins the toss! ${result==='MI'?'🔵 Mumbai elected to BAT first!':'🟡 Chennai elected to FIELD first!'}`;
+    res.className = 'pred-result ' + (result==='MI'?'mi-win':'csk-win');
+  } else {
+    res.textContent = `❌ Wrong call! ${result} won the toss! Better luck next time!`;
+  }
+}
 
-  // Helper: render matches
-  function getStatusTag(status) {
-    if(status==='today') return '<span class="status-tag tag-today">🔥 TODAY</span>';
-    if(status==='result') return '<span class="status-tag tag-result">✔ RESULT</span>';
-    return '<span class="status-tag tag-upcoming">📅 UPCOMING</span>';
+function predictWinner(team) {
+  const r = document.getElementById('winResult');
+  const rand = Math.random();
+  const actual = rand > 0.45 ? 'CSK' : 'MI';
+  if(team === actual) {
+    r.className = 'pred-result ' + (actual==='MI'?'mi-win':'csk-win');
+    r.textContent = `🎉 CORRECT! ${actual} wins! ${actual==='MI'?'💙 Mumbai dominate!':'💛 Chennai clinch it!'}`;
+  } else {
+    r.className = 'pred-result';
+    r.textContent = `😬 Oops! ${actual} actually won by ${Math.floor(rand*15)+2} ${rand>0.6?'wickets':'runs'}!`;
   }
-  function buildMatchCard(m) {
-    const homeT = TEAM_INFO[m.home];
-    const awayT = TEAM_INFO[m.away];
-    const grad = `background: linear-gradient(120deg, ${homeT.color}, ${awayT.color})`;
-    let scoreSection = (m.homeScore && m.awayScore) ? `<div class="score">${m.homeScore}</div><div class="score">${m.awayScore}</div>` : `<div class="score" style="color:#8096aa;">⏳ TBD</div>`;
-    let footerHtml = (m.status === 'result') ? 
-      `<div class="card-footer"><span>📍 ${homeT.venue}</span><span>${m.time}</span></div><div class="result-banner">🏆 ${m.result}</div>` :
-      `<div class="card-footer"><span>📍 ${m.venue || homeT.venue}</span><span>${m.time}</span></div>`;
-    const special = m.isLive ? '<span style="background:#e11d48; margin-left:6px; padding:2px 8px; border-radius:50px; font-size:0.55rem;">LIVE</span>' : '';
-    return `<div class="match-card"><div class="match-ribbon" style="${grad}"></div><div class="match-header"><div>${getStatusTag(m.status)}${special}</div><div class="match-num">${m.matchNum}</div></div><div class="teams-row"><div class="team"><div class="crest" style="background:${homeT.color};color:${homeT.accent}">${m.home}</div><div class="team-name" style="color:${homeT.color}">${m.home}</div><div class="team-full">${homeT.full}</div></div><div class="vs-badge">VS</div><div class="team"><div class="crest" style="background:${awayT.color};color:${awayT.accent}">${m.away}</div><div class="team-name" style="color:${awayT.color}">${m.away}</div><div class="team-full">${awayT.full}</div></div></div><div style="display:flex; justify-content:center; gap:12px; margin:-8px 0 6px 0;">${scoreSection}</div>${footerHtml}</div>`;
-  }
-  function renderAllMatches(filter = 'all') {
-    const filtered = filter === 'all' ? FULL_MATCHES : FULL_MATCHES.filter(m => m.status === filter);
-    document.getElementById('matchGrid').innerHTML = filtered.map(buildMatchCard).join('');
-  }
+}
 
-  // Points table render
-  function renderPointsTable() {
-    const sorted = [...teamsStandings].sort((a,b)=> b.pts - a.pts || parseFloat(b.nrr) - parseFloat(a.nrr));
-    const tbody = document.getElementById('ptsTableBody');
-    tbody.innerHTML = sorted.map((t, idx) => {
-      const meta = TEAM_INFO[t.abbr];
-      let rankClass = 'rank-other';
-      if(idx===0) rankClass='rank-1'; else if(idx===1) rankClass='rank-2'; else if(idx===2) rankClass='rank-3';
-      const nrrCls = parseFloat(t.nrr) >=0 ? 'nrr-pos' : 'nrr-neg';
-      const formHtml = t.form.map(f => f==='W'?'<div class="form-w"></div>':'<div class="form-l"></div>').join('');
-      return `<tr><td><span class="rank-badge ${rankClass}">${idx+1}</span></td>
-      <td><div class="team-cell"><div class="team-dot" style="background:${meta.color}"></div><div><strong>${t.abbr}</strong><div style="font-size:0.6rem;">${t.full.split(' ').slice(-1)[0]}</div></div></div></td>
-      <td>${t.m}</td><td class="won-cell">${t.w}</td><td class="lost-cell">${t.l}</td><td>${t.nr}</td>
-      <td class="pts-cell">${t.pts}</td><td class="${nrrCls}">${t.nrr}</td><td><div class="form-dots">${formHtml}</div></td></tr>`;
-    }).join('');
-    document.getElementById('topLeaderSpan').innerHTML = `🏆 TOP: ${sorted[0].abbr} (${sorted[0].pts} pts)`;
-  }
+function guessSixes() {
+  const guess = parseInt(document.getElementById('sixInput').value);
+  const actual = Math.floor(Math.random()*12)+6;
+  const r = document.getElementById('sixResult');
+  if(!guess) { r.textContent='Please enter a number!'; return; }
+  const diff = Math.abs(guess - actual);
+  if(diff <= 1) { r.className='pred-result mi-win'; r.textContent=`🎯 PERFECT! ${actual} sixes were hit! You nailed it!`; }
+  else if(diff <= 3) { r.className='pred-result'; r.textContent=`👍 Close! ${actual} sixes were hit! Off by just ${diff}.`; }
+  else { r.className='pred-result'; r.textContent=`💥 ${actual} sixes were hit! You guessed ${guess}. Keep trying!`; }
+}
 
-  // simulate random match between top/mid teams
-  document.getElementById('simulateBtn').addEventListener('click', () => {
-    const candidates = teamsStandings.filter(t => t.abbr !== 'DC' && t.abbr !== 'CSK');
-    if(candidates.length < 2) return;
-    const i1 = Math.floor(Math.random()*candidates.length);
-    let i2 = Math.floor(Math.random()*candidates.length);
-    while(i2===i1) i2 = Math.floor(Math.random()*candidates.length);
-    const teamA = candidates[i1], teamB = candidates[i2];
-    const winner = Math.random() > 0.5 ? teamA : teamB;
-    const loser = winner === teamA ? teamB : teamA;
-    winner.w += 1; winner.pts += 2; winner.m += 1;
-    loser.l += 1; loser.m += 1;
-    winner.form = [winner.form[1], winner.form[2], winner.form[3], winner.form[4], 'W'];
-    loser.form = [loser.form[1], loser
+function revealScorer() {
+  const pick = document.getElementById('scorerPick').value;
+  const r = document.getElementById('scorerResult');
+  if(!pick) { r.textContent='Please pick a player first!'; return; }
+  const isCSK = pick.includes('Dhoni') || pick.includes('Ruturaj') || pick.includes('Dube');
+  const team = isCSK ? 'CSK' : 'MI';
+  const score = Math.floor(Math.random()*60)+30;
+  const balls = Math.floor(score*0.7);
+  const sixes = Math.floor(Math.random()*5)+1;
+  r.className = 'pred-result ' + (team==='MI'?'mi-win':'csk-win');
+  r.textContent = `⭐ ${pick} scored ${score} off ${balls} balls with ${sixes} sixes! What a knock for ${team}!`;
+}
+
+// INIT
+renderMatchPills();
+updateScoreboard();
+updateStats();
+
+// Animate h2h bars on load
+setTimeout(() => {
+  document.getElementById('mi-bar').style.width = '43%';
+  document.getElementById('csk-bar').style.width = '57%';
+}, 300);
+</script>
+</body>
+</html>
